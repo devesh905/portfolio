@@ -1,8 +1,8 @@
-function Navbar() {
+function Navbar(props) {
   return (
     <nav>
-      <h1>Devesh</h1>
-      <h1>Portfolio</h1>
+       <h1>{props.name}</h1>
+      <h1>{props.title}</h1>
     </nav>
   );
 }
