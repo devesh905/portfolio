@@ -4,9 +4,10 @@ const links = [
   { id: 3, label: "Contact", href: "#contact" },
 ];
 
+
 function Navbar({ name, title }) {
   return (
-    <nav>
+   <nav className="bg-black text-white p-4">
       <h1>{name}</h1>
       <ul>
         {links.map((link) => (
