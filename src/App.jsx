@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar';
 
 function App() {
-  return <Navbar />;
+  return <Navbar name = 'Devesh'/>;
 }
 
 export default App;
