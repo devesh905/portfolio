@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="bg-zinc-950 min-h-screen">
    <Navbar name="Devesh" title="Portfolio" />
-   <Hero />
+   <Hero  />
    <Projects />
    <Contact />
    <Footer />

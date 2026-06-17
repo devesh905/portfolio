@@ -1,6 +1,12 @@
-function ProjectCard({ title, description, tech, span }) {
+import { motion } from "framer-motion";
+
+function ProjectCard({ title, description, tech, span, index }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
       className={`bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300 ${span}`}
     >
       <h3 className="text-2xl font-bold text-white mb-3">{title}</h3>
@@ -15,7 +21,7 @@ function ProjectCard({ title, description, tech, span }) {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
