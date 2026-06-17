@@ -1,7 +1,13 @@
 import Navbar from './components/Navbar';
+import Hero from './sections/Hero';
 
 function App() {
-  return <Navbar name = 'Devesh'/>;
+  return (
+    <div className="bg-zinc-950 min-h-screen">
+   <Navbar name="Devesh" title="Portfolio" />
+   <Hero />
+    </div>
+  );
 }
 
 export default App;
