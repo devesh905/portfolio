@@ -24,7 +24,7 @@ function Hero() {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-5xl md:text-7xl font-bold text-white mb-4"
       >
-        Devesh
+        Devesh Kumar Upadhyay
       </motion.h1>
       <motion.p
         initial={{ opacity: 0, y: 20 }}
