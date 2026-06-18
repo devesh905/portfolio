@@ -31,7 +31,7 @@ const projects = [
     tech: [".NET Microservices", "React", "RabbitMQ"],
     span: "",
     status: "In Progress",
-    github: "https://github.com/your-username/smartfleet",
+    github: "https://github.com/devesh905/smartfleetWeb",
     demo: null,
   },
 ];
