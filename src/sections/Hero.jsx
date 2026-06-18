@@ -49,7 +49,7 @@ function Hero() {
       >
 
         <a
-          href="/resume.pdf"
+          href="/DeveshKumarUpadhyay.pdf"
           download
           className="flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold px-6 py-3 rounded-lg hover:opacity-90 transition-opacity"
         >
