@@ -5,9 +5,12 @@ const projects = [
     id: 1,
     title: "Digital ICU Management System",
     description:
-      "Real-time ICU monitoring platform integrating medical devices via TCP/IP and HL7, streaming ECG waveforms at 500Hz with custom delta-encoded compression.",
+      "Real-time ICU monitoring platform integrating medical devices via TCP/IP and HL7, streaming ECG waveforms at 500Hz with custom delta-encoded compression achieving 25-45x reduction.",
     tech: ["ASP.NET Core", "SignalR", "HL7", "SQL Server"],
     span: "md:col-span-2",
+    status: "Production",
+    github: null,
+    demo: null,
   },
   {
     id: 2,
@@ -16,6 +19,9 @@ const projects = [
       "Voice-driven assistant integrating Faster-Whisper STT, Piper TTS, and Groq/LLaMA 3.3 with Asterisk PBX for hospital procurement workflows.",
     tech: ["Python", "Groq API", "Asterisk PBX"],
     span: "",
+    status: "Production",
+    github: null,
+    demo: null,
   },
   {
     id: 3,
@@ -24,6 +30,9 @@ const projects = [
       "Fleet management system built with .NET microservices, YARP gateway, RabbitMQ, and React — a deep dive into distributed systems architecture.",
     tech: [".NET Microservices", "React", "RabbitMQ"],
     span: "",
+    status: "In Progress",
+    github: "https://github.com/your-username/smartfleet",
+    demo: null,
   },
 ];
 
@@ -34,9 +43,9 @@ function Projects() {
         Projects
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-{projects.map((project, index) => (
-  <ProjectCard key={project.id} {...project} index={index} />
-))}
+        {projects.map((project, index) => (
+          <ProjectCard key={project.id} {...project} index={index} />
+        ))}
       </div>
     </section>
   );
