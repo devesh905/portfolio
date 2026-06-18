@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.svg";
 
 const links = [
   { id: 1, label: "Home", href: "#home" },
@@ -40,9 +41,12 @@ function Navbar({ name, title }) {
   return (
     <nav className="fixed top-0 w-full bg-black/30 backdrop-blur-md border-b border-white/10 z-50">
       <div className="max-w-6xl mx-auto flex justify-between items-center px-6 py-4">
-        <h1 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-          {name} {title}
-        </h1>
+        <a href="#home" className="flex items-center gap-3">
+          <img src={logo} alt="Logo" className="w-9 h-9 rounded-lg" />
+          <span className="text-xl font-bold text-white">
+            {name}
+          </span>
+        </a>
 
         {/* Desktop links */}
         <ul className="hidden md:flex gap-8">
