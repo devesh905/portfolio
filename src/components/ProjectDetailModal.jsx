@@ -22,9 +22,9 @@ function ProjectDetailModal({ project, onClose }) {
             exit={{ opacity: 0, scale: 0.95, y: 12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-[#0a0e17] border border-white/10 rounded-[32px] w-full max-w-5xl max-h-[90vh] overflow-hidden shadow-2xl"
+            className="bg-[#0a0e17] border border-white/10 rounded-[32px] w-full max-w-5xl max-h-[calc(100dvh-2rem)] overflow-hidden shadow-2xl flex flex-col"
           >
-            <div className="flex items-start justify-between gap-4 p-6 border-b border-white/10">
+            <div className="flex shrink-0 items-start justify-between gap-4 p-6 border-b border-white/10">
               <div className="space-y-3">
                 <p className="text-xs uppercase tracking-[0.35em] text-cyan-400">
                   {project.status}
@@ -44,7 +44,7 @@ function ProjectDetailModal({ project, onClose }) {
               </button>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-[1.5fr_0.9fr] p-6 overflow-y-auto max-h-[78vh]">
+            <div className="grid min-h-0 flex-1 gap-6 overflow-y-auto p-6 lg:grid-cols-[1.5fr_0.9fr]">
               <div className="space-y-6 text-white/80">
                 <div className="space-y-4">
                   <h3 className="text-xl font-semibold text-white">Overview</h3>
