@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
-function ProjectCard({ title, description, tech, span, index, github, demo, status }) {
+function ProjectCard({ title, description, tech, span, index, github, demo, status, onClick }) {
   const statusStyles = {
     Production: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
     "In Progress": "text-amber-400 bg-amber-400/10 border-amber-400/30",
@@ -41,32 +41,42 @@ function ProjectCard({ title, description, tech, span, index, github, demo, stat
         ))}
       </div>
 
-      <div className="flex gap-4 mt-auto pt-2 border-t border-white/10">
-        {github && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
-          >
-            <FaGithub size={16} />
-            Code
-          </a>
-        )}
-        {demo && (
-          <a
-            href={demo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
-          >
-            <FaExternalLinkAlt size={14} />
-            Live Demo
-          </a>
-        )}
-        {!github && !demo && (
-          <span className="text-sm text-white/30 italic">Private codebase</span>
-        )}
+      <div className="flex flex-col gap-3 mt-auto pt-2 border-t border-white/10">
+        <button
+          type="button"
+          onClick={onClick}
+          className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 px-4 py-3 text-left text-sm font-medium text-cyan-200 hover:border-cyan-400/40 hover:bg-cyan-400/10 transition-colors"
+        >
+          View details
+        </button>
+
+        <div className="flex flex-wrap gap-3 items-center">
+          {github ? (
+            <a
+              href={github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
+            >
+              <FaGithub size={16} />
+              Code
+            </a>
+          ) : (
+            <span className="text-sm text-white/30 italic">Private codebase</span>
+          )}
+
+          {demo && (
+            <a
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
+            >
+              <FaExternalLinkAlt size={14} />
+              Live Demo
+            </a>
+          )}
+        </div>
       </div>
     </motion.div>
   );

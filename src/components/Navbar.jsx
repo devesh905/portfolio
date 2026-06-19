@@ -9,7 +9,7 @@ const links = [
   { id: 4, label: "Contact", href: "#contact" },
 ];
 
-function Navbar({ name, title }) {
+function Navbar({ name }) {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 

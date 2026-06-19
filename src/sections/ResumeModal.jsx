@@ -24,13 +24,9 @@ function ResumeModal({ isOpen, onClose, resumeUrl }) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
 
-  // Reset to page 1 every time the modal is reopened
-  useEffect(() => {
-    if (isOpen) setPageNumber(1);
-  }, [isOpen]);
-
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
+    setPageNumber(1);
   }
 
   return (
