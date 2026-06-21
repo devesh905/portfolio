@@ -7,13 +7,13 @@ import About from "./sections/About";
 
 function App() {
   return (
-    <div className="bg-zinc-950 min-h-screen">
-   <Navbar name="Devesh" />
-   <Hero  />
-<About />
-   <Projects />
-   <Contact />
-   <Footer />
+    <div className="bg-slate-950 min-h-screen overflow-x-hidden">
+      <Navbar name="Devesh" />
+      <Hero />
+      <About />
+      <Projects />
+      <Contact />
+      <Footer />
     </div>
   );
 }

@@ -1,68 +1,88 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { ChevronRight } from "lucide-react";
 
 function ProjectCard({ title, description, tech, span, index, github, demo, status, onClick }) {
   const statusStyles = {
-    Production: "text-emerald-400 bg-emerald-400/10 border-emerald-400/30",
-    "In Progress": "text-amber-400 bg-amber-400/10 border-amber-400/30",
+    Production: {
+      text: "text-emerald-400 border-emerald-500/20 bg-emerald-950/20",
+      dot: "bg-emerald-400"
+    },
+    "In Progress": {
+      text: "text-amber-400 border-amber-500/20 bg-amber-950/20",
+      dot: "bg-amber-400 animate-pulse"
+    },
+  };
+
+  const statusConfig = statusStyles[status] || {
+    text: "text-slate-400 border-slate-700 bg-slate-800/20",
+    dot: "bg-slate-400"
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.15 }}
-      className={`group bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-cyan-400/50 hover:bg-white/10 transition-all duration-300 flex flex-col ${span}`}
+      transition={{ duration: 0.5, delay: index * 0.12 }}
+      onClick={onClick}
+      className={`group glass-panel glass-panel-hover rounded-[24px] p-6 flex flex-col justify-between cursor-pointer ${span}`}
     >
-      <div className="flex items-start justify-between gap-3 mb-3">
-        <h3 className="text-2xl font-bold text-white">{title}</h3>
-        {status && (
-          <span
-            className={`text-xs font-mono px-2 py-1 rounded-md border whitespace-nowrap ${
-              statusStyles[status] || "text-white/60 bg-white/5 border-white/10"
-            }`}
-          >
-            {status}
-          </span>
-        )}
+      <div>
+        {/* Top Header */}
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors duration-300">
+            {title}
+          </h3>
+          {status && (
+            <span
+              className={`inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded-full border ${statusConfig.text}`}
+            >
+              <span className={`w-1.5 h-1.5 rounded-full ${statusConfig.dot}`} />
+              {status}
+            </span>
+          )}
+        </div>
+
+        {/* Description */}
+        <p className="text-slate-350 text-sm leading-relaxed mb-6 group-hover:text-slate-200 transition-colors duration-300">
+          {description}
+        </p>
+
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-1.5 mb-8">
+          {tech.map((t) => (
+            <span
+              key={t}
+              className="text-[10px] font-mono font-semibold text-cyan-400 bg-cyan-950/40 border border-cyan-500/10 px-2.5 py-1 rounded-full"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
       </div>
 
-      <p className="text-white/60 mb-4 flex-grow">{description}</p>
-
-      <div className="flex flex-wrap gap-2 mb-5">
-        {tech.map((t) => (
-          <span
-            key={t}
-            className="text-xs font-mono text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded-md"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex flex-col gap-3 mt-auto pt-2 border-t border-white/10">
-        <button
-          type="button"
-          onClick={onClick}
-          className="rounded-2xl border border-cyan-400/20 bg-cyan-400/5 px-4 py-3 text-left text-sm font-medium text-cyan-200 hover:border-cyan-400/40 hover:bg-cyan-400/10 transition-colors"
-        >
+      {/* Footer Info / Links */}
+      <div className="flex items-center justify-between pt-4 border-t border-slate-900/60 mt-auto">
+        <span className="flex items-center gap-1 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">
           View details
-        </button>
+          <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+        </span>
 
-        <div className="flex flex-wrap gap-3 items-center">
+        <div className="flex gap-4 items-center" onClick={(e) => e.stopPropagation()}>
           {github ? (
             <a
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
+              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+              aria-label={`View code for ${title}`}
             >
-              <FaGithub size={16} />
-              Code
+              <FaGithub size={14} />
+              <span>Code</span>
             </a>
           ) : (
-            <span className="text-sm text-white/30 italic">Private codebase</span>
+            <span className="text-[11px] text-slate-500 font-mono italic">Private Repo</span>
           )}
 
           {demo && (
@@ -70,10 +90,11 @@ function ProjectCard({ title, description, tech, span, index, github, demo, stat
               href={demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-sm text-white/70 hover:text-cyan-400 transition-colors"
+              className="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors"
+              aria-label={`View live demo for ${title}`}
             >
-              <FaExternalLinkAlt size={14} />
-              Live Demo
+              <FaExternalLinkAlt size={12} />
+              <span>Live Demo</span>
             </a>
           )}
         </div>

@@ -1,1 +1,87 @@
-@import "tailwindcss"
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  --color-brand-cyan: #06b6d4;
+  --color-brand-blue: #3b82f6;
+  --color-brand-violet: #8b5cf6;
+  
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617; /* slate-950 */
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b; /* slate-800 */
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #06b6d4; /* brand-cyan */
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: rgba(10, 15, 30, 0.6);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-panel-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(10, 15, 30, 0.8);
+  border-color: rgba(6, 182, 212, 0.3); /* cyan-500/30 */
+  box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.12),
+              0 0 50px -10px rgba(6, 182, 212, 0.05);
+  transform: translateY(-4px);
+}
+
+/* ECG Line Animation */
+@keyframes ecg-dash {
+  to {
+    stroke-dashoffset: -1200;
+  }
+}
+.animate-ecg {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 1200;
+  animation: ecg-dash 15s linear infinite;
+}
+
+/* Grid overlay background */
+.bg-grid-pattern {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Smooth HTML scroll-behavior fallback */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accent lighting effects */
+.radial-spotlight {
+  background: radial-gradient(circle 600px at var(--x, 50%) var(--y, 50%), rgba(6, 182, 212, 0.1), transparent 80%);
+}
