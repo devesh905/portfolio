@@ -94,7 +94,6 @@ function About() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
         >
-          <User size={14} />
           <span>Professional Background</span>
         </motion.div>
 
@@ -115,7 +114,7 @@ function About() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed"
         >
-          A software engineer who loves solving high-concurrency, latency-critical challenges and building 
+          A software engineer who loves solving high-concurrency, latency-critical challenges and building
           digital products that delight clients.
         </motion.p>
       </div>
@@ -133,14 +132,14 @@ function About() {
             Bridging Hardware, Real-Time Streams, and User Experience
           </h3>
           <p>
-            I am a developer driven by reliability and performance. In my work with mission-critical 
-            healthcare systems, a dropped packet or a fraction-of-a-second lag directly impairs 
-            clinical patient monitoring. I specialize in making hardware telemetry, HL7 messages, 
+            I am a developer driven by reliability and performance. In my work with mission-critical
+            healthcare systems, a dropped packet or a fraction-of-a-second lag directly impairs
+            clinical patient monitoring. I specialize in making hardware telemetry, HL7 messages,
             and web dashboards talk to each other effortlessly at <span className="text-white font-semibold">500Hz</span>.
           </p>
           <p>
-            When partnering with businesses and clients, I apply this same level of engineering rigor: 
-            clean modular code, robust database architectures, and intuitive modern web interfaces 
+            When partnering with businesses and clients, I apply this same level of engineering rigor:
+            clean modular code, robust database architectures, and intuitive modern web interfaces
             that turn visitors into paying customers.
           </p>
           <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-cyan-400">
@@ -204,11 +203,11 @@ function About() {
         <h3 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">
           Work History &amp; Education
         </h3>
-        
+
         <div className="relative max-w-3xl mx-auto pl-6 sm:pl-8">
           {/* Timeline center line */}
           <div className="absolute left-[7px] sm:left-[8px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent" />
-          
+
           <div className="flex flex-col gap-10">
             {timeline.map((item, index) => {
               const Icon = item.icon;
@@ -223,7 +222,7 @@ function About() {
                 >
                   {/* Timeline node */}
                   <span className="absolute -left-[24px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-[#050811] border-2 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
-                  
+
                   {/* Content glass card */}
                   <div className="glass-panel glass-panel-hover rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
@@ -261,7 +260,7 @@ function About() {
         <h3 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">
           Skills &amp; Engineering Toolkit
         </h3>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category, catIndex) => (
             <motion.div
@@ -281,7 +280,7 @@ function About() {
                     {category.description}
                   </p>
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-2.5">
                   {category.skills.map((skill) => {
                     const Icon = skill.icon;

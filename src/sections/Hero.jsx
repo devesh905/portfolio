@@ -36,7 +36,7 @@ function Hero() {
 
       {/* Main Hero Container */}
       <div className="max-w-5xl flex flex-col items-center relative z-10">
-        
+
         {/* Availability Badge */}
         <motion.div
           initial={{ opacity: 0, y: -15 }}
@@ -58,7 +58,6 @@ function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="flex items-center gap-2 text-cyan-400 text-sm sm:text-base font-semibold tracking-wider uppercase mb-3"
         >
-          <Sparkles size={16} />
           <span>Full-Stack &amp; .NET Core Engineer</span>
         </motion.div>
 
@@ -81,8 +80,8 @@ function Hero() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="text-base sm:text-lg md:text-xl text-slate-300 leading-relaxed max-w-2xl font-normal mb-8"
         >
-          I'm <span className="text-white font-semibold">Devesh Kumar Upadhyay</span>. I help startups and businesses 
-          transform complex ideas into sleek, scalable web applications, robust .NET Core backends, 
+          I'm <span className="text-white font-semibold">Devesh Kumar Upadhyay</span>. I help startups and businesses
+          transform complex ideas into sleek, scalable web applications, robust .NET Core backends,
           and sub-second real-time telemetry dashboards.
         </motion.p>
 
@@ -150,7 +149,7 @@ function Hero() {
           className="flex items-center gap-4 mt-10 pt-6 border-t border-white/5"
         >
           <span className="text-xs text-slate-400 font-medium">Quick Connect:</span>
-          
+
           <a
             href="https://github.com/devesh905"
             target="_blank"

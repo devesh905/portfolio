@@ -55,7 +55,6 @@ function Process() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
         >
-          <Sparkles size={14} />
           <span>Proven Workflow</span>
         </motion.div>
 

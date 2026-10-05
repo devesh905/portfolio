@@ -12,12 +12,11 @@ function Footer() {
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-gradient-to-t from-cyan-500/10 to-transparent blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        
+
         {/* Pre-footer Callout Banner */}
         <div className="glass-panel rounded-3xl p-8 sm:p-10 border border-cyan-500/20 mb-16 flex flex-col md:flex-row items-center justify-between gap-6 bg-gradient-to-r from-cyan-950/30 via-slate-900/60 to-blue-950/30">
           <div className="text-center md:text-left space-y-2">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-semibold">
-              <Sparkles size={13} />
               <span>Let's Build Something Exceptional</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-extrabold text-white">

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
-import { 
-  Globe, 
-  Server, 
-  Activity, 
-  Bot, 
-  Layers, 
+import {
+  Globe,
+  Server,
+  Activity,
+  Bot,
+  Layers,
   ArrowUpRight,
   ShieldCheck,
   Zap
@@ -92,7 +92,6 @@ function Services() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
         >
-          <Zap size={14} />
           <span>Client &amp; Technical Solutions</span>
         </motion.div>
 

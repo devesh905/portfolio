@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { 
-  Send, 
-  CheckCircle, 
-  AlertTriangle, 
-  Mail, 
-  Copy, 
-  Check, 
+import {
+  Send,
+  CheckCircle,
+  AlertTriangle,
+  Mail,
+  Copy,
+  Check,
   Sparkles,
   MapPin,
   Clock,
@@ -26,11 +26,11 @@ const projectTypes = [
 ];
 
 function Contact() {
-  const [formData, setFormData] = useState({ 
-    name: "", 
-    email: "", 
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
     projectType: "Full-Stack Web App",
-    message: "" 
+    message: ""
   });
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [copied, setCopied] = useState(false);
@@ -58,11 +58,11 @@ function Contact() {
 
       if (response.ok) {
         setStatus("success");
-        setFormData({ 
-          name: "", 
-          email: "", 
+        setFormData({
+          name: "",
+          email: "",
           projectType: "Full-Stack Web App",
-          message: "" 
+          message: ""
         });
       } else {
         setStatus("error");
@@ -86,7 +86,6 @@ function Contact() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
         >
-          <Sparkles size={14} />
           <span>Start A Conversation</span>
         </motion.div>
 
@@ -107,13 +106,13 @@ function Contact() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed"
         >
-          Whether you have an upcoming project, need freelance web engineering, or are hiring for a 
+          Whether you have an upcoming project, need freelance web engineering, or are hiring for a
           .NET Core role — I'd love to connect.
         </motion.p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-8 items-start">
-        
+
         {/* Left Column: Direct channels and trust cards */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -126,9 +125,9 @@ function Contact() {
             <h3 className="text-xl font-bold text-white">
               Direct Contact
             </h3>
-            
+
             <p className="text-slate-300 text-sm leading-relaxed">
-              Prefer instant communication? Reach out via WhatsApp or email directly. 
+              Prefer instant communication? Reach out via WhatsApp or email directly.
               I typically reply within a few hours.
             </p>
 
@@ -236,7 +235,7 @@ function Contact() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              
+
               {/* Project Type Picker */}
               <div className="flex flex-col gap-2">
                 <label className="text-xs font-semibold uppercase tracking-wider text-slate-300">
@@ -248,11 +247,10 @@ function Contact() {
                       key={type}
                       type="button"
                       onClick={() => setFormData({ ...formData, projectType: type })}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${
-                        formData.projectType === type
+                      className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all cursor-pointer ${formData.projectType === type
                           ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/50 font-semibold shadow-[0_0_12px_rgba(6,182,212,0.15)]"
                           : "bg-white/5 border border-white/5 text-slate-400 hover:text-white hover:bg-white/10"
-                      }`}
+                        }`}
                     >
                       {type}
                     </button>

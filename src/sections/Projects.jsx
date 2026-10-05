@@ -109,7 +109,6 @@ function Projects() {
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
         >
-          <FolderGit2 size={14} />
           <span>Featured Engineering</span>
         </motion.div>
 
@@ -130,7 +129,7 @@ function Projects() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed"
         >
-          Explore production-grade software engineered for high reliability, zero latency tolerance, 
+          Explore production-grade software engineered for high reliability, zero latency tolerance,
           and distributed scale.
         </motion.p>
       </div>
@@ -147,11 +146,10 @@ function Projects() {
           <button
             key={category}
             onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${
-              activeCategory === category
+            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${activeCategory === category
                 ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
                 : "bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
-            }`}
+              }`}
           >
             {category}
           </button>
