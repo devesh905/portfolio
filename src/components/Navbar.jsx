@@ -15,36 +15,54 @@ function Navbar() {
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
+  // Robust scrollspy tracking active section accurately
   useEffect(() => {
     function handleScroll() {
-      setScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 20);
+
+      // When near the top, always keep "home" active
+      if (scrollY < 150) {
+        setActiveSection("home");
+        return;
+      }
+
+      // Check if user reached near the bottom of page -> activate contact
+      const isBottom =
+        window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80;
+      if (isBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
+      // Scroll position with offset for fixed header
+      const scrollPosition = scrollY + 220;
+
+      const sectionElements = links
+        .map((link) => ({
+          id: link.href.slice(1),
+          el: document.querySelector(link.href),
+        }))
+        .filter((item) => item.el !== null);
+
+      // Check from bottom section upwards
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const { id, el } = sectionElements[i];
+        if (el.offsetTop <= scrollPosition) {
+          setActiveSection(id);
+          break;
+        }
+      }
     }
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Scroll-spy observer
-  useEffect(() => {
-    const sections = links
-      .map((link) => document.querySelector(link.href))
-      .filter(Boolean);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-30% 0px -60% 0px" }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => sections.forEach((section) => observer.unobserve(section));
-  }, []);
-
-  function handleLinkClick() {
+  function handleLinkClick(id) {
+    if (id) setActiveSection(id);
     setIsMobileOpen(false);
   }
 
@@ -57,7 +75,11 @@ function Navbar() {
       >
         <div className="flex justify-between items-center">
           {/* Logo with live pulse */}
-          <a href="#home" className="flex items-center gap-2.5 group">
+          <a
+            href="#home"
+            onClick={() => handleLinkClick("home")}
+            className="flex items-center gap-2.5 group"
+          >
             <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
               D
             </div>
@@ -80,6 +102,7 @@ function Navbar() {
                 <li key={link.id}>
                   <a
                     href={link.href}
+                    onClick={() => handleLinkClick(link.href.slice(1))}
                     className={`relative px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
                       isActive
                         ? "text-cyan-300 bg-cyan-500/10 font-semibold shadow-[inset_0_0_12px_rgba(6,182,212,0.15)]"
@@ -97,6 +120,7 @@ function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="#contact"
+              onClick={() => handleLinkClick("contact")}
               className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-900 bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-blue-400 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-0.5"
             >
               <span>Let's Talk</span>
@@ -123,7 +147,7 @@ function Navbar() {
                 <a
                   key={link.id}
                   href={link.href}
-                  onClick={handleLinkClick}
+                  onClick={() => handleLinkClick(link.href.slice(1))}
                   className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all ${
                     isActive
                       ? "text-cyan-300 bg-cyan-500/15 font-semibold"
@@ -136,7 +160,7 @@ function Navbar() {
             })}
             <a
               href="#contact"
-              onClick={handleLinkClick}
+              onClick={() => handleLinkClick("contact")}
               className="mt-2 text-center py-2.5 rounded-xl text-xs font-bold text-slate-900 bg-gradient-to-r from-cyan-400 to-blue-400 shadow-md"
             >
               Start a Project / Hire Me

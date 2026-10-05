@@ -35,7 +35,7 @@ function Hero() {
       </div>
 
       {/* Main Hero Container */}
-      <div className="max-w-4xl flex flex-col items-center relative z-10">
+      <div className="max-w-5xl flex flex-col items-center relative z-10">
         
         {/* Availability Badge */}
         <motion.div
@@ -67,10 +67,11 @@ function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6 max-w-3xl"
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold text-white tracking-tight leading-[1.15] mb-6 max-w-4xl text-center"
         >
-          Building <span className="gradient-text-cyan">High-Performance</span> Web Apps &amp;{" "}
-          <span className="gradient-text-accent">Real-Time</span> Systems.
+          Building <span className="gradient-text-cyan whitespace-nowrap">High-Performance</span> Web Apps
+          <br className="hidden sm:inline" />
+          {" "}&amp; <span className="gradient-text-accent whitespace-nowrap">Real-Time</span> Systems.
         </motion.h1>
 
         {/* Professional Bio / Pitch */}
