@@ -46,24 +46,27 @@ function ResumeModal({ isOpen, onClose, resumeUrl }) {
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="glass-panel border border-slate-800/80 rounded-[28px] w-full max-w-3xl h-[85vh] flex flex-col overflow-hidden shadow-2xl"
+            className="glass-panel border border-white/10 rounded-3xl w-full max-w-3xl h-[85vh] flex flex-col overflow-hidden shadow-2xl bg-[#080d1a]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-900/60">
-              <h3 className="text-white font-bold text-lg font-sans">Curriculum Vitae</h3>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
+              <div>
+                <h3 className="text-white font-bold text-lg">Curriculum Vitae</h3>
+                <span className="text-[11px] text-cyan-400 font-mono">Devesh Kumar Upadhyay</span>
+              </div>
               <div className="flex items-center gap-3">
                 <a
                   href={resumeUrl}
                   download
-                  className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition-all duration-300 cursor-pointer shadow-md"
+                  className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition-all duration-300 cursor-pointer shadow-md shadow-cyan-500/20"
                 >
                   <Download size={14} />
-                  <span>Download</span>
+                  <span>Download PDF</span>
                 </a>
                 <button
                   onClick={onClose}
                   aria-label="Close resume preview"
-                  className="rounded-full bg-slate-900 border border-slate-850 p-2 text-slate-400 hover:text-white hover:border-slate-700 transition-all cursor-pointer"
+                  className="rounded-xl bg-white/5 border border-white/10 p-2 text-slate-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
                 >
                   <X size={16} />
                 </button>
