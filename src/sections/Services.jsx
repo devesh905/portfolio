@@ -8,22 +8,23 @@ const capabilities = [
     description:
       "Architecting modular, maintainable, and high-throughput server backends using ASP.NET Core, C#, Entity Framework Core, and SQL Server. Designed for thread safety, data integrity, and strict concurrency isolation.",
     focusAreas: [
-      "Clean Architecture & decoupled service boundaries",
+      "Clean Architecture & decoupled service boundaries (.NET 8 Web API & EF Core 8)",
+      "Enterprise healthcare modules (Patient OPD Kiosks, Billing Engines & Multi-Store Inventory)",
       "Thread-safe database operations (scope isolation with IServiceScopeFactory)",
-      "Relational schema design, index tuning, and execution plan review",
-      "Secure RESTful APIs with JWT authentication & role-based authorization",
+      "Secure RESTful APIs with JWT authentication, Twilio alerts & role-based authorization",
     ],
   },
   {
     number: "02",
-    title: "Real-Time Telemetry & Protocol Integration",
+    title: "Real-Time Telemetry & Hardware Protocol Integration",
     description:
       "Building low-latency pipelines for continuous data feeds, medical device hardware integration, and live client dashboards where dropped packets or connection stalls directly impair operations.",
     focusAreas: [
-      "SignalR & WebSocket bi-directional streaming pipelines",
-      "Hardware device communication via TCP/IP sockets and HL7 protocol",
+      "Hardware scanner bridges & local loopback WebSockets for document ingestion",
+      "AI OCR analytics pipelines digitizing handwritten clinical prescriptions",
+      "SignalR bi-directional streaming & 500Hz ECG waveform pipelines",
+      "Hardware device communication via TCP/IP sockets and HL7 protocols",
       "Custom delta-encoded stream compression (up to 45x bandwidth reduction)",
-      "Automated database purge policies with timezone-aware cutoff logic",
     ],
   },
   {
@@ -48,7 +49,7 @@ function Services() {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
-            02 // Technical Capabilities
+            02 &mdash; Technical Capabilities
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
             Where I contribute the most value.
@@ -72,7 +73,7 @@ function Services() {
               {/* Left Column: Number & Title */}
               <div className="lg:col-span-4 space-y-2">
                 <span className="font-mono text-sm font-bold text-[#183654] block">
-                  {cap.number} //
+                  {cap.number}
                 </span>
                 <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
                   {cap.title}

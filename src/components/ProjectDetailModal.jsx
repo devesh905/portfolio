@@ -71,7 +71,7 @@ function ProjectDetailModal({ project, onClose }) {
                 {project.problem && (
                   <div className="space-y-2.5">
                     <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                      01 // The Engineering Problem
+                      01 &mdash; The Engineering Problem
                     </h3>
                     <p className="text-sm sm:text-base leading-relaxed text-[#4A4C46]">
                       {project.problem}
@@ -82,7 +82,7 @@ function ProjectDetailModal({ project, onClose }) {
                 {/* Architecture & Decisions */}
                 <div className="space-y-2.5">
                   <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                    02 // System Architecture &amp; Decisions
+                    02 &mdash; System Architecture &amp; Decisions
                   </h3>
                   <p className="text-sm sm:text-base leading-relaxed text-[#4A4C46]">
                     {project.fullDescription || project.description}
@@ -93,7 +93,7 @@ function ProjectDetailModal({ project, onClose }) {
                 {project.highlights?.length > 0 && (
                   <div className="space-y-3">
                     <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                      03 // Implementation Highlights
+                      03 &mdash; Implementation Highlights
                     </h3>
                     <ul className="space-y-2.5 text-xs sm:text-sm text-[#383A35]">
                       {project.highlights.map((item) => (
@@ -110,7 +110,7 @@ function ProjectDetailModal({ project, onClose }) {
                 {project.features?.length > 0 && (
                   <div className="space-y-3">
                     <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                      04 // Capabilities &amp; Modules
+                      04 &mdash; Capabilities &amp; Modules
                     </h3>
                     <ul className="space-y-2 text-xs sm:text-sm text-[#4A4C46]">
                       {project.features.map((feature) => (

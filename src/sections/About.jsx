@@ -8,11 +8,13 @@ const workExperience = [
     location: "Meerut, UP, India",
     type: "Full-Time Engineering",
     responsibilities: [
-      "Engineered real-time Digital ICU telemetry platform streaming 500Hz ECG waveforms with custom delta-encoded compression (25–45x bandwidth reduction).",
-      "Architected scope-isolated chunk loading using IServiceScopeFactory, eliminating EF Core DbContext multi-thread concurrency crashes during stream decompression.",
-      "Designed unified parsing layer for HL7 and TCP/IP protocols normalizing dissimilar telemetry feeds from Mindray and Comen hardware monitors.",
-      "Built ingestion-time UHID normalization service that auto-corrected staff data-entry errors, reducing corrupted patient records to near-zero.",
-      "Implemented automated 7-day data retention purge routine with IST-aware cutoff logic to ensure HIPAA compliance and bound database volume growth.",
+      "Architected and deployed multi-module Hospital Information System (HIS) with ASP.NET Core (.NET 8 Web API + Razor), EF Core 8, and SQL Server for hospital outpatient and inpatient workflows.",
+      "Engineered high-throughput Patient OPD Registration and Self-Registration kiosks with automated UHID generation and barcode OPD card printing.",
+      "Engineered HIS.ScannerBridge (dedicated local C# WebSocket service) bridging physical flatbed scanners (Canon P-208II) to the web EHR, with AI prescription OCR analytics and drug interaction alerts.",
+      "Implemented campus pharmacy multi-store inventory manager with live medicine stock lookup, booking engine, and ward delivery dispatch.",
+      "Built diagnostic Smart Lab Reports engine with automatic clinical reference ranges and multi-tier patient billing (OPD, IPD packages, provisional bills).",
+      "Engineered real-time Digital ICU telemetry platform streaming 500Hz ECG waveforms with custom delta-encoded compression (25–45x bandwidth reduction) and IServiceScopeFactory concurrency protection.",
+      "Designed unified parsing layer for HL7 and TCP/IP protocols normalizing telemetry feeds from Mindray and Comen bedside hardware monitors.",
     ],
   },
   {
@@ -43,15 +45,15 @@ const education = [
 const skillCategories = [
   {
     category: "Backend & Systems",
-    skills: ["C#", "ASP.NET Core", "ASP.NET MVC", "Entity Framework Core", "RESTful Web APIs", "SignalR", "WebSockets", "Python"],
+    skills: ["C# (.NET 8)", "ASP.NET Core Web API", "Entity Framework Core 8", "Razor Pages", "RESTful Web APIs", "SignalR", "WebSockets", "Python"],
   },
   {
     category: "Data & Storage",
     skills: ["SQL Server", "MySQL", "Database Normalization", "Index Tuning", "Execution Plan Review", "Power BI"],
   },
   {
-    category: "Protocols & Architecture",
-    skills: ["HL7 Protocol", "TCP/IP Sockets", "Real-Time Telemetry (500Hz)", "Delta Compression", "RabbitMQ", "Microservices"],
+    category: "Protocols & Systems Architecture",
+    skills: ["Hardware Scanner Bridge (WebSockets)", "AI OCR & Analytics", "HL7 Protocols", "TCP/IP Sockets", "Real-Time Telemetry (500Hz)", "Delta Compression", "RabbitMQ", "Microservices"],
   },
   {
     category: "Frontend & Web",
@@ -59,7 +61,7 @@ const skillCategories = [
   },
   {
     category: "Testing & DevOps",
-    skills: ["Selenium WebDriver (C#)", "Git & GitHub", "Docker", "Postman", "Swagger", "Linux CLI", "Visual Studio"],
+    skills: ["Selenium WebDriver (C#)", "Git & GitHub", "Docker", "Postman", "Swagger", "Twilio API", "Visual Studio"],
   },
 ];
 
@@ -71,7 +73,7 @@ function About() {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
-            03 // Background &amp; Engineering Philosophy
+            03 &mdash; Background &amp; Engineering Philosophy
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
             Engineering grounded in reality, not trends.

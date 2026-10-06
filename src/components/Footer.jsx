@@ -47,11 +47,6 @@ function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#process" className="hover:text-[#141413] transition-colors">
-                  Engineering Workflow
-                </a>
-              </li>
-              <li>
                 <a href="#contact" className="hover:text-[#141413] transition-colors">
                   Get in Touch
                 </a>

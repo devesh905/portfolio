@@ -175,10 +175,10 @@ function Hero() {
                   Current Role &amp; Domain
                 </span>
                 <span className="text-[#141413] font-medium block mt-0.5">
-                  Jr. Software Developer at Subharti Hospital
+                  Full-Stack &amp; .NET Systems Developer at Subharti Hospital
                 </span>
                 <span className="text-[#62645D] text-[11px] block mt-0.5">
-                  Real-time intensive care telemetry &amp; device integration
+                  Enterprise HIS hospital systems, AI prescription bridges &amp; real-time ICU telemetry
                 </span>
               </div>
 
@@ -187,25 +187,25 @@ function Hero() {
                   Primary Stack
                 </span>
                 <span className="text-[#141413] font-medium block mt-0.5">
-                  C#, ASP.NET Core, SQL Server, React
+                  C#, ASP.NET Core (.NET 8), EF Core 8, SQL Server, React
                 </span>
               </div>
 
               <div className="pt-3 border-t border-[#EFEFE8]">
                 <span className="font-mono text-[10px] text-[#9EA098] uppercase block">
-                  Protocols &amp; Streaming
+                  Systems &amp; Integrations
                 </span>
                 <span className="text-[#141413] font-medium block mt-0.5">
-                  SignalR, HL7 Protocols, TCP/IP Sockets, WebSockets
+                  Hardware ScannerBridge (WebSockets), SignalR, HL7 Protocols, AI OCR Analytics
                 </span>
               </div>
 
               <div className="pt-3 border-t border-[#EFEFE8]">
                 <span className="font-mono text-[10px] text-[#9EA098] uppercase block">
-                  Key Accomplishment
+                  Flagship Deliverables
                 </span>
                 <span className="text-[#4A4C46] text-[11px] block mt-0.5 leading-relaxed">
-                  Engineered 500Hz ECG waveform streaming with 25–45x delta compression and isolated scope concurrency.
+                  Enterprise HIS portal (OPD kiosks, Doctor AI prescription scanner bridge, in-campus pharmacy stock &amp; billing), plus 500Hz ICU telemetry with 25&ndash;45x delta compression.
                 </span>
               </div>
             </div>
