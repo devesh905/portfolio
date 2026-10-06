@@ -1,122 +1,149 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Server, Activity, LayoutGrid } from "lucide-react";
 
 const capabilities = [
   {
     number: "01",
-    title: "Backend Engineering & .NET Core APIs",
+    title: "BACKEND SYSTEMS",
+    subtitle: "High-Throughput APIs & Core Services",
+    icon: Server,
     description:
-      "Architecting modular, maintainable, and high-throughput server backends using ASP.NET Core, C#, Entity Framework Core, and SQL Server. Designed for thread safety, data integrity, and strict concurrency isolation.",
-    focusAreas: [
-      "Clean Architecture & decoupled service boundaries (.NET 8 Web API & EF Core 8)",
-      "Enterprise healthcare modules (Patient OPD Kiosks, Billing Engines & Multi-Store Inventory)",
-      "Thread-safe database operations (scope isolation with IServiceScopeFactory)",
-      "Secure RESTful APIs with JWT authentication, Twilio alerts & role-based authorization",
-    ],
+      "I design and maintain modular, thread-safe backends using C#, ASP.NET Core (.NET 8), and SQL Server. I prioritize clean domain boundaries, isolated DbContext lifetimes, query execution plan tuning, and secure JWT authentication.",
+    stack: ["ASP.NET Core", "C# (.NET 8)", "SQL Server", "RESTful APIs", "EF Core 8", "JWT Auth"],
+    badge: "THREAD-SAFE SCOPES",
   },
   {
     number: "02",
-    title: "Real-Time Telemetry & Hardware Protocol Integration",
+    title: "REAL-TIME & DEVICE INTEGRATION",
+    subtitle: "Low-Latency Telemetry & Hardware Bridges",
+    icon: Activity,
     description:
-      "Building low-latency pipelines for continuous data feeds, medical device hardware integration, and live client dashboards where dropped packets or connection stalls directly impair operations.",
-    focusAreas: [
-      "Hardware scanner bridges & local loopback WebSockets for document ingestion",
-      "AI OCR analytics pipelines digitizing handwritten clinical prescriptions",
-      "SignalR bi-directional streaming & 500Hz ECG waveform pipelines",
-      "Hardware device communication via TCP/IP sockets and HL7 protocols",
-      "Custom delta-encoded stream compression (up to 45x bandwidth reduction)",
-    ],
+      "I build low-latency pipelines that connect software directly with physical equipment. This includes ingesting raw byte streams from medical monitors via TCP/IP and HL7, writing custom delta-encoded compression algorithms, and streaming live feeds with SignalR.",
+    stack: ["SignalR", "WebSockets", "TCP/IP", "HL7 Protocols", "Hardware Bridges", "Delta Compression"],
+    badge: "SUB-40MS TELEMETRY",
   },
   {
     number: "03",
-    title: "Full-Stack Web Applications & Client Systems",
+    title: "PRODUCT & WEB APPLICATIONS",
+    subtitle: "Responsive Interfaces & Clinical Workflows",
+    icon: LayoutGrid,
     description:
-      "Crafting fast, accessible, and responsive user interfaces that connect cleanly with complex backend systems. Built with modern React, clean CSS, and automated regression testing.",
-    focusAreas: [
-      "High-performance React web applications & administrative portals",
-      "Rigorous mobile and desktop responsiveness without layout shifts",
-      "Automated regression testing using Selenium WebDriver (C#)",
-      "Predictable state management & resilient API error handling",
-    ],
+      "I create clean, responsive dashboards and workflows that clinicians and staff actually rely on. Built with modern React and CSS on the frontend, with predictable async state management and automated regression test suites.",
+    stack: ["React", "JavaScript (ES6+)", "Modern CSS", "Dashboards", "Vite", "Selenium WebDriver"],
+    badge: "RESPONSIVE CLIENTS",
   },
 ];
 
 function Services() {
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+
   return (
-    <section id="services" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+    <section id="systems" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
-          <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
-            02 &mdash; Technical Capabilities
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
-            Where I contribute the most value.
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
+            <span>Capabilities &bull; Core Focus</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight mb-4">
+            What I build.
           </h2>
-          <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
-            I specialize in the intersection of reliable backend architecture, low-latency streaming protocols, and clean web applications.
+          <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
+            Three core engineering disciplines where I spend most of my time writing production software.
           </p>
         </div>
 
-        {/* Capabilities Editorial List (Divided Rows) */}
-        <div className="border-t border-[#E5E5DE]">
-          {capabilities.map((cap, idx) => (
-            <motion.div
-              key={cap.number}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.1 }}
-              className="py-10 sm:py-14 border-b border-[#E5E5DE] grid grid-cols-1 lg:grid-cols-12 gap-8 items-start"
-            >
-              {/* Left Column: Number & Title */}
-              <div className="lg:col-span-4 space-y-2">
-                <span className="font-mono text-sm font-bold text-[#183654] block">
-                  {cap.number}
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
-                  {cap.title}
-                </h3>
-              </div>
+        {/* 3 Visually Distinct Capabilities with Subtle Hover Interaction */}
+        <div className="border-t border-[#E5E5DE] divide-y divide-[#E5E5DE]">
+          {capabilities.map((cap, idx) => {
+            const isHovered = hoveredIdx === idx;
+            const IconComponent = cap.icon;
 
-              {/* Center Column: Description */}
-              <div className="lg:col-span-4">
-                <p className="text-sm text-[#4A4C46] leading-relaxed font-normal">
-                  {cap.description}
-                </p>
-              </div>
+            return (
+              <motion.div
+                key={cap.number}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                className={`group relative py-10 sm:py-14 transition-all duration-300 ${
+                  isHovered ? "bg-white/80 pl-4 sm:pl-6 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.03)]" : "pl-0"
+                }`}
+              >
+                {/* Left Cobalt Accent Bar on Hover */}
+                <div
+                  className={`absolute left-0 top-0 bottom-0 w-1.5 bg-[#1E56A0] rounded-l transition-opacity duration-300 ${
+                    isHovered ? "opacity-100" : "opacity-0"
+                  }`}
+                />
 
-              {/* Right Column: Key Focus Areas */}
-              <div className="lg:col-span-4 space-y-2 border-l lg:border-[#EFEFE8] lg:pl-6">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-[#787A72] block mb-2">
-                  Technical Deliverables:
-                </span>
-                <ul className="space-y-2 text-xs text-[#383A35]">
-                  {cap.focusAreas.map((area) => (
-                    <li key={area} className="flex items-start gap-2">
-                      <span className="text-[#183654] font-mono mt-0.5">&bull;</span>
-                      <span className="leading-snug">{area}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+                  
+                  {/* Column 1: Number & Icon (3 Cols) */}
+                  <div className="lg:col-span-3 space-y-2">
+                    <div className="flex items-center gap-3">
+                      <span className="font-mono text-3xl sm:text-4xl font-bold text-[#1E56A0] tracking-tight">
+                        {cap.number}
+                      </span>
+                      <IconComponent
+                        size={22}
+                        className={`transition-colors duration-200 ${
+                          isHovered ? "text-[#1E56A0]" : "text-[#9EA098]"
+                        }`}
+                      />
+                    </div>
+                    <span className="font-mono text-[11px] text-[#787A72] uppercase tracking-wider block">
+                      {cap.subtitle}
+                    </span>
+                  </div>
 
-        {/* Bottom Understated Consultation Note */}
-        <div className="mt-14 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#787A72]">
-          <p className="leading-relaxed">
-            Need an engineer for an architectural review, telemetry system, or full-stack web build?
-          </p>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-1.5 font-semibold text-[#183654] hover:underline whitespace-nowrap"
-          >
-            <span>Start an engineering discussion</span>
-            <ArrowUpRight size={13} />
-          </a>
+                  {/* Column 2: Title & Plain-English Description (5 Cols) */}
+                  <div className="lg:col-span-5 space-y-3">
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight group-hover:text-[#1E56A0] transition-colors">
+                      {cap.title}
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed font-normal">
+                      {cap.description}
+                    </p>
+                  </div>
+
+                  {/* Column 3: Technical Stack & Feature Badge (4 Cols) */}
+                  <div className="lg:col-span-4 space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-[11px] uppercase tracking-wider text-[#787A72] font-semibold">
+                        Technical Stack
+                      </span>
+                      <span
+                        className={`text-[10px] font-mono px-2 py-0.5 rounded font-semibold border transition-all ${
+                          isHovered
+                            ? "bg-[#EFF6FF] text-[#1E56A0] border-[#BFDBFE]"
+                            : "bg-[#F3F3ED] text-[#787A72] border-[#E5E5DE]"
+                        }`}
+                      >
+                        {cap.badge}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {cap.stack.map((item) => (
+                        <span
+                          key={item}
+                          className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
       </div>

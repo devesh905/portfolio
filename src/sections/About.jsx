@@ -1,269 +1,105 @@
-import { ArrowUpRight } from "lucide-react";
-
-const workExperience = [
-  {
-    period: "Aug 2025 — Present",
-    role: "Jr. Software Developer",
-    organization: "Chhatrapati Shivaji Subharti Hospital",
-    location: "Meerut, UP, India",
-    type: "Full-Time Engineering",
-    responsibilities: [
-      "Architected and deployed multi-module Hospital Information System (HIS) with ASP.NET Core (.NET 8 Web API + Razor), EF Core 8, and SQL Server for hospital outpatient and inpatient workflows.",
-      "Engineered high-throughput Patient OPD Registration and Self-Registration kiosks with automated UHID generation and barcode OPD card printing.",
-      "Engineered HIS.ScannerBridge (dedicated local C# WebSocket service) bridging physical flatbed scanners (Canon P-208II) to the web EHR, with AI prescription OCR analytics and drug interaction alerts.",
-      "Implemented campus pharmacy multi-store inventory manager with live medicine stock lookup, booking engine, and ward delivery dispatch.",
-      "Built diagnostic Smart Lab Reports engine with automatic clinical reference ranges and multi-tier patient billing (OPD, IPD packages, provisional bills).",
-      "Engineered real-time Digital ICU telemetry platform streaming 500Hz ECG waveforms with custom delta-encoded compression (25–45x bandwidth reduction) and IServiceScopeFactory concurrency protection.",
-      "Designed unified parsing layer for HL7 and TCP/IP protocols normalizing telemetry feeds from Mindray and Comen bedside hardware monitors.",
-    ],
-  },
-  {
-    period: "Oct 2024 — Jan 2025",
-    role: "Apprentice Engineer",
-    organization: "366Pi Technologies",
-    location: "Ranchi, India",
-    type: "Engineering Apprenticeship",
-    responsibilities: [
-      "Built automated regression test suites using Selenium WebDriver (C# / ASP.NET Core) across key web and mobile application workflows.",
-      "Reduced query execution latency on slow reporting endpoints by reviewing SQL execution plans and implementing index optimizations.",
-      "Collaborated with senior engineers on requirement scoping and software quality standards.",
-    ],
-  },
-];
-
-const education = [
-  {
-    period: "June 2020 — July 2024",
-    degree: "B.Tech in Computer Science & Engineering (OGPA: 8.09)",
-    institution: "Chandra Shekhar Azad University of Agriculture & Technology",
-    location: "Kanpur, India",
-    details:
-      "Four-year undergraduate degree with focus on distributed computing, concurrency, database design, operating systems, and object-oriented architecture.",
-  },
-];
-
-const skillCategories = [
-  {
-    category: "Backend & Systems",
-    skills: ["C# (.NET 8)", "ASP.NET Core Web API", "Entity Framework Core 8", "Razor Pages", "RESTful Web APIs", "SignalR", "WebSockets", "Python"],
-  },
-  {
-    category: "Data & Storage",
-    skills: ["SQL Server", "MySQL", "Database Normalization", "Index Tuning", "Execution Plan Review", "Power BI"],
-  },
-  {
-    category: "Protocols & Systems Architecture",
-    skills: ["Hardware Scanner Bridge (WebSockets)", "AI OCR & Analytics", "HL7 Protocols", "TCP/IP Sockets", "Real-Time Telemetry (500Hz)", "Delta Compression", "RabbitMQ", "Microservices"],
-  },
-  {
-    category: "Frontend & Web",
-    skills: ["React", "JavaScript (ES6+)", "HTML5", "CSS3 / Modern CSS", "Vite", "Component Architecture"],
-  },
-  {
-    category: "Testing & DevOps",
-    skills: ["Selenium WebDriver (C#)", "Git & GitHub", "Docker", "Postman", "Swagger", "Twilio API", "Visual Studio"],
-  },
-];
+import { motion } from "framer-motion";
+import { ArrowUpRight, MapPin, Award, Terminal } from "lucide-react";
 
 function About() {
   return (
     <section id="about" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
         
         {/* Section Header */}
-        <div className="max-w-3xl mb-16 sm:mb-20">
-          <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
-            03 &mdash; Background &amp; Engineering Philosophy
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
-            Engineering grounded in reality, not trends.
+        <div className="max-w-3xl space-y-3">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
+            <span>Identity &bull; Background</span>
+          </div>
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
+            About Devesh.
           </h2>
-          <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
-            A developer who prioritizes thread safety, memory hygiene, clean API boundaries, and system predictability.
-          </p>
         </div>
 
-        {/* Narrative / Personal Perspective (2 Columns) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-20 border-b border-[#E5E5DE] items-start">
-          <div className="lg:col-span-7 space-y-5 text-sm sm:text-base text-[#4A4C46] leading-relaxed font-normal">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
-              Software is best when it is quiet, robust, and invisible.
-            </h3>
-            <p>
-              I started my professional engineering career in a hospital setting where software failures aren't just inconveniences &mdash; they affect real clinical patient monitoring. When an intensive care monitor transmits 500 vital data packets every second, a concurrency leak or thread-lock in your backend translates to frozen screens at bedside.
-            </p>
-            <p>
-              That experience fundamentally shaped how I write code: I believe in thread safety before optimization, explicit domain models over fragile abstractions, and thorough testing over optimism. Whether I am building high-concurrency .NET Core endpoints or an intuitive React application, I treat every millisecond and every database transaction with care.
-            </p>
-            <p>
-              I enjoy working on backend architectures, real-time protocols (SignalR, WebSockets, TCP), database query tuning, and clean full-stack web products. I am currently open to full-time software engineering roles and select technical contracting projects.
-            </p>
-          </div>
+        {/* Split Layout: Typographic Identity on Left, Personal Narrative on Right */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* LEFT: Typographic & Graphic Visual Identity Card (Col 5) */}
+          <div className="lg:col-span-5 border border-[#E5E5DE] bg-white rounded-xl p-6 sm:p-8 space-y-6 shadow-[0_4px_25px_rgba(0,0,0,0.02)] relative">
+            
+            {/* Monogram & Coordinates Frame */}
+            <div className="border border-[#EFEFE8] bg-[#FBFBF9] rounded-lg p-6 text-center space-y-3 relative overflow-hidden">
+              <div className="font-mono text-[10px] text-[#9EA098] tracking-widest uppercase">
+                COORDINATES: 28.9845&deg; N, 77.7064&deg; E
+              </div>
 
-          <div className="lg:col-span-5 border border-[#E5E5DE] bg-white rounded-lg p-6 sm:p-7 space-y-5">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#787A72] block border-b border-[#EFEFE8] pb-3">
-              Engineering Snapshot
-            </span>
+              <div className="text-6xl sm:text-7xl font-bold font-mono tracking-tighter text-[#183654]">
+                DKU
+              </div>
 
-            <div className="space-y-3.5 text-xs">
-              <div>
-                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Location</span>
-                <span className="text-[#141413] font-medium block">Meerut &amp; Remote, India (Available Worldwide)</span>
+              <div className="font-mono text-xs text-[#1E56A0] font-semibold uppercase tracking-wider">
+                Devesh Kumar Upadhyay
               </div>
-              <div className="pt-2 border-t border-[#EFEFE8]">
-                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Specialization</span>
-                <span className="text-[#141413] font-medium block">.NET Core / C#, Real-Time Telemetry &amp; Full-Stack Web</span>
+            </div>
+
+            {/* Engineer Profile Spec Sheet */}
+            <div className="space-y-3 text-xs font-mono">
+              <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
+                <span className="text-[#787A72]">Current Role</span>
+                <span className="font-bold text-[#141413]">Jr. Software Developer</span>
               </div>
-              <div className="pt-2 border-t border-[#EFEFE8]">
-                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Education</span>
-                <span className="text-[#141413] font-medium block">B.Tech in CSE (OGPA 8.09)</span>
+
+              <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
+                <span className="text-[#787A72]">Organization</span>
+                <span className="text-[#1E56A0] font-semibold">Subharti Hospital</span>
               </div>
-              <div className="pt-2 border-t border-[#EFEFE8]">
-                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">What I'm Looking For</span>
-                <span className="text-[#4A4C46] leading-relaxed block mt-0.5">
-                  Engineering teams building serious systems with high concurrency, real-time requirements, or complex domain logic.
+
+              <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
+                <span className="text-[#787A72]">Primary Stack</span>
+                <span className="font-medium text-[#141413]">C# &bull; .NET 8 &bull; SQL Server</span>
+              </div>
+
+              <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
+                <span className="text-[#787A72]">Degree</span>
+                <span className="font-medium text-[#141413]">B.Tech CSE (OGPA 8.09)</span>
+              </div>
+
+              <div className="flex items-center justify-between py-2">
+                <span className="text-[#787A72]">Status</span>
+                <span className="text-emerald-700 font-semibold flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                  Available for Remote Roles
                 </span>
               </div>
             </div>
 
-            <div className="pt-3 border-t border-[#EFEFE8]">
+            {/* Direct Connect Prompt */}
+            <div className="pt-2 border-t border-[#EFEFE8]">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#183654] hover:underline"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1E56A0] hover:underline"
               >
-                <span>Connect with Devesh</span>
+                <span>Discuss an engineering opportunity</span>
                 <ArrowUpRight size={13} />
               </a>
             </div>
-          </div>
-        </div>
 
-        {/* Experience Timeline */}
-        <div className="py-20 border-b border-[#E5E5DE]">
-          <div className="max-w-2xl mb-12">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
-              Work History
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
-              Production Experience &amp; Engineering Roles
-            </h3>
           </div>
 
-          <div className="space-y-12">
-            {workExperience.map((job) => (
-              <div
-                key={job.period}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border-b border-[#EFEFE8] pb-12 last:border-b-0 last:pb-0"
-              >
-                <div className="lg:col-span-4 space-y-1">
-                  <span className="font-mono text-xs text-[#787A72] block">
-                    {job.period}
-                  </span>
-                  <h4 className="text-lg font-bold text-[#141413]">
-                    {job.role}
-                  </h4>
-                  <div className="text-xs text-[#183654] font-medium">
-                    {job.organization}
-                  </div>
-                  <div className="text-[11px] text-[#787A72]">
-                    {job.location} &bull; {job.type}
-                  </div>
-                </div>
+          {/* RIGHT: Authentic Personal Narrative (Col 7) */}
+          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#383A35] leading-relaxed font-normal">
+            <p>
+              I'm a backend and full-stack software engineer based in India, currently writing production software at Subharti Hospital. Most of my daily work centers around C#, ASP.NET Core, SQL Server, and real-time streaming architectures.
+            </p>
 
-                <div className="lg:col-span-8">
-                  <ul className="space-y-2.5 text-xs sm:text-sm text-[#4A4C46]">
-                    {job.responsibilities.map((resp, i) => (
-                      <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-[#183654] font-mono text-xs mt-0.5">&mdash;</span>
-                        <span className="leading-relaxed">{resp}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <p>
+              I became drawn to backend systems because there is nowhere to hide. When hundreds of devices or hospital departments push data every second, you have to think carefully about memory lifetimes, socket buffering, and thread safety from day one. Seeing raw byte streams from medical devices transform into clean, synchronized clinician waveforms in under 40 milliseconds is what made me fall in love with real-time software.
+            </p>
 
-        {/* Education Timeline */}
-        <div className="py-16 border-b border-[#E5E5DE]">
-          <div className="max-w-2xl mb-8">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
-              Academic Foundation
-            </span>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
-              Education &amp; Computer Science Degree
-            </h3>
-          </div>
+            <p>
+              Working directly with medical hardware and hospital workflows taught me how different real-world production is from building toy apps. Physical devices disconnect unexpectedly, networks drop packets, and databases lock up if you don't isolate your contexts. Building through those challenges made me care deeply about writing simple, dependable code that just works.
+            </p>
 
-          {education.map((edu) => (
-            <div
-              key={edu.degree}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
-            >
-              <div className="lg:col-span-4 space-y-1">
-                <span className="font-mono text-xs text-[#787A72] block">
-                  {edu.period}
-                </span>
-                <h4 className="text-base font-bold text-[#141413]">
-                  {edu.degree}
-                </h4>
-                <div className="text-xs text-[#183654] font-medium">
-                  {edu.institution}
-                </div>
-                <div className="text-[11px] text-[#787A72]">
-                  {edu.location}
-                </div>
-              </div>
-
-              <div className="lg:col-span-8">
-                <p className="text-xs sm:text-sm text-[#4A4C46] leading-relaxed">
-                  {edu.details}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Skills & Engineering Toolkit */}
-        <div className="pt-20">
-          <div className="max-w-2xl mb-12">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
-              Technical Arsenal
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
-              Structured Skills &amp; Applied Tools
-            </h3>
-            <p className="text-xs sm:text-sm text-[#787A72] mt-1.5">
-              Organized by architectural domain rather than superficial badge collections.
+            <p>
+              I'm currently looking for full-time engineering roles where I can join a team building serious backend systems, real-time services, or complex web applications. Whether that involves distributed systems, API architecture, or low-latency data pipelines, I want to be where technical rigor and code quality matter.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skillCategories.map((cat) => (
-              <div
-                key={cat.category}
-                className="border border-[#E5E5DE] bg-white rounded-lg p-6 space-y-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
-              >
-                <div className="border-b border-[#EFEFE8] pb-2.5">
-                  <h4 className="text-sm font-bold text-[#141413] font-sans">
-                    {cat.category}
-                  </h4>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {cat.skills.map((s) => (
-                    <span
-                      key={s}
-                      className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
       </div>

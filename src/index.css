@@ -16,12 +16,25 @@
   --color-ink-muted: #787A72;
   --color-ink-subtle: #9EA098;
 
-  --color-accent-navy: #183654;
-  --color-accent-navy-subtle: #EDF3F9;
-  --color-accent-forest: #1F3D2C;
+  /* Engineering Cobalt Accent */
+  --color-accent-cobalt: #1E56A0;
+  --color-accent-cobalt-light: #2563EB;
+  --color-accent-cobalt-subtle: #EFF6FF;
+  
+  /* Telemetry Live Accents */
+  --color-telemetry-green: #10B981;
+  --color-telemetry-cyan: #06B6D4;
+
+  /* Dark Contrast Sections */
+  --color-dark-bg: #0D1017;
+  --color-dark-surface: #141822;
+  --color-dark-panel: #1A202C;
+  --color-dark-border: #232B3A;
+  --color-dark-text: #F1F5F9;
+  --color-dark-muted: #94A3B8;
 }
 
-/* Custom Scrollbars: understated, minimal */
+/* Custom Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -59,26 +72,13 @@ body {
   font-feature-settings: "kern" 1, "liga" 1;
 }
 
-/* Swiss Technical Mono Utility */
+/* Technical Monospace Utility */
 .font-technical {
   font-family: var(--font-mono);
   letter-spacing: -0.02em;
 }
 
-/* Precision Border Rules */
-.editorial-border {
-  border-color: #E5E5DE;
-}
-
-.editorial-border-b {
-  border-bottom: 1px solid #E5E5DE;
-}
-
-.editorial-border-t {
-  border-top: 1px solid #E5E5DE;
-}
-
-/* Subtle Architectural Grid Background (Minimal paper texture feel) */
+/* Subtle Architectural Grid Background */
 .bg-grid-subtle {
   background-size: 32px 32px;
   background-image: 
@@ -86,8 +86,15 @@ body {
     linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
 }
 
+.bg-grid-dark {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
 /* Clean Understated Focus */
 :focus-visible {
-  outline: 2px solid #183654;
+  outline: 2px solid #1E56A0;
   outline-offset: 2px;
 }
