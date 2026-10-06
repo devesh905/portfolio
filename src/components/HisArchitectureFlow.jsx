@@ -5,10 +5,10 @@ const hisNodes = [
   {
     id: "kiosk",
     step: "01",
-    label: "PATIENT INGESTION",
+    label: "PATIENT CHECK-IN",
     name: "OPD Self-Kiosk",
     summary: "UHID Issuance",
-    responsibility: "Validates patient demographics, generates unique hospital UHID records, and prints barcode OPD appointment cards.",
+    responsibility: "Validates patient info, assigns a unique UHID, and prints barcode appointment cards.",
   },
   {
     id: "bridge",
@@ -16,7 +16,7 @@ const hisNodes = [
     label: "HARDWARE BRIDGE",
     name: "HIS.ScannerBridge",
     summary: "C# WebSocket (8181)",
-    responsibility: "Local C# loopback service streaming scanned prescription images from Canon P-208II hardware directly to the web EHR.",
+    responsibility: "Local C# loopback service streaming scanned prescriptions directly to web EHR for OCR digitization.",
   },
   {
     id: "core",
@@ -24,15 +24,15 @@ const hisNodes = [
     label: "BACKEND API",
     name: ".NET 8 Web API",
     summary: "EF Core 8 & SQL",
-    responsibility: "Manages hospital domain boundaries, doctor appointment rosters, role-based JWT auth, and SQL Server transactions.",
+    responsibility: "Handles clinician appointment rosters, secure JWT auth, and SQL Server transactions.",
   },
   {
     id: "ops",
     step: "04",
-    label: "OPERATIONS & BILLING",
-    name: "Pharmacy & Ledger",
+    label: "PHARMACY & BILLING",
+    name: "Stock & Ledger",
     summary: "Live Stock & Billing",
-    responsibility: "Queries multi-store campus pharmacy medicine stock in real time, computes provisional bills, and dispatches Twilio SMS.",
+    responsibility: "Verifies campus pharmacy medicine stock in real time and computes automated billing.",
   },
 ];
 
@@ -45,9 +45,9 @@ function HisArchitectureFlow() {
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E5E5DE] pb-3 text-xs font-mono">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#183654]" />
-          <span className="font-bold text-[#141413]">HOSPITAL INFORMATION SYSTEM PIPELINE</span>
+          <span className="font-bold text-[#141413]">HOSPITAL SYSTEM PIPELINE</span>
         </div>
-        <span className="text-[11px] text-[#787A72]">Hover any node to inspect module responsibility</span>
+        <span className="text-[11px] text-[#787A72]">Click or hover any module to inspect</span>
       </div>
 
       {/* Horizontal Nodes */}

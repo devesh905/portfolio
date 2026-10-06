@@ -12,23 +12,23 @@ const modalData = {
   icu: {
     id: 1,
     number: "01",
-    tag: "REAL-TIME TELEMETRY (500Hz STREAM)",
+    tag: "REAL-TIME ICU TELEMETRY",
     title: "Digital ICU Management System",
-    subtitle: "High-Frequency Medical Device Telemetry & Bedside ICU Monitoring Panel",
+    subtitle: "500Hz live ECG waveform streaming and bedside clinical monitoring",
     role: "Jr. Software Developer at Subharti Hospital",
     status: "Active Production Deployment",
     problem:
-      "Intensive care units rely on immediate notification of critical patient vitals. Standard HTTP polling introduces unacceptable latency, while uncompressed telemetry from continuous bedside monitors (Mindray & Comen) can congest hospital networks with repetitive packets and trigger concurrency deadlocks in naive database contexts.",
+      "Intensive care units need instant vitals. Polling introduced clinical delay, while uncompressed streams from bedside monitors (Mindray & Comen) clogged hospital networks and caused DbContext concurrency crashes under parallel load.",
     description:
-      "I implemented the real-time telemetry pipeline using ASP.NET Core and SignalR to stream 500Hz live ECG waveforms. Designed a custom delta-encoded compression algorithm achieving a 25–45x reduction in bandwidth without loss of signal resolution. Solved EF Core DbContext multi-threaded concurrency crashes during parallel stream decompression by designing an isolated chunk loader using IServiceScopeFactory. Integrated TCP/IP sockets and HL7 protocol parsing to normalize data from Mindray and Comen hardware monitors.",
+      "I built the real-time telemetry pipeline using ASP.NET Core and SignalR to stream 500Hz live ECG waveforms. Designed a custom delta compression algorithm cutting bandwidth by 25–45x without losing signal quality. Fixed EF Core multithreading deadlocks using IServiceScopeFactory, and integrated TCP/IP and HL7 parsing to normalize hardware monitor feeds.",
     tech: ["ASP.NET Core", "C#", "SignalR", "HL7 Protocols", "TCP/IP Sockets", "SQL Server", "WebSockets"],
     highlights: [
       "Live ECG waveform streaming at 500Hz synchronization rate using SignalR",
-      "Custom delta-encoded compression reduced telemetry bandwidth by up to 25–45x",
+      "Custom delta compression reduced telemetry bandwidth by up to 25–45x",
       "Eliminated EF Core concurrency crashes via IServiceScopeFactory scope isolation",
       "Unified HL7 and TCP/IP parsing normalizing Mindray and Comen hardware feeds",
-      "Built UHID normalization routine preventing patient record corruption at ingestion",
-      "Implemented automated 7-day data retention purge routine with IST cutoff logic",
+      "UHID normalization routine preventing patient record corruption at ingestion",
+      "Automated 7-day data retention purge routine with IST cutoff logic",
     ],
     features: [
       "Real-time clinical patient monitoring dashboard with custom waveform visualizer",
@@ -42,15 +42,15 @@ const modalData = {
   his: {
     id: 2,
     number: "02",
-    tag: "ENTERPRISE HEALTHCARE PLATFORM",
-    title: "Hospital Information System (HIS) & Clinical Portal",
-    subtitle: "Enterprise Hospital Management, OPD Registration, Hardware Scanner Bridge, Pharmacy & Billing",
+    tag: "HOSPITAL EHR PLATFORM",
+    title: "Hospital Information System (HIS)",
+    subtitle: "OPD registration kiosks, hardware scanner bridge, campus pharmacy & billing",
     role: "Full-Stack & .NET 8 Developer at Subharti Hospital",
     status: "Active Production Deployment",
     problem:
-      "Hospital operations suffered from bottlenecked outpatient queues, fragmented paper prescriptions prone to illegibility, manual campus pharmacy inventory checks, and disjointed billing across OPD and IPD departments. Clinicians and staff required a unified, fast internal portal.",
+      "Outpatient clinics faced morning bottlenecks, handwritten paper prescriptions couldn't be indexed, and pharmacy stock was disconnected from billing.",
     description:
-      "Contributed to the multi-module Hospital Information System built with ASP.NET Core (.NET 8 Web API + Razor), Entity Framework Core, and SQL Server. Implemented the Patient OPD Registration portal and self-registration kiosks with automated UHID generation and barcode OPD card printing. Built HIS.ScannerBridge, a dedicated local C# WebSocket service that interfaces flatbed scanners (Canon P-208II) with the web EHR for doctor prescription digitizing and AI OCR parsing. Implemented the campus pharmacy multi-store inventory manager and contributed to the automated patient billing calculation engine.",
+      "Contributed to the multi-module hospital platform built on ASP.NET Core (.NET 8) and SQL Server. Implemented OPD self-registration kiosks with instant UHID barcode cards, built HIS.ScannerBridge (a local C# WebSocket service linking Canon flatbed scanners to the web EHR for OCR digitization), and developed the campus pharmacy stock and billing engine.",
     tech: ["ASP.NET Core (.NET 8)", "C#", "EF Core 8", "SQL Server", "WebSockets / Hardware Bridge", "Razor Pages", "Twilio SMS", "RESTful APIs", "JWT Auth"],
     highlights: [
       "Rapid Patient OPD Registration with automated UHID generation and barcode card printing",
@@ -73,15 +73,15 @@ const modalData = {
   lucy: {
     id: 3,
     number: "03",
-    tag: "VOIP & TELEPHONY AI",
-    title: "Lucy — Voice-Enabled Hospital Assistant",
-    subtitle: "Automating routine phone inquiries over Asterisk VoIP PBX",
+    tag: "VOIP & AI",
+    title: "Lucy — Voice Hospital Assistant",
+    subtitle: "Automating routine supplier phone inquiries over Asterisk VoIP PBX",
     role: "Systems Developer (Personal Project & Pilot)",
     status: "Working Prototype",
     problem:
-      "Hospital warehouse and procurement staff spent hours answering repetitive phone calls about supplier orders and routine inventory queries. Web chatbots were ineffective for staff on desk phones.",
+      "Procurement staff spent hours answering repetitive phone calls about supplier orders. Web chatbots didn't help staff relying on desk phones.",
     description:
-      "I built an end-to-end voice assistant that integrates with an Asterisk VoIP PBX telephone server. Audio is transcribed using Faster-Whisper, mapped to procurement actions via LLaMA 3.3 on Groq, and converted back into natural speech in real time with Piper neural TTS.",
+      "Built an end-to-end voice assistant integrated with an Asterisk VoIP PBX server. Audio is transcribed using Faster-Whisper, mapped to order queries via LLaMA 3.3 on Groq, and converted to speech in real time with Piper TTS.",
     tech: ["Python", "Asterisk PBX", "Groq API", "LLaMA 3.3", "Faster-Whisper", "Piper TTS"],
     highlights: [
       "Low-latency speech-to-text pipeline over live VoIP phone connections",
@@ -100,15 +100,15 @@ const modalData = {
   smartfleet: {
     id: 4,
     number: "04",
-    tag: "DISTRIBUTED SYSTEMS",
-    title: "SmartFleet — Microservices Logistics Platform",
-    subtitle: "Event-driven fleet tracking & dispatch with RabbitMQ and YARP",
+    tag: "DISTRIBUTED SERVICES",
+    title: "SmartFleet — Microservices Logistics",
+    subtitle: "Event-driven fleet tracking with RabbitMQ and YARP",
     role: "Full-Stack Developer (Open Source)",
     status: "Open Source Codebase",
     problem:
-      "Monolithic logistics systems degrade when hundreds of delivery vehicles concurrently push GPS coordinates, trip updates, and status messages to a central API endpoint.",
+      "Central APIs choke when hundreds of delivery vehicles concurrently push GPS coordinates and trip updates.",
     description:
-      "I built a decoupled .NET microservices architecture separating Auth, Vehicles, Trips, and Telemetry services. Leveraged RabbitMQ for asynchronous message queuing during traffic spikes and Microsoft YARP as a reverse proxy gateway for route management and authentication.",
+      "Built a decoupled .NET microservices architecture separating Auth, Vehicles, and Telemetry. Used RabbitMQ for async message buffering during traffic spikes and Microsoft YARP API Gateway for dynamic routing and auth offloading.",
     tech: [".NET Microservices", "ASP.NET Core", "RabbitMQ", "Microsoft YARP", "Docker", "React", "PostgreSQL"],
     highlights: [
       "Decoupled event-driven pub/sub messaging architecture via RabbitMQ",
@@ -138,13 +138,13 @@ function Projects() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-[#E5E5DE]">
           <div className="max-w-2xl space-y-3">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
-              <span>Selected Engineering Work</span>
+              <span>Featured Work</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
-              Case studies &amp; systems.
+              Systems I've built.
             </h2>
             <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
-              Real software built for high-stakes healthcare and distributed production constraints.
+              Real software in daily hospital production, real-time telemetry, and distributed services.
             </p>
           </div>
 
@@ -192,116 +192,135 @@ function Projects() {
         {/* ============================================================== */}
         {/* PROJECT 01: DIGITAL ICU (VISUALLY DOMINANT ON DARK CANVAS)     */}
         {/* ============================================================== */}
+        {/* ============================================================== */}
+        {/* PROJECT 01: DIGITAL ICU (HOSTINGER-INSPIRED DEEP PURPLE CANVAS)*/}
+        {/* ============================================================== */}
         <div id="project-icu" className="scroll-mt-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="border border-[#232B3A] bg-[#0B0F17] text-white rounded-xl p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.3)] space-y-10"
+            className="border border-[#2D1F57] text-white rounded-xl p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(111,79,204,0.32)] space-y-10 relative overflow-hidden"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(111, 79, 204, 0.28), transparent 70%), radial-gradient(circle at 90% 90%, rgba(111, 79, 204, 0.14), transparent 50%), #0F0924",
+            }}
           >
-            {/* Meta Row */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#1E2738] pb-4 text-xs font-mono">
-              <div className="flex items-center gap-3">
-                <span className="font-bold text-blue-400 text-sm">01</span>
-                <span className="text-slate-600">/</span>
-                <span className="text-slate-200 font-semibold uppercase tracking-wider">
-                  REAL-TIME MEDICAL TELEMETRY (500Hz STREAM)
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-emerald-400">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Active In-Hospital Deployment &bull; Subharti Hospital</span>
-              </div>
-            </div>
+            {/* Subtle Ambient Grid Layer */}
+            <div
+              className="absolute inset-0 pointer-events-none opacity-20"
+              style={{
+                backgroundImage:
+                  "linear-gradient(to right, rgba(111, 79, 204, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(111, 79, 204, 0.15) 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+              }}
+            />
 
-            {/* Title & Domain Summary */}
-            <div className="space-y-2">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                Digital ICU Management System
-              </h3>
-              <p className="text-base text-slate-300 font-normal">
-                Sub-second medical device telemetry, 500Hz waveform streaming, and bedside clinical monitoring.
-              </p>
-            </div>
-
-            {/* HUGE VISUAL AREA: Digital ICU Bedside Dashboard (55-60% dominant visual) */}
-            <div className="pt-2">
-              <IcuDashboardVisual />
-            </div>
-
-            {/* Structured Engineering Storytelling (Problem, Engineering, Result, Tech) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 text-sm border-t border-[#1E2738]">
-              {/* Problem */}
-              <div className="space-y-2 bg-[#121824] p-4 rounded-lg border border-[#1E2738]">
-                <span className="font-mono text-xs uppercase tracking-wider text-rose-400 font-bold block">
-                  The Problem
-                </span>
-                <p className="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal">
-                  Continuous bedside monitors (Mindray &amp; Comen) push high-frequency vitals that congest hospital networks if uncompressed, while standard HTTP polling introduces clinical lag. Concurrent stream decompression frequently triggered database deadlocks.
-                </p>
-              </div>
-
-              {/* Engineering */}
-              <div className="space-y-2 bg-[#121824] p-4 rounded-lg border border-[#1E2738]">
-                <span className="font-mono text-xs uppercase tracking-wider text-blue-400 font-bold block">
-                  The Engineering
-                </span>
-                <p className="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal">
-                  Implemented TCP/IP socket ingestion, normalized HL7 packets, and built a custom delta-encoded compression algorithm achieving 25&ndash;45x bandwidth reduction. Isolated EF Core DbContext lifetimes via <code className="text-sky-300 font-mono">IServiceScopeFactory</code> to eliminate concurrency crashes.
-                </p>
-              </div>
-
-              {/* Result */}
-              <div className="space-y-2 bg-[#121824] p-4 rounded-lg border border-[#1E2738]">
-                <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold block">
-                  The Result
-                </span>
-                <p className="text-slate-300 leading-relaxed text-xs sm:text-sm font-normal">
-                  Real-time bedside monitoring with smooth 500Hz ECG waveform rendering, sub-40ms end-to-end SignalR latency, and rock-solid thread safety under continuous hospital ward operation.
-                </p>
-              </div>
-            </div>
-
-            {/* Interactive Technical Architecture Diagram */}
-            <div className="space-y-3 pt-2">
-              <span className="font-mono text-xs uppercase tracking-wider text-slate-400 font-semibold block">
-                Technical Architecture Flow (Hover node to inspect responsibility):
-              </span>
-              <IcuArchitectureFlow />
-            </div>
-
-            {/* Tech Stack & Action Buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#1E2738]">
-              <div className="flex flex-wrap gap-1.5">
-                {["C#", "ASP.NET Core", "SignalR", "HL7 Protocols", "TCP/IP Sockets", "SQL Server", "WebSockets"].map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs font-mono text-slate-200 bg-[#162030] border border-[#253348] px-2.5 py-1 rounded"
-                  >
-                    {t}
+            <div className="relative z-10 space-y-10">
+              {/* Meta Row */}
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#25184F] pb-4 text-xs font-mono">
+                <div className="flex items-center gap-3">
+                  <span className="font-bold text-[#A78BFA] text-sm">01</span>
+                  <span className="text-[#4C3580]">/</span>
+                  <span className="text-[#E9D5FF] font-semibold uppercase tracking-wider">
+                    REAL-TIME ICU TELEMETRY
                   </span>
-                ))}
+                </div>
+                <div className="flex items-center gap-2 text-emerald-400">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>In Production &bull; Subharti Hospital</span>
+                </div>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => setSelectedProject(modalData.icu)}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#1E56A0] hover:bg-blue-600 rounded transition-all cursor-pointer shadow-sm"
-                >
-                  <span>View case study &amp; details</span>
-                  <ArrowRight size={13} />
-                </button>
+              {/* Title & Domain Summary */}
+              <div className="space-y-2">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+                  Digital ICU Management System
+                </h3>
+                <p className="text-base text-[#DDD6FE] font-normal">
+                  500Hz live ECG waveform streaming, sub-40ms latency, and bedside clinical monitoring.
+                </p>
+              </div>
 
-                <a
-                  href="https://drive.google.com/drive/folders/1GtrDW4wUPRUL6aCzeLuE9SaTgRE_qIOt?usp=sharing"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-slate-200 border border-[#2D3B52] hover:border-slate-300 bg-[#121824] rounded transition-all"
-                >
-                  <ExternalLink size={12} />
-                  <span>View demo folder</span>
-                </a>
+              {/* HUGE VISUAL AREA: Digital ICU Bedside Dashboard (55-60% dominant visual) */}
+              <div className="pt-2">
+                <IcuDashboardVisual />
+              </div>
+
+              {/* Structured Engineering Storytelling (Problem, What I Built, Key Impact) */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 text-sm border-t border-[#25184F]">
+                {/* Problem */}
+                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
+                  <span className="font-mono text-xs uppercase tracking-wider text-rose-400 font-bold block">
+                    The Problem
+                  </span>
+                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
+                    Bedside monitors (Mindray &amp; Comen) push continuous vital streams that clogged hospital networks when raw. Standard polling caused clinical delay, while parallel stream decompression triggered database deadlocks.
+                  </p>
+                </div>
+
+                {/* What I Built */}
+                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
+                  <span className="font-mono text-xs uppercase tracking-wider text-[#A78BFA] font-bold block">
+                    What I Built
+                  </span>
+                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
+                    Built a TCP/IP and HL7 socket pipeline with custom 32x delta compression. Streamed 500Hz ECG waveforms over SignalR and isolated DbContext scopes with <code className="text-[#E9D5FF] bg-[#2A1854] px-1 py-0.5 rounded font-mono border border-[#523396]">IServiceScopeFactory</code> to stop thread crashes.
+                  </p>
+                </div>
+
+                {/* Key Impact */}
+                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
+                  <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold block">
+                    Key Impact
+                  </span>
+                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
+                    Sub-40ms live waveform rendering, 25&ndash;45x bandwidth reduction, and rock-solid thread safety running 24/7 in active intensive care wards.
+                  </p>
+                </div>
+              </div>
+
+              {/* Interactive Technical Architecture Diagram */}
+              <div className="space-y-3 pt-2">
+                <span className="font-mono text-xs uppercase tracking-wider text-[#C4B5FD] font-semibold block">
+                  Telemetry Pipeline (Hover nodes to inspect responsibility):
+                </span>
+                <IcuArchitectureFlow />
+              </div>
+
+              {/* Tech Stack & Action Buttons */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#25184F]">
+                <div className="flex flex-wrap gap-1.5">
+                  {["C#", "ASP.NET Core", "SignalR", "HL7 Protocols", "TCP/IP Sockets", "SQL Server", "WebSockets"].map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs font-mono text-[#DDD6FE] bg-[#160E33] border border-[#342263] px-2.5 py-1 rounded hover:border-[#6f4fcc] transition-colors"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <button
+                    onClick={() => setSelectedProject(modalData.icu)}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#6f4fcc] hover:bg-[#5b3ab8] rounded transition-all cursor-pointer shadow-[0_4px_20px_rgba(111,79,204,0.35)]"
+                  >
+                    <span>View case study &amp; details</span>
+                    <ArrowRight size={13} />
+                  </button>
+
+                  <a
+                    href="https://drive.google.com/drive/folders/1GtrDW4wUPRUL6aCzeLuE9SaTgRE_qIOt?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-white border border-[#342263] hover:border-[#6f4fcc] bg-[#1A1138] hover:bg-[#251752] rounded transition-all"
+                  >
+                    <ExternalLink size={12} />
+                    <span>View demo folder</span>
+                  </a>
+                </div>
               </div>
             </div>
           </motion.div>
@@ -325,22 +344,22 @@ function Projects() {
                 <span className="font-bold text-[#1E56A0] text-sm">02</span>
                 <span>/</span>
                 <span className="text-[#141413] font-semibold uppercase tracking-wider">
-                  ENTERPRISE HEALTHCARE PLATFORM &bull; .NET 8 WEB API
+                  HOSPITAL EHR PLATFORM // .NET 8
                 </span>
               </div>
               <div className="flex items-center gap-2 text-[#2E6B47] font-medium">
                 <span className="w-2 h-2 rounded-full bg-[#2E6B47]" />
-                <span>Active Production &bull; Subharti Hospital</span>
+                <span>In Production &bull; Subharti Hospital</span>
               </div>
             </div>
 
             {/* Title & Domain Summary */}
             <div className="space-y-2">
               <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#141413] tracking-tight">
-                Hospital Information System (HIS) &amp; Clinical Portal
+                Hospital Information System (HIS)
               </h3>
               <p className="text-base text-[#4A4C46] font-normal">
-                Outpatient registration kiosks, local flatbed scanner hardware bridge, in-campus pharmacy and automated multi-tier billing.
+                Outpatient check-in kiosks, local hardware scanner bridge, campus pharmacy, and automated billing.
               </p>
             </div>
 
@@ -349,7 +368,7 @@ function Projects() {
               <HisSystemVisual />
             </div>
 
-            {/* Structured Engineering Storytelling (Problem, Engineering, Result, Tech) */}
+            {/* Structured Engineering Storytelling (Problem, What I Built, Key Impact) */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 text-sm border-t border-[#EFEFE8]">
               {/* Problem */}
               <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
@@ -357,27 +376,27 @@ function Projects() {
                   The Problem
                 </span>
                 <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Outpatient clinics suffered from bottlenecked morning queues, paper prescriptions prone to doctor handwriting errors, and disconnected inventory between wards and in-campus pharmacy stores.
+                  Morning outpatient lines backed up with manual paperwork, handwritten prescriptions couldn't be indexed, and the campus pharmacy had no real-time link to patient billing.
                 </p>
               </div>
 
-              {/* Engineering */}
+              {/* What I Built */}
               <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#1E56A0] font-bold block">
-                  The Engineering
+                  What I Built
                 </span>
                 <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Engineered OPD registration kiosks with automated UHID generation and barcode printing. Built <code className="text-[#1E56A0] font-mono text-xs">HIS.ScannerBridge</code> (a dedicated C# WebSocket service) interfacing Canon P-208II flatbeds directly with web EHR for prescription digitizing.
+                  Engineered self-check-in kiosks with instant UHID barcode cards. Built <code className="text-[#1E56A0] font-mono text-xs">HIS.ScannerBridge</code> (a local C# WebSocket service) linking Canon flatbed scanners directly to the web app for prescription OCR.
                 </p>
               </div>
 
-              {/* Result */}
+              {/* Key Impact */}
               <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
                 <span className="font-mono text-xs uppercase tracking-wider text-[#2E6B47] font-bold block">
-                  The Result
+                  Key Impact
                 </span>
                 <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Unified internal hospital portal streamlining patient check-in, prescription digitization, campus pharmacy stock verification, and provisional billing calculation engines.
+                  Dramatically reduced OPD wait times, digitized thousands of paper prescriptions, and unified pharmacy inventory with automated patient billing.
                 </p>
               </div>
             </div>
@@ -385,7 +404,7 @@ function Projects() {
             {/* Interactive Technical Architecture Diagram */}
             <div className="space-y-3 pt-2">
               <span className="font-mono text-xs uppercase tracking-wider text-[#787A72] font-semibold block">
-                Technical Architecture Flow (Hover node to inspect responsibility):
+                System Pipeline (Hover nodes to inspect responsibility):
               </span>
               <HisArchitectureFlow />
             </div>
@@ -422,14 +441,14 @@ function Projects() {
           <div className="flex items-center justify-between border-b border-[#E5E5DE] pb-4">
             <div>
               <span className="font-mono text-xs uppercase tracking-wider text-[#1E56A0] font-semibold block mb-1">
-                Additional Engineering Work
+                More Engineering Work
               </span>
               <h3 className="text-2xl font-bold text-[#141413] tracking-tight">
-                AI Telephony &amp; Distributed Microservices
+                VoIP AI &amp; Distributed Systems
               </h3>
             </div>
             <span className="text-xs font-mono text-[#787A72] hidden sm:inline">
-              Verified Production &amp; Open Source Projects
+              Personal Projects &amp; Open Source
             </span>
           </div>
 
@@ -457,7 +476,7 @@ function Projects() {
                 </div>
 
                 <p className="text-sm text-[#4A4C46] leading-relaxed">
-                  Automated routine hospital supplier inventory inquiries over telephone lines. Integrates directly with an Asterisk PBX phone server, transcribing speech with Faster-Whisper, extracting purchase intent via LLaMA 3.3 on Groq, and synthesizing speech in real time with Piper TTS.
+                  Built an AI voice assistant connected to an Asterisk VoIP PBX phone server. Automatically answers routine supplier calls, transcribing audio with Faster-Whisper, extracting purchase order queries with LLaMA 3.3, and replying in real time with Piper TTS.
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 pt-1">
@@ -515,7 +534,7 @@ function Projects() {
                 </div>
 
                 <p className="text-sm text-[#4A4C46] leading-relaxed">
-                  Decoupled logistics platform handling concurrent vehicle GPS telemetry. Uses RabbitMQ message queues to buffer high-traffic bursts, Microsoft YARP API Gateway for dynamic route reverse proxying and authentication offloading, containerized with Docker.
+                  Built an event-driven logistics platform for high-concurrency GPS telemetry. Uses RabbitMQ to buffer vehicle position bursts and Microsoft YARP API Gateway for dynamic routing, rate limiting, and auth offloading.
                 </p>
 
                 <div className="flex flex-wrap gap-1.5 pt-1">

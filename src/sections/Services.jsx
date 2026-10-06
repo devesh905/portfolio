@@ -5,33 +5,33 @@ import { ArrowUpRight, Server, Activity, LayoutGrid } from "lucide-react";
 const capabilities = [
   {
     number: "01",
-    title: "BACKEND SYSTEMS",
-    subtitle: "High-Throughput APIs & Core Services",
+    title: "BACKEND APIS & SERVICES",
+    subtitle: "ASP.NET Core & SQL Server",
     icon: Server,
     description:
-      "I design and maintain modular, thread-safe backends using C#, ASP.NET Core (.NET 8), and SQL Server. I prioritize clean domain boundaries, isolated DbContext lifetimes, query execution plan tuning, and secure JWT authentication.",
+      "I build modular, thread-safe backends using C#, ASP.NET Core, and SQL Server. I focus on clean service boundaries, isolated DbContext lifetimes, query tuning, and secure JWT authentication.",
     stack: ["ASP.NET Core", "C# (.NET 8)", "SQL Server", "RESTful APIs", "EF Core 8", "JWT Auth"],
-    badge: "THREAD-SAFE SCOPES",
+    badge: "THREAD-SAFE .NET",
   },
   {
     number: "02",
-    title: "REAL-TIME & DEVICE INTEGRATION",
-    subtitle: "Low-Latency Telemetry & Hardware Bridges",
+    title: "REAL-TIME & HARDWARE",
+    subtitle: "Telemetry & Device Bridges",
     icon: Activity,
     description:
-      "I build low-latency pipelines that connect software directly with physical equipment. This includes ingesting raw byte streams from medical monitors via TCP/IP and HL7, writing custom delta-encoded compression algorithms, and streaming live feeds with SignalR.",
+      "I write software that connects directly to physical hardware. This includes ingesting raw byte streams from medical monitors via TCP/IP and HL7, custom delta compression, and streaming live feeds with SignalR.",
     stack: ["SignalR", "WebSockets", "TCP/IP", "HL7 Protocols", "Hardware Bridges", "Delta Compression"],
-    badge: "SUB-40MS TELEMETRY",
+    badge: "SUB-40MS LATENCY",
   },
   {
     number: "03",
-    title: "PRODUCT & WEB APPLICATIONS",
-    subtitle: "Responsive Interfaces & Clinical Workflows",
+    title: "WEB APPS & DASHBOARDS",
+    subtitle: "Interactive Clinical Tools",
     icon: LayoutGrid,
     description:
-      "I create clean, responsive dashboards and workflows that clinicians and staff actually rely on. Built with modern React and CSS on the frontend, with predictable async state management and automated regression test suites.",
+      "I build clean, reliable dashboards and internal tools for clinical staff. Built with modern React and CSS, with predictable async state and automated regression testing.",
     stack: ["React", "JavaScript (ES6+)", "Modern CSS", "Dashboards", "Vite", "Selenium WebDriver"],
-    badge: "RESPONSIVE CLIENTS",
+    badge: "RESPONSIVE UI",
   },
 ];
 
@@ -45,13 +45,13 @@ function Services() {
         {/* Section Header */}
         <div className="max-w-3xl mb-16 sm:mb-20">
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
-            <span>Capabilities &bull; Core Focus</span>
+            <span>Engineering Focus</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight mb-4">
             What I build.
           </h2>
           <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
-            Three core engineering disciplines where I spend most of my time writing production software.
+            Three core areas where I spend most of my time writing production software.
           </p>
         </div>
 

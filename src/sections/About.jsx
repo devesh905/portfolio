@@ -5,11 +5,11 @@ function About() {
   return (
     <section id="about" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
-        
+
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
-            <span>Identity &bull; Background</span>
+            <span>Background &bull; Who I Am</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
             About Devesh.
@@ -18,18 +18,14 @@ function About() {
 
         {/* Split Layout: Typographic Identity on Left, Personal Narrative on Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
+
           {/* LEFT: Typographic & Graphic Visual Identity Card (Col 5) */}
           <div className="lg:col-span-5 border border-[#E5E5DE] bg-white rounded-xl p-6 sm:p-8 space-y-6 shadow-[0_4px_25px_rgba(0,0,0,0.02)] relative">
-            
-            {/* Monogram & Coordinates Frame */}
-            <div className="border border-[#EFEFE8] bg-[#FBFBF9] rounded-lg p-6 text-center space-y-3 relative overflow-hidden">
-              <div className="font-mono text-[10px] text-[#9EA098] tracking-widest uppercase">
-                COORDINATES: 28.9845&deg; N, 77.7064&deg; E
-              </div>
 
-              <div className="text-6xl sm:text-7xl font-bold font-mono tracking-tighter text-[#183654]">
-                DKU
+            {/* Monogram & Location Frame */}
+            <div className="border border-[#EFEFE8] bg-[#FBFBF9] rounded-lg p-6 text-center space-y-3 relative overflow-hidden">
+              <div className="font-mono text-[10px] text-[#787A72] tracking-widest uppercase">
+                LOCATION // MEERUT &bull; NCR, INDIA
               </div>
 
               <div className="font-mono text-xs text-[#1E56A0] font-semibold uppercase tracking-wider">
@@ -45,7 +41,7 @@ function About() {
               </div>
 
               <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
-                <span className="text-[#787A72]">Organization</span>
+                <span className="text-[#787A72]">Workplace</span>
                 <span className="text-[#1E56A0] font-semibold">Subharti Hospital</span>
               </div>
 
@@ -55,15 +51,15 @@ function About() {
               </div>
 
               <div className="flex items-center justify-between py-2 border-b border-[#EFEFE8]">
-                <span className="text-[#787A72]">Degree</span>
-                <span className="font-medium text-[#141413]">B.Tech CSE (OGPA 8.09)</span>
+                <span className="text-[#787A72]">Education</span>
+                <span className="font-medium text-[#141413]">B.Tech in Computer Science</span>
               </div>
 
               <div className="flex items-center justify-between py-2">
-                <span className="text-[#787A72]">Status</span>
+                <span className="text-[#787A72]">Availability</span>
                 <span className="text-emerald-700 font-semibold flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-emerald-600" />
-                  Available for Remote Roles
+                  Open to Full-Time &amp; Remote
                 </span>
               </div>
             </div>
@@ -74,7 +70,7 @@ function About() {
                 href="#contact"
                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#1E56A0] hover:underline"
               >
-                <span>Discuss an engineering opportunity</span>
+                <span>Let's talk about an engineering role</span>
                 <ArrowUpRight size={13} />
               </a>
             </div>
@@ -82,21 +78,21 @@ function About() {
           </div>
 
           {/* RIGHT: Authentic Personal Narrative (Col 7) */}
-          <div className="lg:col-span-7 space-y-6 text-base sm:text-lg text-[#383A35] leading-relaxed font-normal">
+          <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[#383A35] leading-relaxed font-normal">
             <p>
-              I'm a backend and full-stack software engineer based in India, currently writing production software at Subharti Hospital. Most of my daily work centers around C#, ASP.NET Core, SQL Server, and real-time streaming architectures.
+              Hey, I'm Devesh. I'm a backend and full-stack software engineer based in India. Currently, I build production software for Subharti Hospital, working primarily with C#, ASP.NET Core, SQL Server, and real-time streaming architectures.
             </p>
 
             <p>
-              I became drawn to backend systems because there is nowhere to hide. When hundreds of devices or hospital departments push data every second, you have to think carefully about memory lifetimes, socket buffering, and thread safety from day one. Seeing raw byte streams from medical devices transform into clean, synchronized clinician waveforms in under 40 milliseconds is what made me fall in love with real-time software.
+              I got drawn to backend engineering because I love systems where reliability isn't optional. When an ICU monitor streams vitals or an outpatient kiosk issues patient records, you can't afford silent dropped packets, race conditions, or database deadlocks. Turning raw TCP/IP byte streams from bedside hardware into smooth, sub-40ms waveforms on a doctor's screen is what hooked me on real-time software.
             </p>
 
             <p>
-              Working directly with medical hardware and hospital workflows taught me how different real-world production is from building toy apps. Physical devices disconnect unexpectedly, networks drop packets, and databases lock up if you don't isolate your contexts. Building through those challenges made me care deeply about writing simple, dependable code that just works.
+              Working directly in a hospital environment quickly showed me the difference between textbook apps and true production. Hardware monitors unplug, hospital networks jitter, and databases lock up if you don't isolate your scopes. That experience taught me to write simple, defensive, dependable code that just works day in and day out.
             </p>
 
             <p>
-              I'm currently looking for full-time engineering roles where I can join a team building serious backend systems, real-time services, or complex web applications. Whether that involves distributed systems, API architecture, or low-latency data pipelines, I want to be where technical rigor and code quality matter.
+              Outside of work, I experiment with voice AI pipelines (like connecting Asterisk VoIP with Whisper and LLMs) and distributed microservices with RabbitMQ. I'm currently looking for full-time engineering roles where I can join a team building serious backend systems, real-time services, or complex web applications.
             </p>
           </div>
 
