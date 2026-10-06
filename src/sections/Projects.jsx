@@ -1,173 +1,406 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import ProjectCard from "../components/ProjectCard";
+import { motion } from "framer-motion";
 import ProjectDetailModal from "../components/ProjectDetailModal";
-import { Sparkles, Code2, FolderGit2 } from "lucide-react";
-
-const categories = ["All Projects", "Healthcare & Real-Time", "Full-Stack & Cloud", "AI & Telephony"];
+import { ArrowUpRight, Check } from "lucide-react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 const projects = [
   {
     id: 1,
+    number: "01",
+    tag: "FEATURED CASE STUDY",
     title: "Digital ICU Management System",
-    category: "Healthcare & Real-Time",
+    subtitle: "High-Frequency Medical Device Telemetry & Bedside ICU Monitoring Panel",
+    role: "Jr. Software Developer at Subharti Hospital",
+    status: "Production Deployment",
+    problem:
+      "Intensive care units rely on rapid notification of critical patient vitals. Standard HTTP polling introduces unacceptable latency, while uncompressed telemetry from continuous bedside monitors (Mindray & Comen) can congest hospital networks with repetitive packets and trigger concurrency deadlocks in naive database contexts.",
     description:
-      "Real-time patient monitoring platform integrating intensive care medical devices via TCP/IP and HL7, streaming live ECG waveforms at 500Hz with custom delta-encoded compression achieving 25-45x reduction in bandwidth.",
-    fullDescription:
-      "Designed and built a highly responsive ICU management system that handles high-frequency real-time telemetry from medical devices, supports instantaneous clinician notifications, and provides doctors with live waveform visualization. The architecture integrates HL7 protocols, secure hardware communication, and low-latency SignalR streams for ICU teams where every millisecond counts.",
-    tech: ["ASP.NET Core", "SignalR", "HL7 Protocols", "SQL Server", "C#", "WebSockets"],
+      "Architected a real-time medical monitoring platform integrating intensive care devices via TCP/IP sockets and HL7 protocol. Engineered 500Hz live ECG waveform streaming with custom delta-encoded compression achieving a 25–45x reduction in bandwidth. Solved EF Core DbContext concurrency crashes during parallel stream decompression by designing an isolated chunk loader using IServiceScopeFactory.",
+    tech: ["ASP.NET Core", "C#", "SignalR", "HL7 Protocols", "TCP/IP Sockets", "SQL Server", "WebSockets"],
     highlights: [
       "Live ECG waveform streaming at 500Hz synchronization rate",
-      "Custom delta-encoded compression reduced telemetry data bandwidth by up to 45x",
-      "Integrated multi-bed real-time ICU telemetry streams into a unified clinical panel",
-      "Zero-downtime architecture handling continuous vital signs feeds",
+      "Custom delta-encoded compression reduced telemetry bandwidth by up to 45x",
+      "Eliminated EF Core concurrency crashes via IServiceScopeFactory scope isolation",
+      "Unified HL7 + TCP/IP ingestion normalizing Mindray & Comen hardware feeds",
+      "Built UHID normalization service preventing record corruption at ingestion",
+      "Implemented automated 7-day purge strategy with IST-aware cutoff logic",
     ],
     features: [
       "Real-time clinical patient monitoring dashboard with custom chart renderers",
-      "Event-driven alert dispatch & critical threshold notifications for intensive care units",
+      "Event-driven alert dispatch & critical threshold notifications for ICU teams",
       "Role-based secure authentication and HIPAA-conscious audit logging in SQL Server",
-      "Resilient reconnect and offline telemetry cache buffering for unstable hospital networks",
+      "Resilient reconnect and offline telemetry cache buffering for hospital networks",
     ],
-    span: "md:col-span-2",
-    status: "Production",
+    demo: "https://drive.google.com/drive/folders/1GtrDW4wUPRUL6aCzeLuE9SaTgRE_qIOt?usp=sharing",
     github: null,
-    demo: null,
   },
   {
     id: 2,
-    title: "Lucy — AI Voice Assistant & Telephony",
-    category: "AI & Telephony",
+    number: "02",
+    tag: "VOIP & TELEPHONY AI",
+    title: "Lucy — Voice-Enabled Hospital Assistant",
+    subtitle: "Automated VoIP PBX phone inquiries & procurement workflows",
+    role: "Systems Developer",
+    status: "Production Pilot",
+    problem:
+      "Hospital procurement staff spent extensive hours handling repetitive phone calls for routine inventory inquiries and vendor order status. Standard web chatbots were inaccessible to warehouse staff using traditional desk phones.",
     description:
-      "Voice-driven AI assistant integrating Whisper STT, Piper TTS, and Groq/LLaMA 3.3 with Asterisk PBX phone systems to automate hospital procurement and inventory queries.",
-    fullDescription:
-      "Lucy is an end-to-end voice-enabled AI assistant built to automate hospital procurement workflows and order routing. It directly interfaces with Asterisk VoIP PBX phone systems, transcribing clinician and supplier speech via Faster-Whisper, evaluating intent using LLaMA models, and responding verbally in real-time via low-latency Piper TTS.",
-    tech: ["Python", "Groq API", "Asterisk PBX", "LLaMA 3.3", "Faster-Whisper", "Piper TTS"],
+      "Built an end-to-end voice AI assistant that interfaces directly with an Asterisk VoIP PBX telephone server. Inbound audio is transcribed via Faster-Whisper, mapped to procurement actions using LLaMA 3.3 via Groq, and converted back into natural speech in real time with Piper neural TTS.",
+    tech: ["Python", "Asterisk PBX", "Groq API", "LLaMA 3.3", "Faster-Whisper", "Piper TTS"],
     highlights: [
-      "Low-latency speech-to-text and conversational AI pipeline over VoIP",
-      "Telephony PBX integration automating phone-based purchase inquiries",
-      "Automated stock level verification & order placement for hospital staff",
-      "Reduced procurement overhead by up to 60%",
+      "Low-latency speech-to-text pipeline over live VoIP phone connections",
+      "Direct Asterisk PBX integration automating routine supplier calls",
+      "LLaMA 3.3 intent classification extracting structured procurement queries",
+      "Near-instant audio synthesis using neural Piper TTS engine",
     ],
     features: [
-      "Whisper-powered speech-to-text recognition fine-tuned for healthcare terms",
-      "Instantaneous audio response synthesis via neural Piper engine",
-      "LLaMA intent classification and integration with purchase ERP systems",
-      "Call recording, transcription audit logs, and status dashboards",
+      "Whisper-powered speech-to-text recognition fine-tuned for healthcare supplies",
+      "Structured purchase order intent extraction and stock level verification",
+      "Call transcription audit logs and clinician inquiry history",
     ],
-    span: "",
-    status: "Production",
+    demo: "https://drive.google.com/file/d/1kbNnoNojtNPixl6MQc1vu2k2IXOv_BNj/view?usp=sharing",
     github: null,
-    demo: null,
   },
   {
     id: 3,
+    number: "03",
+    tag: "DISTRIBUTED SYSTEMS",
     title: "SmartFleet — Microservices Logistics Platform",
-    category: "Full-Stack & Cloud",
+    subtitle: "Event-driven fleet tracking & dispatch with RabbitMQ and YARP",
+    role: "Full-Stack Architect",
+    status: "Open Source Codebase",
+    problem:
+      "Monolithic logistics platforms degrade under heavy telemetry ingest when hundreds of delivery vehicles concurrently push GPS coordinates, trip updates, and status messages to a central API.",
     description:
-      "Modern distributed fleet management system built with .NET microservices, YARP API gateway, RabbitMQ event streaming, and a high-velocity React dashboard.",
-    fullDescription:
-      "SmartFleet is a scalable cloud-ready transport operations platform that centralizes vehicle tracking, workload orchestration, and real-time delivery messaging. Built with .NET microservices, YARP reverse proxy gateway routing, and RabbitMQ event streaming, it demonstrates clean decoupled enterprise architecture.",
-    tech: [".NET Microservices", "React", "RabbitMQ", "YARP Gateway", "Docker", "Tailwind CSS"],
+      "Designed a distributed .NET microservices platform decoupling Auth, Vehicles, Trips, and Telemetry services. Leveraged RabbitMQ message queuing to absorb bursty tracking events and Microsoft YARP API Gateway for dynamic routing, authentication offloading, and SSL termination.",
+    tech: [".NET Microservices", "ASP.NET Core", "RabbitMQ", "Microsoft YARP", "Docker", "React", "PostgreSQL"],
     highlights: [
-      "Distributed event-driven pub/sub communication queue via RabbitMQ",
-      "Gateway routing and authentication offloading with Microsoft YARP",
-      "Live vehicle fleet tracking dashboard UI with interactive telemetry",
-      "Fully containerized architecture ready for Docker and Kubernetes",
+      "Decoupled event-driven pub/sub messaging architecture via RabbitMQ",
+      "Microsoft YARP API gateway reverse proxy with authentication offloading",
+      "Containerized multi-service deployment with Docker Compose",
+      "Interactive React dispatch dashboard with live fleet state visualization",
     ],
     features: [
-      "Live vehicle status monitoring and job dispatch assignment system",
-      "Workload dispatch queue with reliable transaction retry mechanisms",
       "Modular microservices: Auth, Vehicles, Trips, and Telemetry services",
-      "Responsive React UI with real-time state updates and route map rendering",
+      "Reliable transaction retries for delivery dispatch queues",
+      "Responsive React UI with route status updates and map rendering",
     ],
-    span: "",
-    status: "In Progress",
-    github: "https://github.com/devesh905/smartfleetWeb",
     demo: null,
+    github: "https://github.com/devesh905/smartfleetWeb",
   },
 ];
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeCategory, setActiveCategory] = useState("All Projects");
-
-  const filteredProjects =
-    activeCategory === "All Projects"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+  const featured = projects[0];
+  const secondaryProjects = projects.slice(1);
 
   return (
-    <section id="projects" className="px-4 sm:px-6 py-24 max-w-6xl mx-auto relative">
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[140px] -z-10 pointer-events-none" />
+    <section id="projects" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
+            01 // Selected Engineering Case Studies
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
+            Real systems built for production constraints.
+          </h2>
+          <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
+            Detailed case studies showcasing architecture, data protocols, concurrency management, and real problem-solving from production hospital environments.
+          </p>
+        </div>
 
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
+        {/* PRIMARY FEATURED CASE STUDY: Digital ICU (Expansive Editorial Showcase) */}
         <motion.div
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
+          className="border border-[#E5E5DE] bg-white rounded-lg p-6 sm:p-10 mb-12 shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
         >
-          <span>Featured Engineering</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            
+            {/* Left Case Breakdown */}
+            <div className="lg:col-span-7 space-y-6">
+              <div>
+                <div className="flex items-center gap-3 text-xs font-mono text-[#787A72] mb-2">
+                  <span className="font-bold text-[#141413]">{featured.number}</span>
+                  <span>/</span>
+                  <span className="text-[#183654] font-semibold">{featured.tag}</span>
+                  <span>&bull;</span>
+                  <span>{featured.role}</span>
+                </div>
+                <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+                  {featured.title}
+                </h3>
+                <p className="text-sm text-[#787A72] font-normal mt-1">
+                  {featured.subtitle}
+                </p>
+              </div>
+
+              {/* Problem statement */}
+              <div className="space-y-1.5 pt-2">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#787A72] font-semibold block">
+                  The Problem &amp; Operational Context
+                </span>
+                <p className="text-xs sm:text-sm text-[#4A4C46] leading-relaxed">
+                  {featured.problem}
+                </p>
+              </div>
+
+              {/* Architectural Solution */}
+              <div className="space-y-1.5 pt-2">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#787A72] font-semibold block">
+                  Architectural Solution &amp; Engineering Decisions
+                </span>
+                <p className="text-xs sm:text-sm text-[#4A4C46] leading-relaxed">
+                  {featured.description}
+                </p>
+              </div>
+
+              {/* Concrete Verified Achievements */}
+              <div className="space-y-2 pt-2">
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#183654] font-semibold block">
+                  Key Technical Deliverables:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#383A35]">
+                  {featured.highlights.slice(0, 4).map((h) => (
+                    <div key={h} className="flex items-start gap-2 bg-[#FBFBF9] border border-[#EFEFE8] p-2.5 rounded">
+                      <Check size={14} className="text-[#183654] flex-shrink-0 mt-0.5" />
+                      <span className="leading-snug">{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tech Stack Pills */}
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {featured.tech.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs font-mono font-medium text-[#141413] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+
+              {/* Actions */}
+              <div className="flex flex-wrap items-center gap-3 pt-4 border-t border-[#EFEFE8]">
+                <button
+                  onClick={() => setSelectedProject(featured)}
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-white bg-[#141413] hover:bg-[#2A2B29] rounded transition-all cursor-pointer"
+                >
+                  <span>Read Full Case Study</span>
+                  <ArrowUpRight size={13} />
+                </button>
+
+                {featured.demo && (
+                  <a
+                    href={featured.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-[#141413] border border-[#D5D5CE] hover:border-[#141413] bg-white rounded transition-all"
+                  >
+                    <FaExternalLinkAlt size={11} />
+                    <span>View Demo Folder</span>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Right Telemetry Architecture Blueprint */}
+            <div className="lg:col-span-5 border border-[#E5E5DE] bg-[#F9F9F6] rounded-lg p-5 sm:p-6 space-y-5">
+              <div className="flex items-center justify-between border-b border-[#E5E5DE] pb-3">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider text-[#141413]">
+                  Telemetry Architecture Blueprint
+                </span>
+                <span className="font-mono text-[11px] text-[#183654] font-semibold">
+                  500Hz Stream
+                </span>
+              </div>
+
+              {/* Architectural Step Diagram */}
+              <div className="space-y-3 font-mono text-xs">
+                
+                <div className="border border-[#E5E5DE] bg-white p-3 rounded space-y-1">
+                  <div className="flex items-center justify-between text-[11px] text-[#787A72]">
+                    <span>STAGE 1: HARDWARE LAYER</span>
+                    <span className="text-[#183654]">TCP / HL7</span>
+                  </div>
+                  <div className="font-sans font-semibold text-[#141413]">
+                    Mindray &amp; Comen ICU Bedside Monitors
+                  </div>
+                  <div className="text-[11px] text-[#62645D]">
+                    Unified parsing layer normalizing dissimilar raw packet structures.
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-[#787A72] -my-1 text-[11px]">
+                  &darr; 500Hz Stream Packets
+                </div>
+
+                <div className="border border-[#E5E5DE] bg-white p-3 rounded space-y-1">
+                  <div className="flex items-center justify-between text-[11px] text-[#787A72]">
+                    <span>STAGE 2: COMPRESSION</span>
+                    <span className="text-[#1F3D2C] font-semibold">25–45x Delta</span>
+                  </div>
+                  <div className="font-sans font-semibold text-[#141413]">
+                    Custom Delta-Encoded Compression
+                  </div>
+                  <div className="text-[11px] text-[#62645D]">
+                    Reduced continuous vital sign bandwidth without signal resolution loss.
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-[#787A72] -my-1 text-[11px]">
+                  &darr; Concurrency Isolation
+                </div>
+
+                <div className="border border-[#E5E5DE] bg-white p-3 rounded space-y-1">
+                  <div className="flex items-center justify-between text-[11px] text-[#787A72]">
+                    <span>STAGE 3: CONCURRENCY GUARD</span>
+                    <span className="text-[#183654]">ASP.NET Core</span>
+                  </div>
+                  <div className="font-sans font-semibold text-[#141413]">
+                    IServiceScopeFactory Chunk Loader
+                  </div>
+                  <div className="text-[11px] text-[#62645D]">
+                    Eliminated EF Core DbContext multi-thread access crashes during parallel decompression.
+                  </div>
+                </div>
+
+                <div className="flex justify-center text-[#787A72] -my-1 text-[11px]">
+                  &darr; Real-Time Broadcast
+                </div>
+
+                <div className="border border-[#E5E5DE] bg-white p-3 rounded space-y-1">
+                  <div className="flex items-center justify-between text-[11px] text-[#787A72]">
+                    <span>STAGE 4: PRESENTATION</span>
+                    <span className="text-[#141413]">SignalR &amp; WebSockets</span>
+                  </div>
+                  <div className="font-sans font-semibold text-[#141413]">
+                    Clinician Live Monitoring Dashboard
+                  </div>
+                  <div className="text-[11px] text-[#62645D]">
+                    Smooth waveform visualizer, alert dispatch &amp; UHID normalized records.
+                  </div>
+                </div>
+
+              </div>
+
+              <div className="pt-3 border-t border-[#E5E5DE] text-[11px] text-[#787A72] leading-relaxed">
+                Deployed and maintained in high-acuity hospital ward with automated 7-day retention purge routines.
+              </div>
+            </div>
+
+          </div>
         </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
-        >
-          Selected <span className="gradient-text-cyan">Projects &amp; Case Studies</span>
-        </motion.h2>
+        {/* SECONDARY PROJECTS: Editorial 2-Column Asymmetric Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {secondaryProjects.map((proj, idx) => (
+            <motion.div
+              key={proj.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              className="border border-[#E5E5DE] bg-white rounded-lg p-6 sm:p-8 flex flex-col justify-between shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:border-[#C8C8BE] transition-colors"
+            >
+              <div className="space-y-4">
+                <div className="flex items-center justify-between text-xs font-mono text-[#787A72]">
+                  <div className="flex items-center gap-2">
+                    <span className="font-bold text-[#141413]">{proj.number}</span>
+                    <span>/</span>
+                    <span className="text-[#183654] font-semibold">{proj.tag}</span>
+                  </div>
+                  <span className="text-[#787A72]">{proj.status}</span>
+                </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed"
-        >
-          Explore production-grade software engineered for high reliability, zero latency tolerance,
-          and distributed scale.
-        </motion.p>
-      </div>
+                <div>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
+                    {proj.title}
+                  </h3>
+                  <p className="text-xs text-[#787A72] font-normal mt-1">
+                    {proj.subtitle}
+                  </p>
+                </div>
 
-      {/* Category Filter Pills */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-        className="flex flex-wrap items-center justify-center gap-2 mb-12"
-      >
-        {categories.map((category) => (
-          <button
-            key={category}
-            onClick={() => setActiveCategory(category)}
-            className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer ${activeCategory === category
-                ? "bg-gradient-to-r from-cyan-400 to-blue-500 text-slate-950 font-bold shadow-md shadow-cyan-500/20"
-                : "bg-white/5 border border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
-              }`}
-          >
-            {category}
-          </button>
-        ))}
-      </motion.div>
+                <div className="space-y-1">
+                  <span className="font-mono text-[10px] uppercase text-[#787A72] font-semibold block">
+                    Problem &amp; Context
+                  </span>
+                  <p className="text-xs text-[#4A4C46] leading-relaxed">
+                    {proj.problem}
+                  </p>
+                </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <ProjectCard
-              key={project.id}
-              onClick={() => setSelectedProject(project)}
-              {...project}
-              index={index}
-            />
+                <div className="space-y-1">
+                  <span className="font-mono text-[10px] uppercase text-[#787A72] font-semibold block">
+                    Architecture
+                  </span>
+                  <p className="text-xs text-[#4A4C46] leading-relaxed">
+                    {proj.description}
+                  </p>
+                </div>
+
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-2">
+                  {proj.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs font-mono font-medium text-[#141413] bg-[#F3F3ED] border border-[#E5E5DE] px-2 py-0.5 rounded"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Footer actions */}
+              <div className="flex items-center justify-between pt-6 border-t border-[#EFEFE8] mt-6">
+                <button
+                  onClick={() => setSelectedProject(proj)}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#183654] hover:underline cursor-pointer"
+                >
+                  <span>View Technical Specs</span>
+                  <ArrowUpRight size={13} />
+                </button>
+
+                <div className="flex items-center gap-3">
+                  {proj.github && (
+                    <a
+                      href={proj.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-[#4A4C46] hover:text-[#141413]"
+                    >
+                      <FaGithub size={13} />
+                      <span>Code</span>
+                    </a>
+                  )}
+
+                  {proj.demo && (
+                    <a
+                      href={proj.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-[#4A4C46] hover:text-[#141413]"
+                    >
+                      <FaExternalLinkAlt size={11} />
+                      <span>Demo</span>
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
           ))}
-        </AnimatePresence>
+        </div>
+
       </div>
 
       <ProjectDetailModal

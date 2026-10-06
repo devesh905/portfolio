@@ -1,174 +1,173 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles, Send } from "lucide-react";
+import { Menu, X, ArrowUpRight, FileText } from "lucide-react";
+import ResumeModal from "../sections/ResumeModal";
 
-const links = [
-  { id: 1, label: "Home", href: "#home" },
-  { id: 2, label: "Services", href: "#services" },
-  { id: 3, label: "Projects", href: "#projects" },
-  { id: 4, label: "About", href: "#about" },
-  { id: 5, label: "Process", href: "#process" },
-  { id: 6, label: "Contact", href: "#contact" },
+const navLinks = [
+  { label: "Selected Work", href: "#projects" },
+  { label: "Capabilities", href: "#services" },
+  { label: "About & Experience", href: "#about" },
+  { label: "Process", href: "#process" },
+  { label: "Contact", href: "#contact" },
 ];
 
 function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
-  // Robust scrollspy tracking active section accurately
   useEffect(() => {
     function handleScroll() {
       const scrollY = window.scrollY;
-      setScrolled(scrollY > 20);
+      setIsScrolled(scrollY > 20);
 
-      // When near the top, always keep "home" active
-      if (scrollY < 150) {
-        setActiveSection("home");
-        return;
-      }
-
-      // Check if user reached near the bottom of page -> activate contact
-      const isBottom =
-        window.innerHeight + scrollY >= document.documentElement.scrollHeight - 80;
-      if (isBottom) {
-        setActiveSection("contact");
-        return;
-      }
-
-      // Scroll position with offset for fixed header
-      const scrollPosition = scrollY + 220;
-
-      const sectionElements = links
+      const sectionElements = navLinks
         .map((link) => ({
           id: link.href.slice(1),
           el: document.querySelector(link.href),
         }))
         .filter((item) => item.el !== null);
 
-      // Check from bottom section upwards
+      const scrollPosition = scrollY + 160;
+
       for (let i = sectionElements.length - 1; i >= 0; i--) {
         const { id, el } = sectionElements[i];
         if (el.offsetTop <= scrollPosition) {
           setActiveSection(id);
-          break;
+          return;
         }
+      }
+      if (scrollY < 200) {
+        setActiveSection("");
       }
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  function handleLinkClick(id) {
-    if (id) setActiveSection(id);
-    setIsMobileOpen(false);
-  }
-
   return (
-    <header className="fixed top-4 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-5xl z-50 transition-all duration-300">
-      <nav
-        className={`glass-nav rounded-2xl px-5 sm:px-6 py-3 transition-all duration-300 ${
-          scrolled ? "shadow-2xl shadow-cyan-950/20 border-cyan-500/20" : ""
+    <>
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? "bg-[#FBFBF9]/90 backdrop-blur-md border-b border-[#E5E5DE] py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
+            : "bg-transparent py-5 border-b border-transparent"
         }`}
       >
-        <div className="flex justify-between items-center">
-          {/* Logo with live pulse */}
+        <div className="max-w-6xl mx-auto px-5 sm:px-8 flex items-center justify-between">
+          {/* Brand Wordmark */}
           <a
             href="#home"
-            onClick={() => handleLinkClick("home")}
-            className="flex items-center gap-2.5 group"
+            className="flex items-center gap-3 text-left group transition-opacity hover:opacity-80"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-sm shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform">
-              D
-            </div>
-            <div className="flex flex-col text-left">
-              <span className="text-base font-bold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
-                Devesh<span className="text-cyan-400">.</span>dev
+            <div className="flex flex-col">
+              <span className="font-sans text-sm sm:text-base font-bold tracking-tight text-[#141413]">
+                Devesh Kumar Upadhyay
               </span>
-              <span className="text-[10px] text-emerald-400 font-medium tracking-wide flex items-center gap-1 -mt-0.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                Open for Hire
+              <span className="font-mono text-[11px] text-[#787A72] tracking-normal -mt-0.5">
+                Full-Stack &amp; .NET Systems Engineer
               </span>
             </div>
           </a>
 
-          {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-1 text-xs lg:text-sm font-medium">
-            {links.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-7">
+            {navLinks.map((link) => {
+              const id = link.href.slice(1);
+              const isActive = activeSection === id;
               return (
-                <li key={link.id}>
-                  <a
-                    href={link.href}
-                    onClick={() => handleLinkClick(link.href.slice(1))}
-                    className={`relative px-3.5 py-1.5 rounded-xl transition-all duration-200 ${
-                      isActive
-                        ? "text-cyan-300 bg-cyan-500/10 font-semibold shadow-[inset_0_0_12px_rgba(6,182,212,0.15)]"
-                        : "text-slate-300 hover:text-white hover:bg-white/5"
-                    }`}
-                  >
-                    {link.label}
-                  </a>
-                </li>
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className={`text-xs font-medium tracking-tight transition-colors py-1 relative ${
+                    isActive
+                      ? "text-[#141413] font-semibold"
+                      : "text-[#62645D] hover:text-[#141413]"
+                  }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-[#141413]" />
+                  )}
+                </a>
               );
             })}
-          </ul>
+          </nav>
 
-          {/* Right Action: Let's Talk CTA */}
+          {/* Right Action Buttons */}
           <div className="hidden sm:flex items-center gap-3">
+            <button
+              onClick={() => setIsResumeOpen(true)}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-[#4A4C46] hover:text-[#141413] border border-[#E5E5DE] hover:border-[#C8C8BE] bg-white rounded transition-colors cursor-pointer"
+            >
+              <FileText size={13} className="text-[#787A72]" />
+              <span>Resume</span>
+            </button>
+
             <a
               href="#contact"
-              onClick={() => handleLinkClick("contact")}
-              className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold text-slate-900 bg-gradient-to-r from-cyan-400 via-sky-300 to-cyan-300 hover:from-cyan-300 hover:to-blue-400 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/30 transition-all duration-300 transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#141413] hover:bg-[#2A2B29] rounded transition-all"
             >
-              <span>Let's Talk</span>
-              <Send size={12} className="group-hover:translate-x-0.5 transition-transform" />
+              <span>Get in Touch</span>
+              <ArrowUpRight size={13} />
             </a>
           </div>
 
-          {/* Mobile hamburger toggle */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileOpen((prev) => !prev)}
             aria-label="Toggle menu"
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-xl bg-white/5 text-slate-300 hover:text-cyan-400 hover:bg-white/10 transition-colors cursor-pointer border border-white/5"
+            className="md:hidden p-2 text-[#4A4C46] hover:text-[#141413] border border-[#E5E5DE] rounded bg-white transition-colors cursor-pointer"
           >
             {isMobileOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
 
-        {/* Mobile dropdown menu */}
+        {/* Mobile Navigation Drawer */}
         {isMobileOpen && (
-          <div className="mt-3 pt-3 border-t border-white/10 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-2 duration-200 md:hidden">
-            {links.map((link) => {
-              const isActive = activeSection === link.href.slice(1);
-              return (
+          <div className="md:hidden border-b border-[#E5E5DE] bg-[#FBFBF9] px-6 py-5 shadow-lg">
+            <nav className="flex flex-col gap-3">
+              {navLinks.map((link) => (
                 <a
-                  key={link.id}
+                  key={link.href}
                   href={link.href}
-                  onClick={() => handleLinkClick(link.href.slice(1))}
-                  className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? "text-cyan-300 bg-cyan-500/15 font-semibold"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
-                  }`}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="text-sm font-medium text-[#4A4C46] hover:text-[#141413] py-1 border-b border-[#EFEFE8]"
                 >
                   {link.label}
                 </a>
-              );
-            })}
-            <a
-              href="#contact"
-              onClick={() => handleLinkClick("contact")}
-              className="mt-2 text-center py-2.5 rounded-xl text-xs font-bold text-slate-900 bg-gradient-to-r from-cyan-400 to-blue-400 shadow-md"
-            >
-              Start a Project / Hire Me
-            </a>
+              ))}
+              <div className="flex items-center gap-3 pt-3">
+                <button
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    setIsResumeOpen(true);
+                  }}
+                  className="flex-1 text-center py-2 text-xs font-medium border border-[#E5E5DE] rounded bg-white text-[#141413]"
+                >
+                  View Resume (PDF)
+                </button>
+                <a
+                  href="#contact"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="flex-1 text-center py-2 text-xs font-semibold bg-[#141413] text-white rounded"
+                >
+                  Get in Touch
+                </a>
+              </div>
+            </nav>
           </div>
         )}
-      </nav>
-    </header>
+      </header>
+
+      <ResumeModal
+        isOpen={isResumeOpen}
+        onClose={() => setIsResumeOpen(false)}
+        resumeUrl="/DeveshKumarUpadhyay.pdf"
+      />
+    </>
   );
 }
 

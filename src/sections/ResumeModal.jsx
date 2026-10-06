@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Download, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Download, X, ChevronLeft, ChevronRight, FileText } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// PDF.js needs its worker script — loaded from a CDN matching the installed version
+// PDF.js worker script
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 function ResumeModal({ isOpen, onClose, resumeUrl }) {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
 
-  // Close on Escape key, with proper cleanup to avoid leaked listeners
   useEffect(() => {
     if (!isOpen) return;
-
     function handleKeyDown(e) {
       if (e.key === "Escape") onClose();
     }
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
@@ -37,72 +34,81 @@ function ResumeModal({ isOpen, onClose, resumeUrl }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-[#141413]/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6"
           onClick={onClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
+            initial={{ opacity: 0, scale: 0.98, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+            exit={{ opacity: 0, scale: 0.98, y: 15 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="glass-panel border border-white/10 rounded-3xl w-full max-w-3xl h-[85vh] flex flex-col overflow-hidden shadow-2xl bg-[#080d1a]"
+            className="border border-[#E5E5DE] rounded-lg w-full max-w-4xl h-[90vh] flex flex-col overflow-hidden shadow-2xl bg-[#FBFBF9] text-[#141413]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-white/5">
-              <div>
-                <h3 className="text-white font-bold text-lg">Curriculum Vitae</h3>
-                <span className="text-[11px] text-cyan-400 font-mono">Devesh Kumar Upadhyay</span>
-              </div>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E5DE] bg-white">
               <div className="flex items-center gap-3">
+                <FileText size={18} className="text-[#183654]" />
+                <div>
+                  <h3 className="font-bold text-sm sm:text-base text-[#141413]">
+                    Curriculum Vitae
+                  </h3>
+                  <span className="text-[11px] text-[#787A72] font-mono block">
+                    Devesh Kumar Upadhyay &bull; Full-Stack &amp; .NET Systems Engineer
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2.5">
                 <a
                   href={resumeUrl}
-                  download
-                  className="flex items-center gap-2 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl transition-all duration-300 cursor-pointer shadow-md shadow-cyan-500/20"
+                  download="DeveshKumarUpadhyay_Resume.pdf"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#141413] hover:bg-[#2A2B29] rounded transition-all cursor-pointer"
                 >
-                  <Download size={14} />
+                  <Download size={13} />
                   <span>Download PDF</span>
                 </a>
+
                 <button
                   onClick={onClose}
-                  aria-label="Close resume preview"
-                  className="rounded-xl bg-white/5 border border-white/10 p-2 text-slate-400 hover:text-white hover:bg-white/10 transition-all cursor-pointer"
+                  aria-label="Close resume viewer"
+                  className="rounded border border-[#E5E5DE] p-1.5 text-[#787A72] hover:text-[#141413] hover:border-[#C8C8BE] bg-[#FBFBF9] transition-colors cursor-pointer"
                 >
                   <X size={16} />
                 </button>
               </div>
             </div>
 
-            {/* Resume Viewer Container */}
-            <div className="flex-1 bg-slate-950/40 overflow-y-auto flex flex-col items-center py-6 px-4">
-              <div className="bg-slate-900 border border-slate-800/60 p-2 rounded-2xl shadow-xl max-w-full overflow-x-auto">
+            {/* Document Render Area */}
+            <div className="flex-1 bg-[#F3F3ED] overflow-y-auto flex flex-col items-center py-6 px-4">
+              <div className="bg-white border border-[#E5E5DE] p-2 rounded shadow-sm max-w-full overflow-x-auto">
                 <Document
                   file={resumeUrl}
                   onLoadSuccess={onDocumentLoadSuccess}
                   loading={
                     <div className="flex flex-col items-center justify-center py-24 px-12">
-                      <div className="w-8 h-8 border-4 border-cyan-500 border-t-transparent rounded-full animate-spin mb-4" />
-                      <p className="text-slate-400 font-mono text-xs">Parsing CV Document...</p>
+                      <div className="w-7 h-7 border-2 border-[#183654] border-t-transparent rounded-full animate-spin mb-3" />
+                      <p className="text-[#787A72] font-mono text-xs">Loading curriculum vitae document...</p>
                     </div>
                   }
                   error={
-                    <div className="text-center py-20 px-8">
-                      <p className="text-red-400 text-sm font-semibold mb-2">
-                        Unable to render document preview.
+                    <div className="text-center py-16 px-6">
+                      <p className="text-red-700 text-xs font-semibold mb-2">
+                        Unable to render in-browser document preview.
                       </p>
                       <a
                         href={resumeUrl}
                         download
-                        className="text-cyan-400 hover:text-cyan-350 text-xs font-mono underline"
+                        className="text-[#183654] hover:underline text-xs font-mono"
                       >
-                        Direct download link
+                        Click here to download PDF directly
                       </a>
                     </div>
                   }
                 >
                   <Page
                     pageNumber={pageNumber}
-                    width={Math.min(600, window.innerWidth - 64)}
+                    width={Math.min(700, window.innerWidth - 64)}
                     renderTextLayer={false}
                     renderAnnotationLayer={false}
                     className="max-w-full"
@@ -113,23 +119,23 @@ function ResumeModal({ isOpen, onClose, resumeUrl }) {
 
             {/* Pagination Controls */}
             {numPages > 1 && (
-              <div className="flex items-center justify-center gap-6 py-4 border-t border-slate-900/60 bg-slate-950/20">
+              <div className="flex items-center justify-center gap-5 py-3 border-t border-[#E5E5DE] bg-white text-xs">
                 <button
                   onClick={() => setPageNumber((p) => Math.max(1, p - 1))}
                   disabled={pageNumber <= 1}
-                  className="w-8 h-8 rounded-full border border-slate-800 bg-slate-900 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 disabled:opacity-30 disabled:hover:text-slate-300 disabled:hover:border-slate-800 transition-all cursor-pointer"
+                  className="w-7 h-7 rounded border border-[#E5E5DE] bg-[#FBFBF9] flex items-center justify-center text-[#4A4C46] hover:text-[#141413] disabled:opacity-30 cursor-pointer"
                 >
-                  <ChevronLeft size={16} />
+                  <ChevronLeft size={14} />
                 </button>
-                <span className="text-slate-400 font-mono text-xs">
+                <span className="text-[#787A72] font-mono text-xs">
                   Page {pageNumber} of {numPages}
                 </span>
                 <button
                   onClick={() => setPageNumber((p) => Math.min(numPages, p + 1))}
                   disabled={pageNumber >= numPages}
-                  className="w-8 h-8 rounded-full border border-slate-800 bg-slate-900 flex items-center justify-center text-slate-300 hover:text-cyan-400 hover:border-cyan-500/30 disabled:opacity-30 disabled:hover:text-slate-300 disabled:hover:border-slate-800 transition-all cursor-pointer"
+                  className="w-7 h-7 rounded border border-[#E5E5DE] bg-[#FBFBF9] flex items-center justify-center text-[#4A4C46] hover:text-[#141413] disabled:opacity-30 cursor-pointer"
                 >
-                  <ChevronRight size={16} />
+                  <ChevronRight size={14} />
                 </button>
               </div>
             )}

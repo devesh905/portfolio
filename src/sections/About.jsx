@@ -1,306 +1,269 @@
-import { motion } from "framer-motion";
-import {
-  SiDotnet,
-  SiSharp,
-  SiReact,
-  SiMysql,
-  SiDocker,
-  SiJavascript,
-  SiTailwindcss,
-  SiGit,
-  SiPostgresql,
-  SiPython,
-} from "react-icons/si";
-import { TbApi, TbBrandSpeedtest } from "react-icons/tb";
-import { User, Award, CheckCircle, Code2, Briefcase, GraduationCap } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-const skillCategories = [
+const workExperience = [
   {
-    title: "Backend & Distributed Core",
-    description: "Architecting high-throughput microservices & real-time protocols",
-    skills: [
-      { name: "ASP.NET Core", icon: SiDotnet, style: "hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-950/20" },
-      { name: "C#", icon: SiSharp, style: "hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-950/20" },
-      { name: "EF Core", icon: SiDotnet, style: "hover:text-purple-400 hover:border-purple-500/40 hover:bg-purple-950/20" },
-      { name: "SignalR & WebSockets", icon: TbApi, style: "hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-950/20" },
-      { name: "Python", icon: SiPython, style: "hover:text-amber-400 hover:border-amber-500/40 hover:bg-amber-950/20" },
+    period: "Aug 2025 — Present",
+    role: "Jr. Software Developer",
+    organization: "Chhatrapati Shivaji Subharti Hospital",
+    location: "Meerut, UP, India",
+    type: "Full-Time Engineering",
+    responsibilities: [
+      "Engineered real-time Digital ICU telemetry platform streaming 500Hz ECG waveforms with custom delta-encoded compression (25–45x bandwidth reduction).",
+      "Architected scope-isolated chunk loading using IServiceScopeFactory, eliminating EF Core DbContext multi-thread concurrency crashes during stream decompression.",
+      "Designed unified parsing layer for HL7 and TCP/IP protocols normalizing dissimilar telemetry feeds from Mindray and Comen hardware monitors.",
+      "Built ingestion-time UHID normalization service that auto-corrected staff data-entry errors, reducing corrupted patient records to near-zero.",
+      "Implemented automated 7-day data retention purge routine with IST-aware cutoff logic to ensure HIPAA compliance and bound database volume growth.",
     ],
   },
   {
-    title: "Real-Time Hardware & Telemetry",
-    description: "Low-latency data streaming & protocol engineering",
-    skills: [
-      { name: "HL7 Protocol", icon: TbApi, style: "hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-950/20" },
-      { name: "TCP/IP Sockets", icon: TbBrandSpeedtest, style: "hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-950/20" },
-      { name: "500Hz Stream Parsing", icon: TbApi, style: "hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-950/20" },
-      { name: "Delta Compression", icon: TbBrandSpeedtest, style: "hover:text-sky-400 hover:border-sky-500/40 hover:bg-sky-950/20" },
-    ],
-  },
-  {
-    title: "Frontend & Web Engineering",
-    description: "Interactive client portals & high-speed dashboards",
-    skills: [
-      { name: "React", icon: SiReact, style: "hover:text-cyan-400 hover:border-cyan-500/40 hover:bg-cyan-950/20" },
-      { name: "JavaScript (ES6+)", icon: SiJavascript, style: "hover:text-yellow-400 hover:border-yellow-500/40 hover:bg-yellow-950/20" },
-      { name: "Tailwind CSS", icon: SiTailwindcss, style: "hover:text-sky-400 hover:border-sky-500/40 hover:bg-sky-950/20" },
-      { name: "REST API Integration", icon: TbApi, style: "hover:text-blue-400 hover:border-blue-500/40 hover:bg-blue-950/20" },
-    ],
-  },
-  {
-    title: "Databases & DevOps Toolkit",
-    description: "Data integrity, containerization & deployment pipelines",
-    skills: [
-      { name: "SQL Server", icon: SiMysql, style: "hover:text-blue-400 hover:border-blue-500/40 hover:bg-blue-950/20" },
-      { name: "Docker", icon: SiDocker, style: "hover:text-blue-400 hover:border-blue-500/40 hover:bg-blue-950/20" },
-      { name: "Git & GitHub", icon: SiGit, style: "hover:text-orange-400 hover:border-orange-500/40 hover:bg-orange-950/20" },
-      { name: "Linux / Server Admin", icon: SiDocker, style: "hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-950/20" },
+    period: "Oct 2024 — Jan 2025",
+    role: "Apprentice Engineer",
+    organization: "366Pi Technologies",
+    location: "Ranchi, India",
+    type: "Engineering Apprenticeship",
+    responsibilities: [
+      "Built automated regression test suites using Selenium WebDriver (C# / ASP.NET Core) across key web and mobile application workflows.",
+      "Reduced query execution latency on slow reporting endpoints by reviewing SQL execution plans and implementing index optimizations.",
+      "Collaborated with senior engineers on requirement scoping and software quality standards.",
     ],
   },
 ];
 
-const timeline = [
+const education = [
   {
-    year: "2024 — Present",
-    title: "Junior Software Developer",
-    institution: "Subharti Hospital",
-    type: "Work Experience",
-    icon: Briefcase,
-    description:
-      "Spearheaded real-time healthcare systems development. Integrated intensive care medical telemetry streaming high-frequency ECG waveforms with custom delta compression via SignalR, and built an automated AI-driven voice assistant (Whisper/LLaMA/Asterisk PBX) for hospital procurement workflows.",
+    period: "June 2020 — July 2024",
+    degree: "B.Tech in Computer Science & Engineering (OGPA: 8.09)",
+    institution: "Chandra Shekhar Azad University of Agriculture & Technology",
+    location: "Kanpur, India",
+    details:
+      "Four-year undergraduate degree with focus on distributed computing, concurrency, database design, operating systems, and object-oriented architecture.",
+  },
+];
+
+const skillCategories = [
+  {
+    category: "Backend & Systems",
+    skills: ["C#", "ASP.NET Core", "ASP.NET MVC", "Entity Framework Core", "RESTful Web APIs", "SignalR", "WebSockets", "Python"],
   },
   {
-    year: "2024",
-    title: "B.Tech in Computer Science & Engineering",
-    institution: "Graduation",
-    type: "Education",
-    icon: GraduationCap,
-    description:
-      "Graduated with distinction in core Computer Science, specializing in distributed systems, advanced data structures, concurrency, and database management systems.",
+    category: "Data & Storage",
+    skills: ["SQL Server", "MySQL", "Database Normalization", "Index Tuning", "Execution Plan Review", "Power BI"],
+  },
+  {
+    category: "Protocols & Architecture",
+    skills: ["HL7 Protocol", "TCP/IP Sockets", "Real-Time Telemetry (500Hz)", "Delta Compression", "RabbitMQ", "Microservices"],
+  },
+  {
+    category: "Frontend & Web",
+    skills: ["React", "JavaScript (ES6+)", "HTML5", "CSS3 / Modern CSS", "Vite", "Component Architecture"],
+  },
+  {
+    category: "Testing & DevOps",
+    skills: ["Selenium WebDriver (C#)", "Git & GitHub", "Docker", "Postman", "Swagger", "Linux CLI", "Visual Studio"],
   },
 ];
 
 function About() {
   return (
-    <section id="about" className="px-4 sm:px-6 py-24 max-w-6xl mx-auto relative">
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-96 h-96 bg-cyan-500/5 rounded-full blur-[140px] -z-10 pointer-events-none" />
-
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cyan-500/30 bg-cyan-950/30 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-4"
-        >
-          <span>Professional Background</span>
-        </motion.div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
-        >
-          Engineering With <span className="gradient-text-cyan">Precision &amp; Purpose</span>
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed"
-        >
-          A software engineer who loves solving high-concurrency, latency-critical challenges and building
-          digital products that delight clients.
-        </motion.p>
-      </div>
-
-      {/* Main Philosophy & Quick Metrics */}
-      <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.8fr] gap-8 sm:gap-12 items-start mb-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 space-y-5 text-slate-300 text-sm sm:text-base leading-relaxed"
-        >
-          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Bridging Hardware, Real-Time Streams, and User Experience
-          </h3>
-          <p>
-            I am a developer driven by reliability and performance. In my work with mission-critical
-            healthcare systems, a dropped packet or a fraction-of-a-second lag directly impairs
-            clinical patient monitoring. I specialize in making hardware telemetry, HL7 messages,
-            and web dashboards talk to each other effortlessly at <span className="text-white font-semibold">500Hz</span>.
+    <section id="about" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mb-16 sm:mb-20">
+          <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2.5">
+            03 // Background &amp; Engineering Philosophy
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[40px] font-bold text-[#141413] tracking-tight leading-tight mb-4">
+            Engineering grounded in reality, not trends.
+          </h2>
+          <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
+            A developer who prioritizes thread safety, memory hygiene, clean API boundaries, and system predictability.
           </p>
-          <p>
-            When partnering with businesses and clients, I apply this same level of engineering rigor:
-            clean modular code, robust database architectures, and intuitive modern web interfaces
-            that turn visitors into paying customers.
-          </p>
-          <div className="pt-2 flex flex-wrap gap-4 text-xs font-semibold text-cyan-400">
-            <span className="flex items-center gap-1.5">
-              <CheckCircle size={15} /> Clean Architecture
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle size={15} /> Test-Driven Quality
-            </span>
-            <span className="flex items-center gap-1.5">
-              <CheckCircle size={15} /> Transparent Communication
-            </span>
-          </div>
-        </motion.div>
+        </div>
 
-        {/* Dynamic metrics card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="glass-panel rounded-3xl p-6 sm:p-8 border border-cyan-500/20 flex flex-col justify-between gap-6 bg-gradient-to-br from-cyan-950/20 to-slate-900/60"
-        >
-          <div className="flex items-center justify-between border-b border-white/5 pb-4">
-            <h4 className="text-xs font-bold tracking-wider uppercase text-cyan-400 font-mono">
-              Key Engineering Stats
-            </h4>
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+        {/* Narrative / Personal Perspective (2 Columns) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 pb-20 border-b border-[#E5E5DE] items-start">
+          <div className="lg:col-span-7 space-y-5 text-sm sm:text-base text-[#4A4C46] leading-relaxed font-normal">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
+              Software is best when it is quiet, robust, and invisible.
+            </h3>
+            <p>
+              I started my professional engineering career in a hospital setting where software failures aren't just inconveniences &mdash; they affect real clinical patient monitoring. When an intensive care monitor transmits 500 vital data packets every second, a concurrency leak or thread-lock in your backend translates to frozen screens at bedside.
+            </p>
+            <p>
+              That experience fundamentally shaped how I write code: I believe in thread safety before optimization, explicit domain models over fragile abstractions, and thorough testing over optimism. Whether I am building high-concurrency .NET Core endpoints or an intuitive React application, I treat every millisecond and every database transaction with care.
+            </p>
+            <p>
+              I enjoy working on backend architectures, real-time protocols (SignalR, WebSockets, TCP), database query tuning, and clean full-stack web products. I am currently open to full-time software engineering roles and select technical contracting projects.
+            </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-slate-900/50 border border-white/5 p-4 rounded-2xl text-center">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-white">2+</span>
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Years Experience</span>
+          <div className="lg:col-span-5 border border-[#E5E5DE] bg-white rounded-lg p-6 sm:p-7 space-y-5">
+            <span className="font-mono text-xs uppercase tracking-wider text-[#787A72] block border-b border-[#EFEFE8] pb-3">
+              Engineering Snapshot
+            </span>
+
+            <div className="space-y-3.5 text-xs">
+              <div>
+                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Location</span>
+                <span className="text-[#141413] font-medium block">Meerut &amp; Remote, India (Available Worldwide)</span>
+              </div>
+              <div className="pt-2 border-t border-[#EFEFE8]">
+                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Specialization</span>
+                <span className="text-[#141413] font-medium block">.NET Core / C#, Real-Time Telemetry &amp; Full-Stack Web</span>
+              </div>
+              <div className="pt-2 border-t border-[#EFEFE8]">
+                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">Education</span>
+                <span className="text-[#141413] font-medium block">B.Tech in CSE (OGPA 8.09)</span>
+              </div>
+              <div className="pt-2 border-t border-[#EFEFE8]">
+                <span className="font-mono text-[10px] text-[#9EA098] uppercase block">What I'm Looking For</span>
+                <span className="text-[#4A4C46] leading-relaxed block mt-0.5">
+                  Engineering teams building serious systems with high concurrency, real-time requirements, or complex domain logic.
+                </span>
+              </div>
             </div>
-            <div className="bg-slate-900/50 border border-white/5 p-4 rounded-2xl text-center">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-cyan-300">45x</span>
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Data Compression</span>
+
+            <div className="pt-3 border-t border-[#EFEFE8]">
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#183654] hover:underline"
+              >
+                <span>Connect with Devesh</span>
+                <ArrowUpRight size={13} />
+              </a>
             </div>
-            <div className="bg-slate-900/50 border border-white/5 p-4 rounded-2xl text-center">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-white">500Hz</span>
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Telemetry Sync</span>
-            </div>
-            <div className="bg-slate-900/50 border border-white/5 p-4 rounded-2xl text-center">
-              <span className="block text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</span>
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-wider">Production Uptime</span>
-            </div>
-          </div>
-
-          <a
-            href="#contact"
-            className="w-full text-center py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-cyan-400/40 text-xs font-bold text-white transition-all duration-200"
-          >
-            Hire Devesh For Your Next Project →
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Experience & Education Timeline */}
-      <div className="mb-24">
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">
-          Work History &amp; Education
-        </h3>
-
-        <div className="relative max-w-3xl mx-auto pl-6 sm:pl-8">
-          {/* Timeline center line */}
-          <div className="absolute left-[7px] sm:left-[8px] top-3 bottom-3 w-[2px] bg-gradient-to-b from-cyan-400 via-blue-500 to-transparent" />
-
-          <div className="flex flex-col gap-10">
-            {timeline.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: -15 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.15 }}
-                  className="relative"
-                >
-                  {/* Timeline node */}
-                  <span className="absolute -left-[24px] sm:-left-[26px] top-2 w-3.5 h-3.5 rounded-full bg-[#050811] border-2 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.8)]" />
-
-                  {/* Content glass card */}
-                  <div className="glass-panel glass-panel-hover rounded-2xl p-6 sm:p-7 border border-white/10 hover:border-cyan-400/30 transition-all duration-300">
-                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-3">
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <Icon size={16} className="text-cyan-400" />
-                          <span className="text-[11px] font-mono uppercase text-cyan-400 font-semibold tracking-wider">
-                            {item.type}
-                          </span>
-                        </div>
-                        <h4 className="text-white text-lg sm:text-xl font-bold font-sans">
-                          {item.title}
-                        </h4>
-                        <p className="text-cyan-300/90 text-sm font-medium">
-                          {item.institution}
-                        </p>
-                      </div>
-                      <span className="inline-flex self-start sm:self-auto px-3 py-1 rounded-full text-[11px] font-mono text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 uppercase tracking-wider">
-                        {item.year}
-                      </span>
-                    </div>
-                    <p className="text-slate-300 text-sm leading-relaxed mt-3">
-                      {item.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
           </div>
         </div>
-      </div>
 
-      {/* Categorized Skills Toolkit */}
-      <div>
-        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-12 text-center">
-          Skills &amp; Engineering Toolkit
-        </h3>
+        {/* Experience Timeline */}
+        <div className="py-20 border-b border-[#E5E5DE]">
+          <div className="max-w-2xl mb-12">
+            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
+              Work History
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+              Production Experience &amp; Engineering Roles
+            </h3>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skillCategories.map((category, catIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: catIndex * 0.1 }}
-              className="glass-panel rounded-3xl p-6 sm:p-7 border border-white/10 flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex flex-col mb-4 pb-3 border-b border-white/5">
-                  <h4 className="text-white text-lg font-bold">
-                    {category.title}
+          <div className="space-y-12">
+            {workExperience.map((job) => (
+              <div
+                key={job.period}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 border-b border-[#EFEFE8] pb-12 last:border-b-0 last:pb-0"
+              >
+                <div className="lg:col-span-4 space-y-1">
+                  <span className="font-mono text-xs text-[#787A72] block">
+                    {job.period}
+                  </span>
+                  <h4 className="text-lg font-bold text-[#141413]">
+                    {job.role}
                   </h4>
-                  <p className="text-xs text-slate-400 mt-0.5">
-                    {category.description}
-                  </p>
+                  <div className="text-xs text-[#183654] font-medium">
+                    {job.organization}
+                  </div>
+                  <div className="text-[11px] text-[#787A72]">
+                    {job.location} &bull; {job.type}
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2.5">
-                  {category.skills.map((skill) => {
-                    const Icon = skill.icon;
-                    return (
-                      <div
-                        key={skill.name}
-                        className={`flex items-center gap-2.5 bg-white/[0.03] border border-white/5 rounded-xl px-3.5 py-2.5 transition-all duration-200 ${skill.style}`}
-                      >
-                        <Icon size={18} className="flex-shrink-0" />
-                        <span className="text-slate-300 text-xs font-semibold truncate">
-                          {skill.name}
-                        </span>
-                      </div>
-                    );
-                  })}
+                <div className="lg:col-span-8">
+                  <ul className="space-y-2.5 text-xs sm:text-sm text-[#4A4C46]">
+                    {job.responsibilities.map((resp, i) => (
+                      <li key={i} className="flex items-start gap-2.5">
+                        <span className="text-[#183654] font-mono text-xs mt-0.5">&mdash;</span>
+                        <span className="leading-relaxed">{resp}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
-            </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Education Timeline */}
+        <div className="py-16 border-b border-[#E5E5DE]">
+          <div className="max-w-2xl mb-8">
+            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
+              Academic Foundation
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight">
+              Education &amp; Computer Science Degree
+            </h3>
+          </div>
+
+          {education.map((edu) => (
+            <div
+              key={edu.degree}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start"
+            >
+              <div className="lg:col-span-4 space-y-1">
+                <span className="font-mono text-xs text-[#787A72] block">
+                  {edu.period}
+                </span>
+                <h4 className="text-base font-bold text-[#141413]">
+                  {edu.degree}
+                </h4>
+                <div className="text-xs text-[#183654] font-medium">
+                  {edu.institution}
+                </div>
+                <div className="text-[11px] text-[#787A72]">
+                  {edu.location}
+                </div>
+              </div>
+
+              <div className="lg:col-span-8">
+                <p className="text-xs sm:text-sm text-[#4A4C46] leading-relaxed">
+                  {edu.details}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
+
+        {/* Skills & Engineering Toolkit */}
+        <div className="pt-20">
+          <div className="max-w-2xl mb-12">
+            <span className="font-mono text-xs uppercase tracking-wider text-[#183654] font-semibold block mb-2">
+              Technical Arsenal
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+              Structured Skills &amp; Applied Tools
+            </h3>
+            <p className="text-xs sm:text-sm text-[#787A72] mt-1.5">
+              Organized by architectural domain rather than superficial badge collections.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {skillCategories.map((cat) => (
+              <div
+                key={cat.category}
+                className="border border-[#E5E5DE] bg-white rounded-lg p-6 space-y-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.02)]"
+              >
+                <div className="border-b border-[#EFEFE8] pb-2.5">
+                  <h4 className="text-sm font-bold text-[#141413] font-sans">
+                    {cat.category}
+                  </h4>
+                </div>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {cat.skills.map((s) => (
+                    <span
+                      key={s}
+                      className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
