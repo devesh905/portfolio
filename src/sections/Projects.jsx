@@ -128,64 +128,22 @@ const modalData = {
 
 function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
-  const [activeProjectTab, setActiveProjectTab] = useState("icu");
 
   return (
     <section id="projects" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#FBFBF9]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
         
-        {/* Section Header & Sticky-Style Project Index */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 pb-8 border-b border-[#E5E5DE]">
-          <div className="max-w-2xl space-y-3">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
-              <span>Featured Work</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
-              Systems I've built.
-            </h2>
-            <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
-              Real software in daily hospital production, real-time telemetry, and distributed services.
-            </p>
+        {/* Section Header */}
+        <div className="max-w-3xl space-y-3 pb-8 border-b border-[#E5E5DE]">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
+            <span>Featured Work</span>
           </div>
-
-          {/* Interactive Project Quick Index */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 text-xs font-mono">
-            <a
-              href="#project-icu"
-              onClick={() => setActiveProjectTab("icu")}
-              className={`px-3.5 py-2 rounded border whitespace-nowrap transition-all ${
-                activeProjectTab === "icu"
-                  ? "bg-[#141413] text-white border-[#141413] font-semibold"
-                  : "bg-white text-[#4A4C46] border-[#E5E5DE] hover:border-[#1E56A0]"
-              }`}
-            >
-              01 // DIGITAL ICU
-            </a>
-
-            <a
-              href="#project-his"
-              onClick={() => setActiveProjectTab("his")}
-              className={`px-3.5 py-2 rounded border whitespace-nowrap transition-all ${
-                activeProjectTab === "his"
-                  ? "bg-[#141413] text-white border-[#141413] font-semibold"
-                  : "bg-white text-[#4A4C46] border-[#E5E5DE] hover:border-[#1E56A0]"
-              }`}
-            >
-              02 // HOSPITAL HIS
-            </a>
-
-            <a
-              href="#project-secondary"
-              onClick={() => setActiveProjectTab("secondary")}
-              className={`px-3.5 py-2 rounded border whitespace-nowrap transition-all ${
-                activeProjectTab === "secondary"
-                  ? "bg-[#141413] text-white border-[#141413] font-semibold"
-                  : "bg-white text-[#4A4C46] border-[#E5E5DE] hover:border-[#1E56A0]"
-              }`}
-            >
-              03 // DISTRIBUTED &amp; VOIP
-            </a>
-          </div>
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
+            Systems I've built.
+          </h2>
+          <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
+            Real software in daily hospital production, real-time telemetry, and distributed services.
+          </p>
         </div>
 
 
