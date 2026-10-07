@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ProjectDetailModal from "../components/ProjectDetailModal";
-import IcuDashboardVisual from "../components/IcuDashboardVisual";
-import IcuArchitectureFlow from "../components/IcuArchitectureFlow";
-import HisSystemVisual from "../components/HisSystemVisual";
-import HisArchitectureFlow from "../components/HisArchitectureFlow";
-import { ArrowRight, ArrowUpRight, ExternalLink, Activity, Building2, Radio, Truck } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 
 const modalData = {
@@ -142,161 +138,154 @@ function Projects() {
             Systems I've built.
           </h2>
           <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
-            Real software in daily hospital production, real-time telemetry, and distributed services.
+            Production backend systems, real-time telemetry pipelines, and healthcare workflows.
           </p>
         </div>
 
 
         {/* ============================================================== */}
-        {/* PROJECT 01: DIGITAL ICU (VISUALLY DOMINANT ON DARK CANVAS)     */}
-        {/* ============================================================== */}
-        {/* ============================================================== */}
-        {/* PROJECT 01: DIGITAL ICU (HOSTINGER-INSPIRED DEEP PURPLE CANVAS)*/}
+        {/* PROJECT 01: DIGITAL ICU (CLEAN & DIRECT ARCHITECTURAL CARD)    */}
         {/* ============================================================== */}
         <div id="project-icu" className="scroll-mt-28">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="border border-[#2D1F57] text-white rounded-xl p-6 sm:p-10 shadow-[0_25px_60px_-15px_rgba(111,79,204,0.32)] space-y-10 relative overflow-hidden"
-            style={{
-              background:
-                "radial-gradient(ellipse 80% 50% at 50% -10%, rgba(111, 79, 204, 0.28), transparent 70%), radial-gradient(circle at 90% 90%, rgba(111, 79, 204, 0.14), transparent 50%), #0F0924",
-            }}
+            transition={{ duration: 0.4 }}
+            className="border border-[#E5E5DE] bg-white rounded-xl p-6 sm:p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] hover:border-[#1E56A0] transition-colors space-y-6"
           >
-            {/* Subtle Ambient Grid Layer */}
-            <div
-              className="absolute inset-0 pointer-events-none opacity-20"
-              style={{
-                backgroundImage:
-                  "linear-gradient(to right, rgba(111, 79, 204, 0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(111, 79, 204, 0.15) 1px, transparent 1px)",
-                backgroundSize: "40px 40px",
-              }}
-            />
-
-            <div className="relative z-10 space-y-10">
-              {/* Meta Row */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#25184F] pb-4 text-xs font-mono">
-                <div className="flex items-center gap-3">
-                  <span className="font-bold text-[#A78BFA] text-sm">01</span>
-                  <span className="text-[#4C3580]">/</span>
-                  <span className="text-[#E9D5FF] font-semibold uppercase tracking-wider">
-                    REAL-TIME ICU TELEMETRY
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-emerald-400">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span>In Production &bull; Subharti Hospital</span>
-                </div>
-              </div>
-
-              {/* Title & Domain Summary */}
-              <div className="space-y-2">
-                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                  Digital ICU Management System
-                </h3>
-                <p className="text-base text-[#DDD6FE] font-normal">
-                  500Hz live ECG waveform streaming, sub-40ms latency, and bedside clinical monitoring.
-                </p>
-              </div>
-
-              {/* HUGE VISUAL AREA: Digital ICU Bedside Dashboard (55-60% dominant visual) */}
-              <div className="pt-2">
-                <IcuDashboardVisual />
-              </div>
-
-              {/* Structured Engineering Storytelling (Problem, What I Built, Key Impact) */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 text-sm border-t border-[#25184F]">
-                {/* Problem */}
-                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
-                  <span className="font-mono text-xs uppercase tracking-wider text-rose-400 font-bold block">
-                    The Problem
-                  </span>
-                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
-                    Bedside monitors (Mindray &amp; Comen) push continuous vital streams that clogged hospital networks when raw. Standard polling caused clinical delay, while parallel stream decompression triggered database deadlocks.
-                  </p>
-                </div>
-
-                {/* What I Built */}
-                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
-                  <span className="font-mono text-xs uppercase tracking-wider text-[#A78BFA] font-bold block">
-                    What I Built
-                  </span>
-                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
-                    Built a TCP/IP and HL7 socket pipeline with custom 32x delta compression. Streamed 500Hz ECG waveforms over SignalR and isolated DbContext scopes with <code className="text-[#E9D5FF] bg-[#2A1854] px-1 py-0.5 rounded font-mono border border-[#523396]">IServiceScopeFactory</code> to stop thread crashes.
-                  </p>
-                </div>
-
-                {/* Key Impact */}
-                <div className="space-y-2 bg-[#150E30]/90 p-4 rounded-lg border border-[#2F1F5E]">
-                  <span className="font-mono text-xs uppercase tracking-wider text-emerald-400 font-bold block">
-                    Key Impact
-                  </span>
-                  <p className="text-[#DDD6FE] leading-relaxed text-xs sm:text-sm font-normal">
-                    Sub-40ms live waveform rendering, 25&ndash;45x bandwidth reduction, and rock-solid thread safety running 24/7 in active intensive care wards.
-                  </p>
-                </div>
-              </div>
-
-              {/* Interactive Technical Architecture Diagram */}
-              <div className="space-y-3 pt-2">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#C4B5FD] font-semibold block">
-                  Telemetry Pipeline (Hover nodes to inspect responsibility):
+            {/* Meta Header */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#EFEFE8] pb-4 text-xs font-mono text-[#787A72]">
+              <div className="flex items-center gap-3">
+                <span className="font-bold text-[#1E56A0] text-sm">01</span>
+                <span>/</span>
+                <span className="text-[#141413] font-semibold uppercase tracking-wider">
+                  REAL-TIME ICU TELEMETRY
                 </span>
-                <IcuArchitectureFlow />
               </div>
+              <div className="flex items-center gap-2 text-emerald-700 font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                <span>In Production &bull; Subharti Hospital</span>
+              </div>
+            </div>
 
-              {/* Tech Stack & Action Buttons */}
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#25184F]">
-                <div className="flex flex-wrap gap-1.5">
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Main Information (Col 7) */}
+              <div className="lg:col-span-7 space-y-4">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+                    Digital ICU Management System
+                  </h3>
+                  <p className="text-sm font-mono text-[#1E56A0] mt-1 font-medium">
+                    ASP.NET Core &bull; SignalR &bull; HL7 &amp; TCP/IP &bull; SQL Server
+                  </p>
+                </div>
+
+                <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
+                  Engineered the real-time telemetry pipeline to stream 500Hz bedside ECG waveforms with sub-40ms latency directly to doctors' monitoring stations. Designed a custom delta compression algorithm that reduced network bandwidth by 25–45x, and normalized raw HL7 and TCP/IP data packets from Mindray and Comen bedside hardware monitors.
+                </p>
+
+                {/* What I Specifically Built */}
+                <div className="space-y-2 pt-2">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141413] block">
+                    What I Built:
+                  </span>
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#383A35]">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>500Hz Stream Pipeline:</strong> High-frequency live waveform transmission using SignalR WebSockets.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>Custom Delta Compression:</strong> Slashed packet size by 25–45x to eliminate hospital network saturation.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>Hardware Normalization:</strong> Integrated TCP/IP sockets and HL7 parsers for multi-vendor bedside monitors.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>Concurrency Fixes:</strong> Resolved multi-threaded EF Core database deadlocks via scoped service factories.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-3">
                   {["C#", "ASP.NET Core", "SignalR", "HL7 Protocols", "TCP/IP Sockets", "SQL Server", "WebSockets"].map((t) => (
                     <span
                       key={t}
-                      className="text-xs font-mono text-[#DDD6FE] bg-[#160E33] border border-[#342263] px-2.5 py-1 rounded hover:border-[#6f4fcc] transition-colors"
+                      className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
                     >
                       {t}
                     </span>
                   ))}
                 </div>
+              </div>
 
-                <div className="flex flex-wrap items-center gap-3">
+              {/* Right Column: Key Metrics & Actions (Col 5) */}
+              <div className="lg:col-span-5 space-y-4">
+                {/* Metric Highlights */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-[#1E56A0]">500Hz</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Live ECG Stream</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-emerald-600">32x</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Bandwidth Saved</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-[#141413]">&lt;40ms</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Render Latency</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-emerald-600">24/7</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Active ICU Wards</div>
+                  </div>
+                </div>
+
+                {/* Action Card */}
+                <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-5 rounded-lg space-y-3">
                   <button
                     onClick={() => setSelectedProject(modalData.icu)}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#6f4fcc] hover:bg-[#5b3ab8] rounded transition-all cursor-pointer shadow-[0_4px_20px_rgba(111,79,204,0.35)]"
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold text-white bg-[#141413] hover:bg-[#1E56A0] rounded transition-all cursor-pointer shadow-sm"
                   >
-                    <span>View case study &amp; details</span>
-                    <ArrowRight size={13} />
+                    <span>View Case Study &amp; Technical Details</span>
+                    <ArrowRight size={14} />
                   </button>
 
                   <a
                     href="https://drive.google.com/drive/folders/1GtrDW4wUPRUL6aCzeLuE9SaTgRE_qIOt?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-white border border-[#342263] hover:border-[#6f4fcc] bg-[#1A1138] hover:bg-[#251752] rounded transition-all"
+                    className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#141413] hover:text-[#1E56A0] border border-[#D5D5CE] hover:border-[#1E56A0] bg-white rounded transition-all"
                   >
-                    <ExternalLink size={12} />
-                    <span>View demo folder</span>
+                    <ExternalLink size={13} />
+                    <span>View Demo Drive Folder</span>
                   </a>
                 </div>
               </div>
+
             </div>
           </motion.div>
         </div>
 
 
         {/* ============================================================== */}
-        {/* PROJECT 02: HOSPITAL INFORMATION SYSTEM (EDITORIAL LIGHT)      */}
+        {/* PROJECT 02: HOSPITAL INFORMATION SYSTEM (CLEAN & DIRECT CARD)  */}
         {/* ============================================================== */}
         <div id="project-his" className="scroll-mt-28">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="border border-[#E5E5DE] bg-white rounded-xl p-6 sm:p-10 shadow-[0_4px_25px_rgba(0,0,0,0.03)] space-y-10"
+            transition={{ duration: 0.4 }}
+            className="border border-[#E5E5DE] bg-white rounded-xl p-6 sm:p-8 shadow-[0_2px_16px_rgba(0,0,0,0.03)] hover:border-[#1E56A0] transition-colors space-y-6"
           >
-            {/* Meta Row */}
+            {/* Meta Header */}
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#EFEFE8] pb-4 text-xs font-mono text-[#787A72]">
               <div className="flex items-center gap-3">
                 <span className="font-bold text-[#1E56A0] text-sm">02</span>
@@ -305,95 +294,109 @@ function Projects() {
                   HOSPITAL EHR PLATFORM // .NET 8
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-[#2E6B47] font-medium">
-                <span className="w-2 h-2 rounded-full bg-[#2E6B47]" />
+              <div className="flex items-center gap-2 text-emerald-700 font-medium">
+                <span className="w-2 h-2 rounded-full bg-emerald-600" />
                 <span>In Production &bull; Subharti Hospital</span>
               </div>
             </div>
 
-            {/* Title & Domain Summary */}
-            <div className="space-y-2">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#141413] tracking-tight">
-                Hospital Information System (HIS)
-              </h3>
-              <p className="text-base text-[#4A4C46] font-normal">
-                Outpatient check-in kiosks, local hardware scanner bridge, campus pharmacy, and automated billing.
-              </p>
-            </div>
+            {/* Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+              
+              {/* Main Information (Col 7) */}
+              <div className="lg:col-span-7 space-y-4">
+                <div>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+                    Hospital Information System (HIS)
+                  </h3>
+                  <p className="text-sm font-mono text-[#1E56A0] mt-1 font-medium">
+                    ASP.NET Core (.NET 8) &bull; EF Core 8 &bull; SQL Server &bull; WebSockets &bull; Razor Pages
+                  </p>
+                </div>
 
-            {/* VISUAL COMPOSITION: HIS Clinical Modules */}
-            <div className="pt-2">
-              <HisSystemVisual />
-            </div>
-
-            {/* Structured Engineering Storytelling (Problem, What I Built, Key Impact) */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 text-sm border-t border-[#EFEFE8]">
-              {/* Problem */}
-              <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
-                <span className="font-mono text-xs uppercase tracking-wider text-rose-700 font-bold block">
-                  The Problem
-                </span>
-                <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Morning outpatient lines backed up with manual paperwork, handwritten prescriptions couldn't be indexed, and the campus pharmacy had no real-time link to patient billing.
+                <p className="text-sm sm:text-base text-[#4A4C46] leading-relaxed">
+                  Developed core operational modules for Subharti Hospital, replacing manual paper bottlenecks with digital workflows. Implemented self-service OPD kiosks, engineered a native hardware bridge service to stream scanner documents into web records, and built the campus pharmacy inventory and billing pipeline.
                 </p>
-              </div>
 
-              {/* What I Built */}
-              <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#1E56A0] font-bold block">
-                  What I Built
-                </span>
-                <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Engineered self-check-in kiosks with instant UHID barcode cards. Built <code className="text-[#1E56A0] font-mono text-xs">HIS.ScannerBridge</code> (a local C# WebSocket service) linking Canon flatbed scanners directly to the web app for prescription OCR.
-                </p>
-              </div>
-
-              {/* Key Impact */}
-              <div className="space-y-2 bg-[#FBFBF9] p-4 rounded-lg border border-[#EFEFE8]">
-                <span className="font-mono text-xs uppercase tracking-wider text-[#2E6B47] font-bold block">
-                  Key Impact
-                </span>
-                <p className="text-[#4A4C46] leading-relaxed text-xs sm:text-sm font-normal">
-                  Dramatically reduced OPD wait times, digitized thousands of paper prescriptions, and unified pharmacy inventory with automated patient billing.
-                </p>
-              </div>
-            </div>
-
-            {/* Interactive Technical Architecture Diagram */}
-            <div className="space-y-3 pt-2">
-              <span className="font-mono text-xs uppercase tracking-wider text-[#787A72] font-semibold block">
-                System Pipeline (Hover nodes to inspect responsibility):
-              </span>
-              <HisArchitectureFlow />
-            </div>
-
-            {/* Tech Stack & Action Buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[#EFEFE8]">
-              <div className="flex flex-wrap gap-1.5">
-                {["ASP.NET Core (.NET 8)", "C#", "EF Core 8", "SQL Server", "WebSockets", "Razor Pages", "Twilio SMS", "JWT Auth"].map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
-                  >
-                    {t}
+                {/* What I Specifically Built */}
+                <div className="space-y-2 pt-2">
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#141413] block">
+                    What I Built:
                   </span>
-                ))}
+                  <ul className="space-y-2 text-xs sm:text-sm text-[#383A35]">
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>OPD Check-In Kiosks:</strong> Self-registration kiosk engine with automatic UHID creation and thermal barcode printing.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>HIS.ScannerBridge:</strong> Local C# WebSocket service bridging physical Canon scanners with the web EHR for OCR digitization.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>Pharmacy Stock &amp; Billing:</strong> Campus pharmacy management tracking real-time medicine batches, pricing, and automated checkout.</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-[#1E56A0] font-bold mt-0.5">&bull;</span>
+                      <span><strong>EHR &amp; Queue Management:</strong> Automated token displays, diagnostic report attachment, and role-based staff permissions.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Tech Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-3">
+                  {["ASP.NET Core (.NET 8)", "C#", "EF Core 8", "SQL Server", "WebSockets", "Razor Pages", "Twilio SMS", "JWT Auth"].map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <button
-                onClick={() => setSelectedProject(modalData.his)}
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#141413] hover:bg-[#1E56A0] rounded transition-all cursor-pointer shadow-sm"
-              >
-                <span>View case study &amp; details</span>
-                <ArrowRight size={13} />
-              </button>
+              {/* Right Column: Key Metrics & Actions (Col 5) */}
+              <div className="lg:col-span-5 space-y-4">
+                {/* Metric Highlights */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-[#1E56A0]">Instant</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">UHID &amp; Barcode Card</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-emerald-600">Native C#</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Hardware Scanner Bridge</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-[#141413]">Unified</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Pharmacy &amp; Billing</div>
+                  </div>
+                  <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-4 rounded-lg">
+                    <div className="text-2xl font-bold font-mono text-emerald-600">Active</div>
+                    <div className="text-xs text-[#787A72] font-mono mt-1">Hospital OPD Daily</div>
+                  </div>
+                </div>
+
+                {/* Action Card */}
+                <div className="border border-[#EFEFE8] bg-[#FBFBF9] p-5 rounded-lg space-y-3">
+                  <button
+                    onClick={() => setSelectedProject(modalData.his)}
+                    className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-semibold text-white bg-[#141413] hover:bg-[#1E56A0] rounded transition-all cursor-pointer shadow-sm"
+                  >
+                    <span>View Case Study &amp; Technical Details</span>
+                    <ArrowRight size={14} />
+                  </button>
+                </div>
+              </div>
+
             </div>
           </motion.div>
         </div>
 
 
         {/* ============================================================== */}
-        {/* PROJECT 03: DISTRIBUTED SYSTEMS & TELEPHONY AI                 */}
+        {/* MORE ENGINEERING WORK: LUCY & SMARTFLEET                      */}
         {/* ============================================================== */}
         <div id="project-secondary" className="scroll-mt-28 space-y-6 pt-6">
           <div className="flex items-center justify-between border-b border-[#E5E5DE] pb-4">
@@ -520,7 +523,7 @@ function Projects() {
                   href="https://github.com/devesh905/smartfleetWeb"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#4A4C46] hover:text-[#141413]"
+                  className="inline-flex items-center gap-1 text-xs font-medium text-[#4A4C46] hover:text-[#141413]"
                 >
                   <FaGithub size={13} />
                   <span>GitHub Repository</span>
