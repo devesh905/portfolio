@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight, FileText } from "lucide-react";
 import ResumeModal from "../sections/ResumeModal";
 
-const navLinks = [
+const leftNavLinks = [
   { label: "Systems", href: "#projects" },
   { label: "Capabilities", href: "#systems" },
   { label: "Principles", href: "#principles" },
+];
+
+const rightNavLinks = [
   { label: "Experience", href: "#experience" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
+
+const allNavLinks = [...leftNavLinks, ...rightNavLinks];
 
 function Navbar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -22,7 +27,7 @@ function Navbar() {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 20);
 
-      const sectionElements = navLinks
+      const sectionElements = allNavLinks
         .map((link) => ({
           id: link.href.slice(1),
           el: document.querySelector(link.href),
@@ -51,119 +56,211 @@ function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[84px] ${
           isScrolled
-            ? "bg-[#f6f4f0]/95 backdrop-blur-md border-b border-[#e2dad0] py-3.5 shadow-[0_4px_20px_rgba(23,20,18,0.06)] opacity-100 translate-y-0"
-            : "opacity-0 pointer-events-none -translate-y-4"
+            ? "bg-[#f6f4f0]/95 backdrop-blur-md border-b border-[#e2dad0] shadow-[0_4px_24px_rgba(23,20,18,0.06)]"
+            : "bg-[#f6f4f0]/85 backdrop-blur-sm border-b border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between">
-          {/* Brand Wordmark (Left) */}
-          <a
-            href="#top"
-            className="flex items-center gap-3 text-left group transition-opacity hover:opacity-85"
-          >
-            <div className="flex flex-col">
-              <span className="font-display text-sm sm:text-base font-black tracking-tight text-[#171412] uppercase">
-                Devesh Upadhyay
-              </span>
-              <span className="font-mono text-[11px] text-[#ff4829] font-medium tracking-normal -mt-0.5">
-                ASP.NET Core &bull; Telemetry &bull; AI
-              </span>
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full relative">
+          {/* Desktop 3-Column Grid Layout (Guarantees DEVESH in true horizontal center with zero overlap) */}
+          <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] items-center h-full">
+            {/* Left Column: Left Nav Links flanking DEVESH on the left */}
+            <div className="flex items-center justify-end gap-5 xl:gap-8 pr-6 xl:pr-10 min-w-0">
+              {leftNavLinks.map((link) => {
+                const id = link.href.slice(1);
+                const isActive = activeSection === id;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${
+                      isActive
+                        ? "text-[#ff4829]"
+                        : "text-[#171412] hover:text-[#ff4829]"
+                    }`}
+                  >
+                    {isActive && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829] shrink-0" />
+                    )}
+                    <span>{link.label}</span>
+                  </a>
+                );
+              })}
             </div>
-          </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-7">
-            {navLinks.map((link) => {
-              const id = link.href.slice(1);
-              const isActive = activeSection === id;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className={`text-xs font-mono tracking-tight transition-colors py-1 relative ${
-                    isActive
-                      ? "text-[#ff4829] font-bold"
-                      : "text-[#57534e] hover:text-[#171412]"
-                  }`}
+            {/* Center Column: Perfectly Centered Brand Wordmark */}
+            <div className="flex items-center justify-center px-4 shrink-0">
+              <a
+                href="#top"
+                className="font-display font-black text-2xl sm:text-[28px] tracking-[-0.045em] text-[#ff4829] uppercase leading-none transition-transform hover:scale-[1.02] select-none whitespace-nowrap"
+              >
+                DEVESH
+              </a>
+            </div>
+
+            {/* Right Column: Right Nav Links flanking DEVESH on the right + Action Buttons */}
+            <div className="flex items-center justify-between pl-6 xl:pl-10 h-full min-w-0">
+              {/* Right Nav Links */}
+              <div className="flex items-center gap-5 xl:gap-8">
+                {rightNavLinks.map((link) => {
+                  const id = link.href.slice(1);
+                  const isActive = activeSection === id;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${
+                        isActive
+                          ? "text-[#ff4829]"
+                          : "text-[#171412] hover:text-[#ff4829]"
+                      }`}
+                    >
+                      {isActive && (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829] shrink-0" />
+                      )}
+                      <span>{link.label}</span>
+                    </a>
+                  );
+                })}
+              </div>
+
+              {/* Far Right Action Buttons */}
+              <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 ml-4 xl:ml-6">
+                <button
+                  type="button"
+                  onClick={() => setIsResumeOpen(true)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#171412]/30 hover:border-[#ff4829] hover:text-[#ff4829] text-[#171412] bg-[#f6f4f0]/90 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xs whitespace-nowrap"
                 >
-                  {link.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#ff4829] rounded-sm" />
-                  )}
-                </a>
-              );
-            })}
-          </nav>
+                  <FileText size={12} className="text-[#ff4829]" />
+                  <span>Résumé</span>
+                </button>
 
-          {/* Right Action Buttons */}
-          <div className="hidden sm:flex items-center gap-3">
+                <a
+                  href="#projects"
+                  className="group relative inline-flex items-center gap-2.5 h-[38px] pl-3.5 sm:pl-4 pr-1.5 rounded-full border border-[#171412]/40 hover:border-[#171412] bg-[#f6f4f0] hover:bg-[#171412] transition-all duration-300 overflow-hidden cursor-pointer shadow-xs whitespace-nowrap"
+                >
+                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#171412] group-hover:text-[#f6f4f0] transition-colors duration-300">
+                    Inspect Systems
+                  </span>
+                  <span className="w-6 h-6 rounded-full bg-[#ff4829] text-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-45">
+                    <ArrowUpRight size={13} strokeWidth={2.5} />
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Live Status Note (Only on 2XL wide screens, absolutely placed on far left edge so it never affects the center alignment) */}
+          <div className="hidden 2xl:flex items-center gap-2 absolute left-6 lg:left-8 top-1/2 -translate-y-1/2 text-[11px] font-mono font-semibold tracking-[0.16em] uppercase text-[#78716c] pointer-events-none whitespace-nowrap">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4829] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4829]" />
+            </span>
+            <span>SUBHARTI ICU</span>
+            <span className="text-[#ff4829]">·</span>
+            <span className="text-[#171412]">ACTIVE DEV</span>
+          </div>
+
+          {/* Mobile Bar (< lg) */}
+          <div className="flex lg:hidden items-center justify-between h-full">
             <button
               type="button"
-              onClick={() => setIsResumeOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-mono text-[#171412] hover:text-[#ff4829] border border-[#d6cebf] hover:border-[#ff4829] bg-white rounded-md transition-all cursor-pointer shadow-sm"
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+              aria-label="Toggle navigation menu"
+              className="p-2 rounded-full border border-[#171412]/20 hover:border-[#ff4829] text-[#171412] hover:text-[#ff4829] bg-[#f6f4f0] transition-colors cursor-pointer"
             >
-              <FileText size={13} className="text-[#ff4829]" />
-              <span>Résumé</span>
+              {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
 
             <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white bg-[#ff4829] hover:bg-[#e03a1d] rounded-md transition-all cursor-pointer shadow-sm"
+              href="#top"
+              className="font-display font-black text-2xl tracking-[-0.045em] text-[#ff4829] uppercase leading-none select-none"
             >
-              <span>Get in touch</span>
-              <ArrowUpRight size={13} />
+              DEVESH
             </a>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            aria-label="Toggle mobile navigation menu"
-            className="md:hidden rounded-md border border-[#d6cebf] p-2 text-[#171412] hover:text-[#ff4829] bg-white transition-colors cursor-pointer"
-          >
-            {isMobileOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
-
-        {/* Mobile Dropdown Panel */}
-        {isMobileOpen && (
-          <div className="md:hidden border-b border-[#e2dad0] bg-[#f6f4f0] px-5 py-4 space-y-3">
-            <nav className="flex flex-col space-y-2.5">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className="text-sm font-mono text-[#57534e] hover:text-[#171412] py-1 border-b border-[#e2dad0]"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="flex items-center gap-2">
               <button
                 type="button"
-                onClick={() => {
-                  setIsMobileOpen(false);
-                  setIsResumeOpen(true);
-                }}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-mono text-[#171412] border border-[#d6cebf] bg-white rounded-md"
+                onClick={() => setIsResumeOpen(true)}
+                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#171412]/30 text-[#171412] font-mono text-[11px] font-bold uppercase tracking-wider"
               >
-                <FileText size={13} className="text-[#ff4829]" />
-                <span>View Résumé</span>
+                <FileText size={11} className="text-[#ff4829]" />
+                <span>CV</span>
               </button>
 
               <a
-                href="#contact"
-                onClick={() => setIsMobileOpen(false)}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#ff4829] rounded-md"
+                href="#projects"
+                className="w-8 h-8 rounded-full bg-[#ff4829] text-white flex items-center justify-center shrink-0 shadow-xs"
+                aria-label="Inspect Systems"
               >
-                <span>Get in touch</span>
+                <ArrowUpRight size={15} strokeWidth={2.5} />
               </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Dropdown Menu */}
+        {isMobileOpen && (
+          <div className="lg:hidden bg-[#f6f4f0] border-b border-[#e2dad0] px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col space-y-4">
+              <div className="flex items-center gap-2 pb-3 border-b border-[#e2dad0] text-[11px] font-mono font-semibold tracking-wider uppercase text-[#78716c]">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4829] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4829]" />
+                </span>
+                <span>SUBHARTI ICU · ACTIVE DEV</span>
+              </div>
+
+              <nav className="flex flex-col space-y-3">
+                {allNavLinks.map((link) => {
+                  const id = link.href.slice(1);
+                  const isActive = activeSection === id;
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setIsMobileOpen(false)}
+                      className={`flex items-center justify-between font-mono text-sm tracking-wider uppercase font-semibold py-1.5 transition-colors ${
+                        isActive
+                          ? "text-[#ff4829]"
+                          : "text-[#171412] hover:text-[#ff4829]"
+                      }`}
+                    >
+                      <span>{link.label}</span>
+                      {isActive ? (
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829]" />
+                      ) : (
+                        <ArrowUpRight size={14} className="opacity-40" />
+                      )}
+                    </a>
+                  );
+                })}
+              </nav>
+
+              <div className="pt-3 border-t border-[#e2dad0] flex flex-col gap-2.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMobileOpen(false);
+                    setIsResumeOpen(true);
+                  }}
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full border border-[#171412]/30 hover:border-[#171412] font-mono text-xs font-bold uppercase tracking-wider text-[#171412]"
+                >
+                  <FileText size={13} className="text-[#ff4829]" />
+                  <span>View Full Résumé</span>
+                </button>
+
+                <a
+                  href="#projects"
+                  onClick={() => setIsMobileOpen(false)}
+                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-[#ff4829] hover:bg-[#e03a1d] font-mono text-xs font-bold uppercase tracking-wider text-white"
+                >
+                  <span>Inspect Systems</span>
+                  <ArrowUpRight size={14} />
+                </a>
+              </div>
             </div>
           </div>
         )}

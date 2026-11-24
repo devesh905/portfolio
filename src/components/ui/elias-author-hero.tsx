@@ -149,6 +149,8 @@ export interface EliasProps {
   splash?: Partial< EliasSplash >
   /** Forces reduced motion on or off; by default the visitor's prefers-reduced-motion setting is used */
   reducedMotion?: boolean
+  /** Hides the internal static hero navbar so a sticky navbar can manage navigation */
+  hideNav?: boolean
   /** Extra classes for the outer wrapper */
   className?: string
 }
@@ -202,6 +204,7 @@ interface EliasContextValue {
   MOTION: EliasMotion
   SPLASH: EliasSplash
   REDUCED: boolean | undefined
+  HIDE_NAV?: boolean
 }
 
 const EMPTY_LETTER: EliasLetter = { eyebrow: '', greeting: '', stamp: '', postmark: '', seal: '', sealing: '', messages: [], counter: '' }
@@ -1595,7 +1598,7 @@ const SPOT_SPRING = { stiffness: 380, damping: 36, mass: 0.6 }
  */
 const HeroSection = () => {
   // Context
-  const { BOOKS, IMAGES, LETTER: letter, MOTION, NAME, REDUCED } = useElias()
+  const { BOOKS, IMAGES, LETTER: letter, MOTION, NAME, REDUCED, HIDE_NAV } = useElias()
 
   // States
   const [opened, setOpened] = useState(false)
@@ -1732,7 +1735,11 @@ const HeroSection = () => {
       {!prefersReduced && <InkSplash onOpen={handleSplashOpen} />}
 
       <IntroContext.Provider value={started}>
-        <HeroNavbar />
+        {HIDE_NAV ? (
+          <div aria-hidden className='ea-wrap h-[var(--ea-nav-h,84px)] invisible pointer-events-none' />
+        ) : (
+          <HeroNavbar />
+        )}
 
         <div className='ea-wrap ea-stage'>
           <m.div ref={canvasRef} className='ea-canvas' style={spotStyle}>
@@ -3283,6 +3290,7 @@ const Elias = ({
   motion,
   splash,
   reducedMotion,
+  hideNav,
   className
 }: EliasProps) => {
   const value: EliasContextValue = {
@@ -3307,7 +3315,8 @@ const Elias = ({
       cursor: { ...DEFAULT_MOTION.cursor, ...motion?.cursor }
     },
     SPLASH: { ...DEFAULT_SPLASH, ...splash },
-    REDUCED: reducedMotion
+    REDUCED: reducedMotion,
+    HIDE_NAV: hideNav
   }
 
   return (

@@ -20,6 +20,7 @@ function Hero() {
   return (
     <section id="home" className="relative w-full">
       <Elias
+        hideNav={true}
         name={{ first: "DEVESH", last: "UPADHYAY" }}
         brand={{ name: "DEVESH", href: "#top" }}
         navLinks={{
