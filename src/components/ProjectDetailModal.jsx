@@ -1,10 +1,9 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
-import { X, Check, ArrowRight } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { X, Check, ArrowRight, ExternalLink } from "lucide-react";
 
 function ProjectDetailModal({ project, onClose }) {
-  // Close on Escape key
   useEffect(() => {
     if (!project) return;
     function handleKeyDown(e) {
@@ -24,7 +23,7 @@ function ProjectDetailModal({ project, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-[#141413]/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6"
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-6"
           onClick={onClose}
         >
           <motion.div
@@ -33,22 +32,22 @@ function ProjectDetailModal({ project, onClose }) {
             exit={{ opacity: 0, scale: 0.98, y: 15 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="border border-[#E5E5DE] rounded-lg w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col bg-[#FBFBF9] text-[#141413]"
+            className="border border-[#e2dad0] rounded-xl w-full max-w-4xl max-h-[90vh] overflow-hidden shadow-2xl flex flex-col bg-white text-[#171412]"
           >
             {/* Header */}
-            <div className="flex shrink-0 items-start justify-between gap-6 p-6 sm:p-8 border-b border-[#E5E5DE] bg-white">
+            <div className="flex shrink-0 items-start justify-between gap-6 p-6 sm:p-7 border-b border-[#e2dad0] bg-[#efe9df]">
               <div className="space-y-1.5">
-                <div className="flex items-center gap-3 text-xs font-mono text-[#787A72]">
-                  <span>{project.number || "01"}</span>
+                <div className="flex items-center gap-2.5 text-xs font-mono text-[#77716e]">
+                  <span className="text-[#ff4829] font-bold">{project.number || "01"}</span>
                   <span>&bull;</span>
                   <span>{project.role}</span>
                   <span>&bull;</span>
-                  <span className="font-semibold text-[#183654]">{project.status}</span>
+                  <span className="font-semibold text-[#171412]">{project.status}</span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-[#141413] tracking-tight">
+                <h2 className="text-2xl sm:text-3xl font-black font-display text-[#171412] tracking-tight">
                   {project.title}
                 </h2>
-                <p className="text-sm text-[#4A4C46] max-w-2xl font-normal">
+                <p className="text-sm text-[#57534e] max-w-2xl font-normal">
                   {project.subtitle}
                 </p>
               </div>
@@ -56,8 +55,8 @@ function ProjectDetailModal({ project, onClose }) {
               <button
                 type="button"
                 onClick={onClose}
-                aria-label="Close project notes"
-                className="rounded border border-[#E5E5DE] p-2 text-[#787A72] hover:text-[#141413] hover:border-[#C8C8BE] bg-[#FBFBF9] transition-colors cursor-pointer"
+                aria-label="Close project modal"
+                className="rounded-md border border-[#d6cebf] p-2 text-[#77716e] hover:text-[#171412] hover:border-[#ff4829] bg-white transition-colors cursor-pointer shadow-sm"
               >
                 <X size={18} />
               </button>
@@ -65,58 +64,40 @@ function ProjectDetailModal({ project, onClose }) {
 
             {/* Content Scroll Area */}
             <div className="grid min-h-0 flex-1 gap-8 overflow-y-auto p-6 sm:p-8 md:grid-cols-[1.4fr_0.9fr]">
-              <div className="space-y-7 pr-1">
-                
-                {/* The Engineering Problem */}
+              <div className="space-y-6 pr-1">
+                {/* The Operational Problem */}
                 {project.problem && (
                   <div className="space-y-2">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
+                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff4829]">
                       01 &mdash; The Operational Problem
                     </h3>
-                    <p className="text-sm sm:text-base leading-relaxed text-[#4A4C46]">
+                    <p className="text-sm sm:text-base leading-relaxed text-[#57534e]">
                       {project.problem}
                     </p>
                   </div>
                 )}
 
-                {/* Architecture & Decisions */}
+                {/* Architecture & Implementation */}
                 <div className="space-y-2">
-                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                    02 &mdash; Implementation &amp; Architecture
+                  <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff4829]">
+                    02 &mdash; Architecture &amp; Engineering
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed text-[#4A4C46]">
-                    {project.fullDescription || project.description}
+                  <p className="text-sm sm:text-base leading-relaxed text-[#57534e]">
+                    {project.description}
                   </p>
                 </div>
 
-                {/* Real Engineering Highlights */}
+                {/* Key Technical Highlights */}
                 {project.highlights?.length > 0 && (
                   <div className="space-y-2.5">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                      03 &mdash; Technical Highlights
+                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#ff4829]">
+                      03 &mdash; Engineering Highlights
                     </h3>
-                    <ul className="space-y-2 text-xs sm:text-sm text-[#383A35]">
+                    <ul className="space-y-2 text-xs sm:text-sm text-[#57534e]">
                       {project.highlights.map((item) => (
                         <li key={item} className="flex items-start gap-2.5">
-                          <Check size={15} className="text-[#183654] flex-shrink-0 mt-0.5" />
-                          <span className="leading-relaxed">{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Core Features */}
-                {project.features?.length > 0 && (
-                  <div className="space-y-2.5">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#183654]">
-                      04 &mdash; Key Capabilities
-                    </h3>
-                    <ul className="space-y-1.5 text-xs sm:text-sm text-[#4A4C46]">
-                      {project.features.map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
-                          <span className="text-[#787A72] font-mono text-xs mt-0.5">&mdash;</span>
-                          <span className="leading-relaxed">{feature}</span>
+                          <Check size={14} className="text-[#ff4829] mt-0.5 shrink-0" />
+                          <span>{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -124,19 +105,18 @@ function ProjectDetailModal({ project, onClose }) {
                 )}
               </div>
 
-              {/* Sidebar */}
-              <aside className="space-y-6">
-                
-                {/* Tech Stack */}
-                <div className="border border-[#E5E5DE] bg-white rounded p-5 space-y-3">
-                  <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-[#787A72]">
-                    Technologies Used
+              {/* Sidebar: Tech Stack, Metrics & Links */}
+              <div className="space-y-5 border-t border-[#e2dad0] pt-6 md:border-t-0 md:border-l md:pl-8 md:pt-0">
+                {/* Stack */}
+                <div className="space-y-2">
+                  <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-[#77716e]">
+                    Technology &amp; Protocols
                   </h4>
                   <div className="flex flex-wrap gap-1.5">
-                    {project.tech.map((t) => (
+                    {project.tech?.map((t) => (
                       <span
                         key={t}
-                        className="text-xs font-mono font-medium text-[#141413] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                        className="text-xs font-mono text-[#171412] bg-[#efe9df] border border-[#d6cebf] px-2.5 py-1 rounded-sm"
                       >
                         {t}
                       </span>
@@ -144,62 +124,45 @@ function ProjectDetailModal({ project, onClose }) {
                   </div>
                 </div>
 
-                {/* Links */}
-                <div className="border border-[#E5E5DE] bg-white rounded p-5 space-y-3">
-                  <h4 className="text-xs font-mono font-semibold uppercase tracking-wider text-[#787A72]">
-                    Source &amp; Deployment
-                  </h4>
-                  <div className="flex flex-col gap-2">
-                    {project.github ? (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 rounded border border-[#141413] bg-[#141413] text-white hover:bg-[#2A2B29] px-4 py-2.5 text-xs font-semibold transition-all"
-                      >
-                        <FaGithub size={14} />
-                        <span>View Source on GitHub</span>
-                      </a>
-                    ) : (
-                      <div className="rounded border border-[#EFEFE8] bg-[#FBFBF9] px-3.5 py-2.5 text-xs text-[#787A72] font-mono text-center">
-                        Codebase: Proprietary Hospital Network
-                      </div>
-                    )}
+                {/* Actions */}
+                <div className="space-y-2.5 pt-4 border-t border-[#e2dad0]">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-white bg-[#ff4829] hover:bg-[#e03a1d] rounded-md transition-all cursor-pointer shadow-sm"
+                    >
+                      <ExternalLink size={13} />
+                      <span>Watch Live System Demo</span>
+                    </a>
+                  )}
 
-                    {project.demo ? (
-                      <a
-                        href={project.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 rounded border border-[#D5D5CE] bg-white hover:border-[#141413] text-[#141413] px-4 py-2.5 text-xs font-semibold transition-all"
-                      >
-                        <FaExternalLinkAlt size={11} />
-                        <span>Open Demo / Video Folder</span>
-                      </a>
-                    ) : (
-                      <div className="rounded border border-[#EFEFE8] bg-[#FBFBF9] px-3.5 py-2.5 text-xs text-[#787A72] font-mono text-center">
-                        Deployment: Internal Hospital Network
-                      </div>
-                    )}
-                  </div>
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold text-[#171412] hover:text-[#ff4829] border border-[#d6cebf] hover:border-[#ff4829] bg-white rounded-md transition-all cursor-pointer shadow-sm"
+                    >
+                      <FaGithub size={14} />
+                      <span>Inspect Repository</span>
+                    </a>
+                  )}
                 </div>
+              </div>
+            </div>
 
-                {/* Personal Connect Note */}
-                <div className="border border-[#E5E5DE] bg-[#F3F3ED] rounded p-5 space-y-2">
-                  <p className="text-xs text-[#4A4C46] leading-relaxed">
-                    Interested in talking through the architecture or discussing a backend engineering role?
-                  </p>
-                  <a
-                    href="#contact"
-                    onClick={onClose}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#183654] hover:underline"
-                  >
-                    <span>Connect with Devesh</span>
-                    <ArrowRight size={13} />
-                  </a>
-                </div>
-
-              </aside>
+            {/* Footer */}
+            <div className="flex items-center justify-between border-t border-[#e2dad0] bg-[#efe9df] px-6 py-3.5 text-xs font-mono text-[#77716e]">
+              <span>Devesh Kumar Upadhyay &bull; Production Portfolio</span>
+              <button
+                type="button"
+                onClick={onClose}
+                className="hover:text-[#171412] cursor-pointer transition-colors font-semibold"
+              >
+                Close ESC
+              </button>
             </div>
           </motion.div>
         </motion.div>

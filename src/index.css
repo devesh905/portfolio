@@ -1,75 +1,54 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Figtree", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-serif: "Newsreader", Georgia, Cambria, "Times New Roman", serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-mono: "IBM Plex Mono", "JetBrains Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
 
-  --color-warm-bg: #FBFBF9;
-  --color-warm-surface: #FFFFFF;
-  --color-warm-subtle: #F3F3ED;
-  --color-warm-border: #E5E5DE;
-  --color-warm-border-strong: #C8C8BE;
-  
-  --color-ink-primary: #141413;
-  --color-ink-secondary: #4A4C46;
-  --color-ink-muted: #787A72;
-  --color-ink-subtle: #9EA098;
-
-  /* Engineering Cobalt Accent */
-  --color-accent-cobalt: #1E56A0;
-  --color-accent-cobalt-light: #2563EB;
-  --color-accent-cobalt-subtle: #EFF6FF;
-  
-  /* Telemetry Live Accents */
-  --color-telemetry-green: #10B981;
-  --color-telemetry-cyan: #06B6D4;
-
-  /* Dark Contrast Sections */
-  --color-dark-bg: #0D1017;
-  --color-dark-surface: #141822;
-  --color-dark-panel: #1A202C;
-  --color-dark-border: #232B3A;
-  --color-dark-text: #F1F5F9;
-  --color-dark-muted: #94A3B8;
+  /* Editorial Paper & Ink Palette */
+  --color-ea-page: #f6f4f0;
+  --color-ea-paper: #efe9df;
+  --color-ea-surface: #ffffff;
+  --color-ea-border: #e2dad0;
+  --color-ea-border-dark: #d5ccbf;
+  --color-ea-ink: #171412;
+  --color-ea-ink-muted: #57534e;
+  --color-ea-ink-light: #77716e;
+  --color-ea-accent: #ff4829;
+  --color-ea-accent-hover: #e03a1d;
 }
 
-/* Custom Scrollbars */
+/* Custom Editorial Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #F7F7F4;
+  background: #f6f4f0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D8D8CF;
+  background: #d6cebf;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #B5B5AA;
+  background: #b5aba0;
 }
 
 /* Base Body & Typography */
 html {
   scroll-behavior: smooth;
   font-family: var(--font-sans);
-  background-color: #FBFBF9;
-  color: #141413;
+  background-color: #f6f4f0;
+  color: #171412;
 }
 
 body {
   min-height: 100vh;
-  background-color: #FBFBF9;
-  color: #141413;
+  background-color: #f6f4f0;
+  color: #171412;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-/* Editorial Serif Utility */
-.font-editorial {
-  font-family: var(--font-serif);
-  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 /* Technical Monospace Utility */
@@ -78,23 +57,21 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Subtle Architectural Grid Background */
-.bg-grid-subtle {
+/* Subtle Architectural Grid on Paper */
+.bg-grid-paper {
   background-size: 32px 32px;
   background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(23, 20, 18, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(23, 20, 18, 0.04) 1px, transparent 1px);
 }
 
-.bg-grid-dark {
+.bg-dot-paper {
   background-size: 24px 24px;
-  background-image: 
-    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(23, 20, 18, 0.07) 1px, transparent 1px);
 }
 
 /* Clean Understated Focus */
 :focus-visible {
-  outline: 2px solid #1E56A0;
+  outline: 2px solid #ff4829;
   outline-offset: 2px;
 }

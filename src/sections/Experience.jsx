@@ -1,191 +1,228 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, ChevronDown, ChevronUp } from "lucide-react";
+import { Briefcase, GraduationCap, ChevronDown, ChevronUp, Layers, CheckCircle2 } from "lucide-react";
 
 const timelineData = [
   {
-    period: "2025 — Present",
-    role: "Jr. Software Developer",
+    period: "Aug 2025 — Present",
+    role: "Jr. Software Developer (Backend / .NET)",
     organization: "Chhatrapati Shivaji Subharti Hospital",
     location: "Meerut, UP, India",
     type: "Full-Time Production Engineering",
     responsibilities: [
-      "Built outpatient OPD registration portals and self-check-in kiosks with automated UHID generation and barcode card printing.",
-      "Engineered HIS.ScannerBridge (local C# WebSocket service) linking Canon flatbed scanners to the web EHR for one-click prescription digitization.",
-      "Developed real-time campus pharmacy inventory lookups and automated patient billing calculation engines.",
-      "Streamed 500Hz live ECG waveforms with SignalR for bedside ICU patient monitoring.",
-      "Designed custom delta compression cutting telemetry bandwidth by 25–45x with zero waveform degradation.",
-      "Eliminated EF Core DbContext multithreading crashes during parallel decompression using IServiceScopeFactory.",
-      "Integrated TCP/IP and HL7 protocols to normalize telemetry across Mindray and Comen bedside monitors.",
+      "Architected and developed modular ASP.NET Core Web APIs and Microservices to ingest, parse, and process high-frequency real-time patient telemetry data over TCP/IP and HL7 protocol.",
+      "Enforced SOLID principles, Clean Architecture, and design patterns (Repository Pattern, Dependency Injection) with custom Global Exception Handling Middleware.",
+      "Designed secure RESTful APIs with JWT Authentication & Role-Based Access Control (RBAC) (Super Admin / Admin / Doctor / Staff).",
+      "Engineered low-latency live streaming with SignalR and HTML5 Canvas, broadcasting real-time multi-lead ECG waveforms directly from Comen patient monitors at 500Hz.",
+      "Optimized SQL Server storage and query performance using delta encoding and GZip compression, reducing database footprint by 45% and accelerating data retrieval.",
+      "Built background services (IHostedService) to automate 7-day data purging and UHID normalization, keeping data clean and storage under control.",
+      "Integrated AI / LLM APIs (Groq LLaMA 3.3, Whisper) into a bilingual hospital voice assistant on Asterisk PBX.",
     ],
-    tech: ["ASP.NET Core (.NET 8)", "C#", "EF Core 8", "SQL Server", "SignalR", "HL7", "TCP/IP", "WebSockets"],
+    tech: ["ASP.NET Core (.NET 8)", "C#", "EF Core 8", "SQL Server (T-SQL)", "SignalR", "HL7", "TCP/IP Sockets", "WebSockets"],
   },
   {
-    period: "2024 — 2025",
-    role: "Apprentice Engineer",
+    period: "Oct 2024 — Jan 2025",
+    role: "Apprentice Engineer (Backend & Automation)",
     organization: "366Pi Technologies",
     location: "Ranchi, India",
-    type: "Engineering Apprenticeship",
+    type: "Internship & Production Automation",
     responsibilities: [
-      "Built automated regression test suites using Selenium WebDriver (C#) across core web application flows.",
-      "Assisted in reviewing SQL execution plans and adding targeted indexes to reduce query latency on reporting endpoints.",
-      "Collaborated with senior engineers on sprint reviews, bug reproduction, and QA validation.",
+      "Developed and maintained automated testing suites for RESTful APIs and web applications using C# (Selenium) and Postman.",
+      "Performed functional, regression, and data-driven testing; executed SQL query optimization and indexing checks to validate data pipeline integrity.",
+      "Collaborated with senior engineers on sprint reviews, bug triage, and continuous integration validations.",
     ],
-    tech: ["C#", "Selenium WebDriver", "SQL Server", "Index Optimization", "ASP.NET Core"],
+    tech: ["C#", "Selenium WebDriver", "Postman", "SQL Server", "Index Optimization", "REST APIs"],
   },
   {
-    period: "2020 — 2024",
+    period: "2024 — Present",
+    role: "AI Model Trainer & Multimodal Data Specialist",
+    organization: "Independent Technical Projects & AI Benchmarking",
+    location: "Remote / NCR, India",
+    type: "Generalist AI Specialist",
+    responsibilities: [
+      "Annotated complex multimodal datasets with bounding boxes, polygon semantic segmentation, keypoints, and video temporal action tags.",
+      "Conducted RLHF preference ranking and SFT prompt-response curation across C#, .NET, Python, and clinical workflows.",
+      "Audited frontier LLM reasoning chains to identify and eliminate algorithmic hallucinations and race conditions.",
+      "Maintained a 99.8% Inter-Annotator Agreement (IAA) score adhering to strict rubrics calibration.",
+    ],
+    tech: ["Image & Video Annotation", "Polygon Segmentation", "RLHF", "SFT Curation", "Prompt Engineering", "Hallucination Audits"],
+  },
+  {
+    period: "June 2020 — July 2024",
     role: "B.Tech in Computer Science & Engineering",
     organization: "Chandra Shekhar Azad University of Agriculture & Technology",
     location: "Kanpur, India",
-    type: "Undergraduate Degree (OGPA: 8.09 / 10.0)",
+    type: "Graduation (OGPA: 8.09 / 10.0)",
     responsibilities: [
-      "Four-year undergraduate degree with strong foundation in distributed computing, concurrency, operating systems, relational database architecture, and data structures.",
+      "Rigorous four-year engineering curriculum focused on Object-Oriented Programming (OOP), Data Structures & Algorithms, Relational Database Management Systems, Operating Systems, Computer Networks, and Distributed Computing.",
     ],
-    tech: ["C#", "Data Structures", "Database Management", "Operating Systems", "Networking"],
+    tech: ["C#", "OOP", "SQL", "Data Structures", "Computer Networks", "Operating Systems"],
   },
 ];
 
 const techStackGroups = [
   {
-    domain: "Backend & Core",
-    items: "C# · ASP.NET Core (.NET 8) · EF Core 8 · RESTful APIs · Python · Razor Pages",
+    domain: "Backend & Architecture",
+    items: "C# · ASP.NET Core (.NET 8) · ASP.NET Core Web API · Entity Framework Core · LINQ · SignalR · Microservices · Clean Architecture · SOLID · Repository Pattern · Dependency Injection · Global Exception Middleware",
   },
   {
-    domain: "Real-Time & Telemetry",
-    items: "SignalR · WebSockets · TCP/IP Sockets · HL7 Protocols · Hardware Bridges · Delta Compression",
+    domain: "AI & Model Training",
+    items: "Image & Video Annotation · Bounding Boxes · Polygon Semantic Segmentation · Temporal Video Tagging · RLHF Preference Ranking · SFT Prompt Curation · Hallucination Audits · Prompt Engineering · Groq LLaMA 3.3 · Whisper STT · OpenAI APIs · Asterisk PBX VoIP",
   },
   {
-    domain: "Data & Storage",
-    items: "SQL Server · MySQL · Database Normalization · Index Optimization · Execution Plans",
+    domain: "Databases & Storage",
+    items: "Microsoft SQL Server (T-SQL) · Stored Procedures · Indexing & Execution Plans · Delta Compression · GZip · MySQL · SQLite",
   },
   {
-    domain: "Frontend",
-    items: "React · JavaScript (ES6+) · Modern CSS · Vite · Component Architecture",
+    domain: "Networking & Telemetry",
+    items: "500Hz SignalR WebSockets · TCP/IP Sockets · HL7 Healthcare Protocol · Hardware Loopback Bridges · YARP API Gateway",
   },
   {
-    domain: "Testing & DevOps",
-    items: "Selenium WebDriver (C#) · Docker · Git & GitHub · Postman · Swagger · Twilio API",
+    domain: "Testing & Developer Tools",
+    items: "Selenium WebDriver (C#) · Postman · Git / GitHub · Visual Studio 2022 · VS Code · Docker",
   },
 ];
 
 function Experience() {
-  const [expandedIndex, setExpandedIndex] = useState(0); // Default first one expanded
+  const [expandedIndex, setExpandedIndex] = useState(0);
 
   return (
-    <section id="experience" className="py-24 sm:py-32 border-b border-[#E5E5DE] bg-[#F7F7F4]">
+    <section id="experience" className="py-24 sm:py-32 border-b border-[#e2dad0] bg-[#efe9df] text-[#171412]">
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E56A0] text-xs font-mono font-semibold uppercase tracking-wider">
-            <span>Career &bull; Production History</span>
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-sm">
+            <span>Career History &amp; Stack</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-bold text-[#141413] tracking-tight leading-tight">
-            Experience &amp; stack.
+          <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
+            Work experience &amp; stack.
           </h2>
-          <p className="text-base sm:text-lg text-[#4A4C46] leading-relaxed">
-            Real production roles and the technical tools applied across daily engineering work.
+          <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
+            Real-world engineering roles, mission-critical healthcare deployments, and frontier AI model training.
           </p>
         </div>
 
-        {/* Visual Career Timeline */}
-        <div className="space-y-6">
-          <div className="border-t border-[#E5E5DE] divide-y divide-[#E5E5DE] bg-white rounded-xl border shadow-[0_2px_15px_rgba(0,0,0,0.02)] overflow-hidden">
-            {timelineData.map((item, idx) => {
-              const isExpanded = expandedIndex === idx;
+        {/* Visual Career Timeline Accordion */}
+        <div className="space-y-4">
+          {timelineData.map((item, idx) => {
+            const isExpanded = expandedIndex === idx;
 
-              return (
-                <div key={item.period} className="p-6 sm:p-8 transition-colors">
-                  <div
-                    onClick={() => setExpandedIndex(isExpanded ? -1 : idx)}
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer select-none group"
-                  >
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-3">
-                        <span className="font-mono text-xs font-bold text-[#1E56A0]">
-                          {item.period}
-                        </span>
-                        <span className="text-xs text-[#787A72] font-mono hidden sm:inline">&bull;</span>
-                        <span className="text-xs text-[#787A72] font-mono hidden sm:inline">{item.type}</span>
-                      </div>
-                      <h3 className="text-xl sm:text-2xl font-bold text-[#141413] tracking-tight group-hover:text-[#1E56A0] transition-colors">
-                        {item.role}
-                      </h3>
-                      <div className="text-xs font-mono text-[#5A5C55]">
-                        {item.organization} &bull; {item.location}
-                      </div>
+            return (
+              <div
+                key={item.period}
+                className={`border rounded-xl transition-all duration-300 overflow-hidden bg-white shadow-sm ${
+                  isExpanded
+                    ? "border-[#ff4829]/80 shadow-md"
+                    : "border-[#e2dad0] hover:border-[#ff4829]/50"
+                }`}
+              >
+                <button
+                  type="button"
+                  onClick={() => setExpandedIndex(isExpanded ? -1 : idx)}
+                  className="w-full text-left p-6 sm:p-7 flex flex-col md:flex-row md:items-center justify-between gap-4 cursor-pointer"
+                >
+                  <div className="space-y-1.5">
+                    <div className="flex flex-wrap items-center gap-2.5 text-xs font-mono">
+                      <span className="text-[#ff4829] font-bold">{item.period}</span>
+                      <span className="text-[#d6cebf]">&bull;</span>
+                      <span className="text-[#77716e]">{item.location}</span>
+                      <span className="text-[#d6cebf]">&bull;</span>
+                      <span className="px-2 py-0.5 rounded-sm bg-[#efe9df] border border-[#d6cebf] text-[10px] text-[#171412] font-semibold">
+                        {item.type}
+                      </span>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                      <span className="text-xs font-mono text-[#1E56A0] hidden sm:inline font-semibold">
-                        {isExpanded ? "Hide Details" : "View Details"}
-                      </span>
-                      <div className="w-8 h-8 rounded-full border border-[#E5E5DE] bg-[#FBFBF9] flex items-center justify-center text-[#4A4C46] group-hover:border-[#1E56A0] group-hover:text-[#1E56A0] transition-colors">
-                        {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                      </div>
+                    <h3 className="text-xl sm:text-2xl font-bold font-display text-[#171412] tracking-tight">
+                      {item.role}
+                    </h3>
+                    <div className="text-sm text-[#57534e] font-medium">
+                      {item.organization}
                     </div>
                   </div>
 
-                  {/* Expandable Responsibility Breakdown */}
-                  {isExpanded && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="pt-6 mt-6 border-t border-[#EFEFE8] space-y-4"
-                    >
-                      <ul className="space-y-2 text-xs sm:text-sm text-[#4A4C46]">
-                        {item.responsibilities.map((resp, rIdx) => (
-                          <li key={rIdx} className="flex items-start gap-2.5">
-                            <span className="text-[#1E56A0] font-mono text-sm mt-0.5">&bull;</span>
+                  <div className="flex items-center gap-3 shrink-0">
+                    <div className="hidden sm:flex flex-wrap gap-1 max-w-xs justify-end">
+                      {item.tech.slice(0, 3).map((t) => (
+                        <span
+                          key={t}
+                          className="text-[10px] font-mono text-[#57534e] bg-[#efe9df] border border-[#e2dad0] px-2 py-0.5 rounded-sm"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="p-2 rounded border border-[#d6cebf] bg-[#efe9df] text-[#171412]">
+                      {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                    </div>
+                  </div>
+                </button>
+
+                {/* Expanded Details */}
+                {isExpanded && (
+                  <div className="px-6 pb-6 sm:px-7 sm:pb-7 pt-2 border-t border-[#e2dad0] space-y-4">
+                    <div className="space-y-2">
+                      <span className="text-[11px] font-mono uppercase tracking-wider text-[#ff4829] font-bold block">
+                        Core Responsibilities &amp; Impact:
+                      </span>
+                      <ul className="space-y-2 text-xs sm:text-sm text-[#57534e]">
+                        {item.responsibilities.map((resp) => (
+                          <li key={resp} className="flex items-start gap-2.5">
+                            <span className="text-[#ff4829] mt-1 shrink-0">&bull;</span>
                             <span className="leading-relaxed">{resp}</span>
                           </li>
                         ))}
                       </ul>
+                    </div>
 
-                      <div className="pt-2 flex flex-wrap gap-1.5">
+                    <div className="pt-2">
+                      <span className="text-[10px] font-mono uppercase tracking-wider text-[#77716e] font-semibold block mb-1.5">
+                        Technologies &amp; Protocols Used:
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
                         {item.tech.map((t) => (
                           <span
                             key={t}
-                            className="text-xs font-mono text-[#383A35] bg-[#F3F3ED] border border-[#E5E5DE] px-2.5 py-1 rounded"
+                            className="text-xs font-mono text-[#171412] bg-[#efe9df] border border-[#d6cebf] px-2.5 py-1 rounded-sm"
                           >
                             {t}
                           </span>
                         ))}
                       </div>
-                    </motion.div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
 
-        {/* Visual Engineering Stack (Clean Typography, No Huge Grid of Badges) */}
-        <div className="pt-8 space-y-6">
-          <div className="border-b border-[#E5E5DE] pb-4">
-            <span className="font-mono text-xs uppercase tracking-wider text-[#1E56A0] font-semibold block mb-1">
-              Applied Tooling
+        {/* Master Technical Stack Bento Grid */}
+        <div className="pt-6 space-y-4">
+          <div className="border-b border-[#e2dad0] pb-3">
+            <span className="text-xs font-mono uppercase tracking-wider text-[#ff4829] font-bold block mb-1">
+              Complete Technical Competency Matrix
             </span>
-            <h3 className="text-2xl font-bold text-[#141413] tracking-tight">
-              Visual Engineering Stack
+            <h3 className="text-2xl font-bold font-display text-[#171412] tracking-tight">
+              Tools, frameworks &amp; protocols applied in production.
             </h3>
           </div>
 
-          <div className="border-t border-[#E5E5DE] divide-y divide-[#E5E5DE] bg-white rounded-xl border shadow-[0_2px_15px_rgba(0,0,0,0.02)] overflow-hidden">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {techStackGroups.map((group) => (
               <div
                 key={group.domain}
-                className="p-5 sm:p-6 grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-8 items-baseline hover:bg-[#FBFBF9] transition-colors"
+                className="border border-[#e2dad0] bg-white rounded-xl p-5 space-y-2.5 shadow-sm hover:border-[#ff4829]/50 hover:shadow-md transition-all"
               >
-                <div className="md:col-span-4 font-mono text-xs font-bold text-[#1E56A0] uppercase tracking-wider">
-                  {group.domain}
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829]" />
+                  <span className="font-mono text-xs text-[#171412] font-bold uppercase tracking-wider">
+                    {group.domain}
+                  </span>
                 </div>
-                <div className="md:col-span-8 text-xs sm:text-sm text-[#383A35] font-mono leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-mono">
                   {group.items}
-                </div>
+                </p>
               </div>
             ))}
           </div>
