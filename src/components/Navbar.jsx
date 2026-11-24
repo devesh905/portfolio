@@ -125,28 +125,16 @@ function Navbar() {
                 })}
               </div>
 
-              {/* Far Right Action Buttons */}
-              <div className="flex items-center gap-2.5 sm:gap-3 shrink-0 ml-4 xl:ml-6">
+              {/* Far Right Action Button */}
+              <div className="flex items-center shrink-0 ml-4 xl:ml-6">
                 <button
                   type="button"
                   onClick={() => setIsResumeOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-[#171412]/30 hover:border-[#ff4829] hover:text-[#ff4829] text-[#171412] bg-[#f6f4f0]/90 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xs whitespace-nowrap"
+                  className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#171412]/30 hover:border-[#ff4829] hover:text-[#ff4829] text-[#171412] bg-[#f6f4f0]/90 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xs whitespace-nowrap"
                 >
                   <FileText size={12} className="text-[#ff4829]" />
                   <span>Résumé</span>
                 </button>
-
-                <a
-                  href="#projects"
-                  className="group relative inline-flex items-center gap-2.5 h-[38px] pl-3.5 sm:pl-4 pr-1.5 rounded-full border border-[#171412]/40 hover:border-[#171412] bg-[#f6f4f0] hover:bg-[#171412] transition-all duration-300 overflow-hidden cursor-pointer shadow-xs whitespace-nowrap"
-                >
-                  <span className="font-mono text-[11px] font-bold uppercase tracking-wider text-[#171412] group-hover:text-[#f6f4f0] transition-colors duration-300">
-                    Inspect Systems
-                  </span>
-                  <span className="w-6 h-6 rounded-full bg-[#ff4829] text-white flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:rotate-45">
-                    <ArrowUpRight size={13} strokeWidth={2.5} />
-                  </span>
-                </a>
               </div>
             </div>
           </div>
@@ -184,19 +172,11 @@ function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsResumeOpen(true)}
-                className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#171412]/30 text-[#171412] font-mono text-[11px] font-bold uppercase tracking-wider"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#171412]/30 text-[#171412] font-mono text-[11px] font-bold uppercase tracking-wider"
               >
                 <FileText size={11} className="text-[#ff4829]" />
-                <span>CV</span>
+                <span>Résumé</span>
               </button>
-
-              <a
-                href="#projects"
-                className="w-8 h-8 rounded-full bg-[#ff4829] text-white flex items-center justify-center shrink-0 shadow-xs"
-                aria-label="Inspect Systems"
-              >
-                <ArrowUpRight size={15} strokeWidth={2.5} />
-              </a>
             </div>
           </div>
         </div>
@@ -251,15 +231,6 @@ function Navbar() {
                   <FileText size={13} className="text-[#ff4829]" />
                   <span>View Full Résumé</span>
                 </button>
-
-                <a
-                  href="#projects"
-                  onClick={() => setIsMobileOpen(false)}
-                  className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full bg-[#ff4829] hover:bg-[#e03a1d] font-mono text-xs font-bold uppercase tracking-wider text-white"
-                >
-                  <span>Inspect Systems</span>
-                  <ArrowUpRight size={14} />
-                </a>
               </div>
             </div>
           </div>

@@ -37,10 +37,6 @@ function Hero() {
           label: "Subharti ICU",
           detail: "Active Dev"
         }}
-        navCta={{
-          label: "Inspect Systems",
-          href: "#projects"
-        }}
         intro={{
           roles: [".NET 8 Engineer", "500Hz ICU Telemetry", "AI Data & RLHF"],
           headline: [
