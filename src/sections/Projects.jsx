@@ -163,8 +163,8 @@ function Projects() {
     <section id="projects" className="py-24 sm:py-32 bg-[#efe9df] text-[#171412] border-b border-[#e2dad0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-14 sm:mb-18 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end border-b border-[#e2dad0] pb-8">
-          <div className="max-w-2xl">
+        <div className="mb-14 sm:mb-18 flex flex-col items-start justify-between gap-6 xl:flex-row xl:items-end border-b border-[#e2dad0] pb-8">
+          <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
               <span>Production Systems &bull; High Reliability</span>
             </div>
@@ -177,7 +177,7 @@ function Projects() {
           </div>
 
           {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center bg-white p-1 rounded-full border border-[#d6cebf] text-xs font-mono shadow-xs">
+          <div className="flex flex-nowrap items-center shrink-0 max-w-full overflow-x-auto bg-white p-1 rounded-full border border-[#d6cebf] text-xs font-mono shadow-xs">
             {[
               { id: "all", label: "All Systems" },
               { id: "telemetry", label: "Telemetry & Health" },
@@ -188,7 +188,7 @@ function Projects() {
                 key={cat.id}
                 type="button"
                 onClick={() => setActiveCategory(cat.id)}
-                className={`px-3.5 py-1.5 rounded-full transition-all cursor-pointer font-medium ${
+                className={`px-3 py-1.5 rounded-full whitespace-nowrap shrink-0 transition-all cursor-pointer font-medium ${
                   activeCategory === cat.id
                     ? "bg-[#171412] text-white shadow-xs font-semibold"
                     : "text-[#57534e] hover:text-[#171412]"
