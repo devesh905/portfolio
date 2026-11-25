@@ -14,7 +14,7 @@ function About() {
             </span>
           </h2>
           <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal max-w-3xl">
-            A developer who bridges physical medical hardware, distributed backends, and frontier AI models.
+            A backend-focused full-stack developer bridging medical hardware, modern web UIs, and frontier AI.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ function About() {
                 Devesh Kumar Upadhyay
               </div>
               <div className="font-mono text-xs text-[#ff4829] font-bold">
-                ASP.NET Core &bull; Real-Time Systems &bull; AI Specialist
+                Backend-Focused Full-Stack &bull; Telemetry &bull; AI
               </div>
             </div>
 
@@ -39,7 +39,7 @@ function About() {
             <div className="space-y-3 text-xs font-mono">
               <div className="flex items-center justify-between py-2 border-b border-[#e2dad0]">
                 <span className="text-[#77716e]">Current Role</span>
-                <span className="font-bold text-[#171412]">Jr. Software Developer (Backend)</span>
+                <span className="font-bold text-[#171412]">Jr. Software Developer (Full-Stack)</span>
               </div>
 
               <div className="flex items-center justify-between py-2 border-b border-[#e2dad0]">
@@ -49,7 +49,7 @@ function About() {
 
               <div className="flex items-center justify-between py-2 border-b border-[#e2dad0]">
                 <span className="text-[#77716e]">Core Stack</span>
-                <span className="font-semibold text-[#171412]">C# &bull; .NET 8 &bull; SQL Server &bull; SignalR</span>
+                <span className="font-semibold text-[#171412]">.NET 8 &bull; SQL Server &bull; React &bull; Next.js</span>
               </div>
 
               <div className="flex items-center justify-between py-2 border-b border-[#e2dad0]">
@@ -85,7 +85,7 @@ function About() {
           {/* RIGHT: Authentic Narrative (Col 7) */}
           <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
             <p>
-              I am a backend and systems software engineer based in Meerut / NCR, India. At <strong className="text-[#171412] font-bold">Subharti Hospital</strong>, I develop production services where software interfaces directly with bedside medical monitors and clinical systems.
+              I am a backend-focused full-stack software engineer based in Meerut / NCR, India. While my core specialization is resilient server-side architecture, I also build responsive, modern web interfaces using <strong className="text-[#171412] font-bold">React.js, Next.js, Bootstrap, HTML/CSS, and JavaScript</strong>. At <strong className="text-[#171412] font-bold">Subharti Hospital</strong>, I develop end-to-end production systems where clinical web dashboards interface directly with bedside medical monitors.
             </p>
 
             <p>
@@ -93,11 +93,11 @@ function About() {
             </p>
 
             <p>
-              In parallel with backend engineering, I work as a <strong className="text-[#171412] font-bold">Generalist AI Specialist &amp; Model Trainer</strong>. I annotate complex multimodal datasets (2D/3D bounding boxes, polygon semantic segmentation, keypoints, and temporal video action tags) with a 99.8% Inter-Annotator Agreement. I also conduct rigorous RLHF evaluations—curating SFT prompts, ranking response pairs, and auditing AI code generation and STEM logic to eliminate hallucinations.
+              In parallel with full-stack engineering, I work as a <strong className="text-[#171412] font-bold">Generalist AI Specialist &amp; Model Trainer</strong>. I annotate complex multimodal datasets (2D/3D bounding boxes, polygon semantic segmentation, keypoints, and temporal video action tags) with a 99.8% Inter-Annotator Agreement. I also conduct rigorous RLHF evaluations—curating SFT prompts, ranking response pairs, and auditing AI code generation and STEM logic to eliminate hallucinations.
             </p>
 
             <p>
-              I am actively seeking <strong className="text-[#171412] font-bold">full-time backend engineering roles (.NET / C#)</strong>, real-time distributed systems positions, or technical AI training contracts where engineering precision and high data quality are paramount.
+              I am actively seeking <strong className="text-[#171412] font-bold">full-time backend-focused or full-stack engineering roles (.NET / C# / React / Next.js)</strong>, real-time distributed systems positions, or technical AI training contracts where engineering precision and high data quality are paramount.
             </p>
           </div>
 

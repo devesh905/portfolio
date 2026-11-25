@@ -32,7 +32,7 @@ function Contact() {
           </h2>
 
           <p className="text-lg sm:text-xl text-[#57534e] leading-relaxed font-normal max-w-2xl pt-2">
-            Whether you have an open full-time backend role (.NET / C#), high-frequency telemetry system, or require a generalist expert for frontier AI model training, reach out directly.
+            Whether you have an open full-time backend-focused or full-stack role (.NET / C# / React / Next.js), high-frequency telemetry system, or require a generalist expert for frontier AI model training, reach out directly.
           </p>
         </div>
 

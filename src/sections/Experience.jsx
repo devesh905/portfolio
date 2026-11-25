@@ -3,7 +3,7 @@ import { Building2, Calendar, Activity, Sparkles, Database, GraduationCap } from
 const timelineData = [
   {
     period: "Aug 2025 — Present",
-    role: "Junior Software Developer (Backend / .NET 8)",
+    role: "Junior Software Developer (Backend-Focused Full-Stack)",
     organization: "Chhatrapati Shivaji Subharti Hospital",
     location: "Meerut, UP, India",
     type: "Production Healthcare Deployment",
@@ -83,6 +83,10 @@ const techStackGroups = [
   {
     domain: "Backend & Architecture",
     items: "C# · ASP.NET Core (.NET 8) · ASP.NET Core Web API · Entity Framework Core · LINQ · SignalR · Microservices · Clean Architecture · SOLID · Repository Pattern · Dependency Injection · Global Exception Middleware",
+  },
+  {
+    domain: "Frontend & UI Engineering",
+    items: "React.js · Next.js · JavaScript (ES6+) · Bootstrap · HTML5 / CSS3 · Tailwind CSS · HTML5 Canvas · Razor Pages · Responsive Dashboards",
   },
   {
     domain: "AI & Model Training",

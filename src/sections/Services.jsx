@@ -202,23 +202,23 @@ const AiVisionRlhfVisual = ({ isHovered, reduceMotion }) => (
 const capabilities = [
   {
     number: "01",
-    title: "Backend & Distributed Systems",
-    subtitle: "ASP.NET Core (.NET 8) & SQL Server",
+    title: "Backend-Focused Full-Stack",
+    subtitle: "ASP.NET Core (.NET 8), SQL Server, React.js & Next.js",
     icon: Server,
     accent: "#ff4829",
     accentSoft: "bg-[#ff4829]/10 text-[#ff4829] border-[#ff4829]/25",
     surfaceTint: "from-white via-white to-[#fff5f2]",
     description:
-      "Enterprise REST APIs and microservices built with clean architecture, SOLID principles, and thread-safe DI—paired with stored procedure tuning, delta compression, and RBAC security.",
+      "Architecting thread-safe REST APIs and microservices in ASP.NET Core (.NET 8) with SOLID principles, SQL Server tuning, and RBAC—paired with responsive frontends built in React.js, Next.js, and Bootstrap.",
     stack: [
       "ASP.NET Core 8",
-      "C# / SOLID",
-      "EF Core & LINQ",
-      "SQL Server",
-      "YARP Gateway",
+      "C# / SQL Server",
+      "React.js & Next.js",
+      "Bootstrap & UI",
+      "EF Core & YARP",
       "JWT & RBAC",
     ],
-    badge: "THREAD-SAFE .NET",
+    badge: "FULL-STACK .NET",
     metrics: "45% footprint reduction via Delta & GZip",
     Visual: BackendPipelineVisual,
   },
@@ -288,7 +288,7 @@ function Services() {
               <span className="text-[#ff4829]">engineering teams.</span>
             </h2>
             <p className="mt-3 text-base text-[#57534e] sm:text-lg leading-relaxed font-normal">
-              Proven competence across mission-critical backends, live hardware telemetry, and frontier AI model training.
+              Proven competence across backend-focused full-stack applications, live hardware telemetry, and frontier AI model training.
             </p>
           </div>
 

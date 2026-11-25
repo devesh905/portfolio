@@ -52,7 +52,7 @@ function ResumeModal({ isOpen, onClose, resumeUrl }) {
                     Curriculum Vitae
                   </h3>
                   <span className="text-[11px] text-[#77716e] font-mono block">
-                    Devesh Kumar Upadhyay &bull; ASP.NET Core &bull; Telemetry &bull; AI Specialist
+                    Devesh Kumar Upadhyay &bull; Backend-Focused Full-Stack (.NET 8 / React / Next.js)
                   </span>
                 </div>
               </div>

@@ -18,7 +18,7 @@ function Footer() {
               Devesh Kumar Upadhyay
             </span>
             <span className="font-mono text-xs text-[#ff4829] block font-semibold">
-              ASP.NET Core &bull; Real-Time Telemetry &bull; AI Systems Engineer
+              Backend-Focused Full-Stack (.NET 8 &bull; React &bull; Next.js) &bull; Real-Time Telemetry
             </span>
           </div>
 

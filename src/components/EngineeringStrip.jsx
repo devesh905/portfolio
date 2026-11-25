@@ -1,6 +1,8 @@
 function EngineeringStrip() {
   const items = [
     "ASP.NET CORE (.NET 8)",
+    "REACT.JS & NEXT.JS",
+    "BOOTSTRAP & MODERN UI",
     "C# & CLEAN ARCHITECTURE",
     "SQL SERVER (T-SQL)",
     "500HZ SIGNALR TELEMETRY",
@@ -8,8 +10,6 @@ function EngineeringStrip() {
     "RLHF & MODEL TRAINING",
     "TCP/IP & HL7 PROTOCOLS",
     "MICROSERVICES & YARP",
-    "PYTHON & VOIP AI",
-    "THREAD-SAFE CONCURRENCY",
   ];
 
   return (

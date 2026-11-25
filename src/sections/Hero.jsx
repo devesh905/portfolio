@@ -38,13 +38,13 @@ function Hero() {
           detail: "Active Dev"
         }}
         intro={{
-          roles: [".NET 8 Engineer", "500Hz ICU Telemetry", "AI Data & RLHF"],
+          roles: [".NET 8 & React / Next.js", "500Hz ICU Telemetry", "AI Data & RLHF"],
           headline: [
-            "Engineering backend systems",
+            "Engineering full-stack systems",
             "where reliability is absolute."
           ],
           description:
-            "Backend engineer at Subharti Hospital building thread-safe ASP.NET Core services, 500Hz real-time ICU telemetry with SignalR, and training frontier AI models with multimodal image/video annotation & RLHF alignment."
+            "Backend-focused full-stack engineer at Subharti Hospital building thread-safe ASP.NET Core services, 500Hz real-time SignalR telemetry, responsive web interfaces with React.js, Next.js & Bootstrap, and training frontier AI models via multimodal annotation & RLHF."
         }}
         portrait={{
           src: "/devesh-portrait.png",
