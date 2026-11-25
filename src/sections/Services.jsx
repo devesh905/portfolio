@@ -281,8 +281,8 @@ function Services() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-8">
         {/* Section Header */}
-        <div className="mb-10 sm:mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#e2dad0] pb-7">
-          <div className="max-w-xl">
+        <div className="mb-10 sm:mb-12 border-b border-[#e2dad0] pb-7">
+          <div className="max-w-2xl">
             <h2 className="text-3xl font-display font-black text-[#171412] sm:text-4xl lg:text-5xl tracking-tight leading-tight">
               What I deliver to{" "}
               <span className="text-[#ff4829]">engineering teams.</span>
@@ -290,12 +290,6 @@ function Services() {
             <p className="mt-3 text-base text-[#57534e] sm:text-lg leading-relaxed font-normal">
               Proven competence across backend-focused full-stack applications, live hardware telemetry, and frontier AI model training.
             </p>
-          </div>
-
-          <div className="inline-flex items-center gap-3 self-start lg:self-end px-4 py-2 rounded-full bg-[#efe9df] border border-[#d6cebf] text-xs font-mono text-[#57534e] font-medium">
-            <span className="text-[#171412] font-semibold">03 Disciplines</span>
-            <span className="text-[#d6cebf]">|</span>
-            <span>Production &amp; Frontier AI</span>
           </div>
         </div>
 
