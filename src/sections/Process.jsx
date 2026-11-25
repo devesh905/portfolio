@@ -156,7 +156,8 @@ function Process() {
             <span>Engineering Principles</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
-            How I think about systems &amp; data.
+            How I think about{" "}
+            <span className="text-[#ff4829]">systems &amp; data.</span>
           </h2>
           <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
             Pragmatic rules learned from writing code that runs in high-stakes hospital environments and training frontier models.

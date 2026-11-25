@@ -169,7 +169,8 @@ function Projects() {
               <span>Production Systems &bull; High Reliability</span>
             </div>
             <h2 className="text-3xl font-display font-black text-[#171412] sm:text-4xl lg:text-5xl tracking-tight leading-tight">
-              Software proven in intensive care &amp; AI labs.
+              Software proven in{" "}
+              <span className="text-[#ff4829]">intensive care &amp; AI labs.</span>
             </h2>
             <p className="mt-4 text-base text-[#57534e] sm:text-lg leading-relaxed font-normal">
               Direct technical case studies across real-time hospital telemetry, computer vision annotation &amp; RLHF data training, and distributed microservices.

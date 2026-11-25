@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight, MapPin, Award, Terminal, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 function About() {
   return (
@@ -7,14 +6,17 @@ function About() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-16">
 
         {/* Section Header */}
-        <div className="max-w-3xl space-y-3">
+        <div className="max-w-4xl space-y-3">
           <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#efe9df] border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-sm">
             <span>Background &bull; Engineering Identity</span>
           </div>
-          <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
-            About Devesh.
+          <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-[1.08]">
+            About{" "}
+            <span className="text-[#ff4829]">
+              Devesh Kumar Upadhyay.
+            </span>
           </h2>
-          <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal max-w-3xl">
             A developer who bridges physical medical hardware, distributed backends, and frontier AI models.
           </p>
         </div>

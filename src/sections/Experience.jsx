@@ -113,7 +113,8 @@ function Experience() {
             <span>Career History &amp; Stack</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
-            Work experience &amp; stack.
+            Work experience{" "}
+            <span className="text-[#ff4829]">&amp; stack.</span>
           </h2>
           <p className="text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
             Real-world engineering roles, mission-critical healthcare deployments, and frontier AI model training.
@@ -190,7 +191,8 @@ function Experience() {
               <span>Complete Technical Competency Matrix</span>
             </div>
             <h3 className="text-2xl sm:text-3xl font-black font-display text-[#171412] tracking-tight leading-tight">
-              Tools, frameworks &amp; protocols applied in production.
+              Tools, frameworks &amp; protocols{" "}
+              <span className="text-[#ff4829]">applied in production.</span>
             </h3>
           </div>
 
