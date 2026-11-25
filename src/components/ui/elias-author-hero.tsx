@@ -786,19 +786,19 @@ const InkSplash = ({ onOpen }: InkSplashProps) => {
 
           {/* Outlines come from the letters' silhouettes, so overlapping shapes inside a letter never show */}
           <g clipPath={`url(#${wipeId})`} filter='url(#ea-ink-outline)' textAnchor='middle'>
-            <text x={500} y={255} fontSize={300} letterSpacing='0.02em' fill='var(--color-ea-accent)'>
+            <text x={500} y={250} fontSize={260} letterSpacing='0.02em' fill='var(--color-ea-accent)'>
               {NAME.first.toUpperCase()}
             </text>
-            <text x={500} y={424} fontSize={196} letterSpacing='0.02em' fill='var(--color-ea-page)'>
+            <text x={500} y={414} fontSize={165} letterSpacing='0.02em' fill='var(--color-ea-page)'>
               {NAME.last.toUpperCase()}
             </text>
           </g>
 
           <g clipPath={`url(#${clipId})`} textAnchor='middle'>
-            <text x={500} y={255} fontSize={300} letterSpacing='0.02em' fill='var(--color-ea-accent)'>
+            <text x={500} y={250} fontSize={260} letterSpacing='0.02em' fill='var(--color-ea-accent)'>
               {NAME.first.toUpperCase()}
             </text>
-            <text x={500} y={424} fontSize={196} letterSpacing='0.02em' fill='var(--color-ea-page)'>
+            <text x={500} y={414} fontSize={165} letterSpacing='0.02em' fill='var(--color-ea-page)'>
               {NAME.last.toUpperCase()}
             </text>
           </g>
@@ -1010,7 +1010,7 @@ const SocialLinks = () => {
   return (
     <ul
       aria-label='Social links'
-      className='ea-socials text-ea-ink flex items-center gap-2.5 text-[14px] lg:gap-2 lg:text-[13px]'
+      className='ea-socials text-ea-ink flex flex-wrap items-center gap-x-2.5 gap-y-0.5 text-[14px] lg:gap-x-2 lg:text-[13px]'
     >
       {SOCIAL_LINKS.map((link, index) => (
         <Fragment key={link.label}>
@@ -1030,7 +1030,7 @@ const SocialLinks = () => {
             animate={started ? { opacity: 1, transform: 'translateY(0px)' } : undefined}
             transition={enter(index * 2)}
           >
-            <a href={link.href} target='_blank' rel='noreferrer' className='ea-link inline-flex min-h-10 items-center'>
+            <a href={link.href} target='_blank' rel='noreferrer' className='ea-link inline-flex min-h-8 items-center'>
               {link.label}
             </a>
           </m.li>
@@ -1808,12 +1808,14 @@ const HeroSection = () => {
               )}
             </div>
 
-            <AuthorIntro />
+            <div className='ea-left-col'>
+              <AuthorIntro />
+              <SocialLinks />
+            </div>
             <OnScreenContext.Provider value={onScreen}>
               {letter.messages.length > 0 && <TomorrowLetter />}
               {BOOKS.length > 0 && <FeaturedBook />}
             </OnScreenContext.Provider>
-            <SocialLinks />
           </m.div>
         </div>
       </IntroContext.Provider>
@@ -2311,13 +2313,13 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
  */
 
 .ea-name-first {
-  font-size: 27.4cqw;
+  font-size: 23.5cqw;
   margin-left: -0.039em;
 }
 
 .ea-name-last {
   align-self: flex-end;
-  font-size: 22.3cqw;
+  font-size: 16.5cqw;
   margin-right: -0.05em;
 }
 
@@ -2342,6 +2344,10 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
   max-width: none;
 }
 
+.ea-left-col {
+  display: contents;
+}
+
 .ea-intro {
   grid-area: intro;
 }
@@ -2349,9 +2355,9 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 .ea-intro-roles {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75em;
+  gap: 0.5em 0.75em;
   font-size: 11px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.18em;
   margin-bottom: 14px;
 }
 
@@ -2359,17 +2365,17 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
   font-size: 24px;
   line-height: 1.14;
   letter-spacing: -0.01em;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .ea-intro-rule {
   width: 52px;
   height: 2px;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
 }
 
 .ea-intro-description {
-  max-width: 260px;
+  max-width: 420px;
   font-size: 15px;
   line-height: 1.55;
 }
@@ -2724,7 +2730,7 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
    */
   .ea-stage {
     position: relative;
-    min-height: calc(var(--ea-w) * 621 / 1600 + 40px);
+    min-height: max(calc(var(--ea-w) * 660 / 1600 + 80px), 680px);
     padding: 0;
   }
 
@@ -2735,22 +2741,22 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
    */
   /**
    * --ea-u follows the width, but on a wide, short window it follows the height instead (the name, introduction
-   * and social links need 621 units plus 40px), so the design still fits one screen while staying anchored to
+   * and social links need 640 units plus 40px), so the design still fits one screen while staying anchored to
    * both edges; it never drops below 80% of the width's unit
    */
   .ea-canvas {
-    --ea-u: max(min(100cqw / 1280, (100cqh - 40px) / 621), 100cqw / 1600);
+    --ea-u: max(min(100cqw / 1280, (100cqh - 40px) / 640), 100cqw / 1600);
     --ea-slack: max(0px, 100cqh - 685 * var(--ea-u));
     --ea-head: calc(55 * var(--ea-u));
     --ea-portrait-max: max(738 * var(--ea-u), 640px);
 
-    /* The portrait keeps its place against MONROE (which is set from the right edge), never nearer than 221px */
-    --ea-portrait-left: max(100cqw - 1070 * var(--ea-u), 221px);
+    /* The portrait keeps clear of the left intro column and stays anchored relative to the right side */
+    --ea-portrait-left: max(100cqw - 1015 * var(--ea-u), max(238px, calc(272 * var(--ea-u))));
     --ea-top: max(10 * var(--ea-u) + var(--ea-slack) * 0.15, 100cqh - var(--ea-portrait-max) - var(--ea-head));
     --ea-portrait-h: min(100cqh - var(--ea-top) - var(--ea-head), var(--ea-portrait-max));
-    /* The name's two lines: ELIAS's cap top, then MONROE's, then MONROE's baseline */
-    --ea-last-top: calc(var(--ea-top) + 242 * var(--ea-u));
-    --ea-last-base: calc(var(--ea-top) + 406 * var(--ea-u));
+    /* The name's two lines: DEVESH's cap top, then UPADHYAY's cap top and baseline */
+    --ea-last-top: calc(var(--ea-top) + 224 * var(--ea-u));
+    --ea-last-base: calc(var(--ea-top) + 340 * var(--ea-u));
     position: absolute;
     inset: 0;
     display: block;
@@ -2825,14 +2831,14 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
     top: calc(var(--ea-top) - 0.136em);
     left: -0.039em;
     margin: 0;
-    font-size: calc(302 * var(--ea-u));
+    font-size: calc(278 * var(--ea-u));
   }
 
   .ea-name-last {
     top: calc(var(--ea-last-top) - 0.136em);
     right: -0.05em;
     margin: 0;
-    font-size: calc(225 * var(--ea-u));
+    font-size: calc(154 * var(--ea-u));
   }
 
   .ea-figure::after {
@@ -2905,37 +2911,47 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
     height: var(--ea-portrait-h);
   }
 
-  .ea-intro {
+  .ea-left-col {
     position: absolute;
     z-index: 3;
-    top: calc(var(--ea-last-top) + 44 * var(--ea-u));
+    top: calc(var(--ea-last-top) + 12 * var(--ea-u));
+    bottom: calc(22 * var(--ea-u));
     left: 0;
-    width: calc(250 * var(--ea-u));
+    width: max(220px, calc(255 * var(--ea-u)));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: calc(16 * var(--ea-u));
+  }
+
+  .ea-intro {
+    position: static;
+    width: 100%;
   }
 
   /* Spacing grows down the stack: label to heading, then heading to rule and rule to description */
   .ea-intro-roles {
-    gap: 0.4em 0.55em;
-    font-size: max(10px, 11 * var(--ea-u));
-    letter-spacing: 0.15em;
-    margin-bottom: calc(18 * var(--ea-u));
+    gap: 0.35em 0.55em;
+    font-size: max(10px, 10.5 * var(--ea-u));
+    letter-spacing: 0.14em;
+    margin-bottom: calc(12 * var(--ea-u));
   }
 
   .ea-intro-headline {
-    font-size: max(19px, 26 * var(--ea-u));
-    line-height: 1.12;
-    margin-bottom: calc(26 * var(--ea-u));
+    font-size: max(18px, 23 * var(--ea-u));
+    line-height: 1.14;
+    margin-bottom: calc(16 * var(--ea-u));
   }
 
   .ea-intro-rule {
     width: calc(52 * var(--ea-u));
-    margin-bottom: calc(26 * var(--ea-u));
+    margin-bottom: calc(16 * var(--ea-u));
   }
 
   .ea-intro-description {
-    max-width: calc(240 * var(--ea-u));
-    font-size: max(14px, 15.5 * var(--ea-u));
-    line-height: 1.6;
+    max-width: 100%;
+    font-size: max(13.5px, 14.5 * var(--ea-u));
+    line-height: 1.5;
     text-wrap: pretty;
   }
 
@@ -2971,13 +2987,9 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
   }
 
   .ea-socials {
-    position: absolute;
-    z-index: 3;
-    font-size: max(13px, 13 * var(--ea-u));
-
-    /* Near the bottom edge, or just under the introduction when the screen is too short for that */
-    top: max(var(--ea-last-top) + 44 * var(--ea-u) + max(305 * var(--ea-u), 280px), 100% - 78 * var(--ea-u) - 40px);
-    left: 0;
+    position: static;
+    width: 100%;
+    font-size: max(12.5px, 13 * var(--ea-u));
   }
 }
 
