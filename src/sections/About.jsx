@@ -19,7 +19,7 @@ function About() {
         </div>
 
         {/* Split Layout: Engineer Spec Sheet on Left, Human Narrative on Right */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 lg:items-center">
 
           {/* LEFT: Engineer Profile Spec Sheet (Col 5) */}
           <div className="lg:col-span-5 border border-[#e2dad0] bg-white rounded-xl p-6 sm:p-7 space-y-6 shadow-sm relative">
@@ -83,21 +83,17 @@ function About() {
           </div>
 
           {/* RIGHT: Authentic Narrative (Col 7) */}
-          <div className="lg:col-span-7 space-y-5 text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
+          <div className="lg:col-span-7 space-y-4 text-base sm:text-lg text-[#57534e] leading-relaxed font-normal">
             <p>
-              I am a backend-focused full-stack software engineer based in Meerut / NCR, India. While my core specialization is resilient server-side architecture, I also build responsive, modern web interfaces using <strong className="text-[#171412] font-bold">React.js, Next.js, Bootstrap, HTML/CSS, and JavaScript</strong>. At <strong className="text-[#171412] font-bold">Subharti Hospital</strong>, I develop end-to-end production systems where clinical web dashboards interface directly with bedside medical monitors.
+              I am a backend-focused full-stack engineer based in Meerut / NCR, India. At <strong className="text-[#171412] font-bold">Subharti Hospital</strong>, I build end-to-end production systems—pairing resilient <strong className="text-[#171412] font-bold">ASP.NET Core (.NET 8) &amp; SQL Server</strong> architectures with responsive web interfaces in <strong className="text-[#171412] font-bold">React.js, Next.js, and Bootstrap</strong>.
             </p>
 
             <p>
-              Hospital wards are the ultimate test for backend reliability: hardware disconnects unexpectedly, Ethernet networks experience jitter, and parallel data feeds can deadlock relational databases if service scopes are not strictly isolated. Engineering a <strong className="text-[#171412] font-bold">500Hz live ECG waveform stream</strong> using SignalR with custom delta compression taught me to prioritize defensive design, thread safety (<code className="text-[#171412] bg-[#efe9df] border border-[#d6cebf] px-1 py-0.5 rounded font-mono text-xs font-semibold">IServiceScopeFactory</code>), and sub-40ms latency over textbook assumptions.
+              Hospital wards leave zero margin for brittle code. Engineering a <strong className="text-[#171412] font-bold">500Hz live ECG waveform stream</strong> over SignalR with custom delta compression and <code className="text-[#171412] bg-[#efe9df] border border-[#d6cebf] px-1 py-0.5 rounded font-mono text-xs font-semibold">IServiceScopeFactory</code> scope isolation taught me to prioritize thread safety and sub-40ms latency.
             </p>
 
             <p>
-              In parallel with full-stack engineering, I work as a <strong className="text-[#171412] font-bold">Generalist AI Specialist &amp; Model Trainer</strong>. I annotate complex multimodal datasets (2D/3D bounding boxes, polygon semantic segmentation, keypoints, and temporal video action tags) with a 99.8% Inter-Annotator Agreement. I also conduct rigorous RLHF evaluations—curating SFT prompts, ranking response pairs, and auditing AI code generation and STEM logic to eliminate hallucinations.
-            </p>
-
-            <p>
-              I am actively seeking <strong className="text-[#171412] font-bold">full-time backend-focused or full-stack engineering roles (.NET / C# / React / Next.js)</strong>, real-time distributed systems positions, or technical AI training contracts where engineering precision and high data quality are paramount.
+              Alongside software engineering, I work as an <strong className="text-[#171412] font-bold">AI Model Trainer &amp; Multimodal Data Specialist</strong> (99.8% IAA across bounding boxes, polygon segmentation, and RLHF audits), and I am open to <strong className="text-[#171412] font-bold">full-time backend-focused or full-stack roles (.NET / C# / React / Next.js)</strong> and AI training contracts.
             </p>
           </div>
 
