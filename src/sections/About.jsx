@@ -27,7 +27,7 @@ function About() {
             <div className="w-full border border-[#e2dad0] bg-white rounded-xl p-6 sm:p-7 space-y-6 shadow-sm">
             <div className="border border-[#d6cebf] bg-[#efe9df] rounded-lg p-5 text-center space-y-2">
               <div className="font-mono text-[10px] text-[#77716e] tracking-widest uppercase font-semibold">
-                LOCATION // MEERUT &bull; NCR, INDIA
+                LOCATION // DELHI NCR, INDIA
               </div>
               <div className="text-xl font-black font-display text-[#171412] tracking-tight">
                 Devesh Kumar Upadhyay
@@ -92,15 +92,7 @@ function About() {
               contained={true}
               theme="light"
               fontFamily='"Figtree", "Inter", sans-serif'
-              wordmark="MEERUT · NCR // PERSONAL NOTE"
               vellumSubtitle="Engineering Where Reliability Is Absolute."
-              headline={
-                <>
-                  Built for systems
-                  <br />
-                  <span className="li-card-accent">that cannot fail.</span>
-                </>
-              }
               body={
                 <>
                   <p>

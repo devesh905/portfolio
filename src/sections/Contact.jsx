@@ -175,7 +175,7 @@ function Contact() {
                   Geographic Base
                 </span>
                 <span className="font-bold text-sm text-[#171412]">
-                  Meerut / NCR, India
+                  Delhi NCR, India
                 </span>
               </div>
             </div>

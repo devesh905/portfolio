@@ -68,17 +68,17 @@ const STATIONERY_CSS = `
 .li-card{position:absolute;width:400px;height:620px;left:50%;top:56%;margin:0;z-index:2;transform:translate(-50%,-50%) rotate(90deg);transform-origin:50% 50%;will-change:transform;box-shadow:0 2px 2px #65563820,2px 7px 10px #65563812,14px 26px 40px #65563817;border-radius:2px;background:#f9f6ed;color:#171412}
 .li-card-stock{position:absolute;inset:0;background:radial-gradient(ellipse at 10% 0%,#fffdf5aa,transparent 65%),linear-gradient(110deg,#f7f4e9,#fcfaf2 43%,#f3efe2);border-top:1px solid #fffef8;border-right:1px solid #e3dccb;border-bottom:2px solid #d9d0bc;box-shadow:inset 1px 0 1px #fffef7}
 .li-card-rule{position:absolute;inset:15px;border:1px solid #d4c7ad77;box-shadow:0 1px 0 #fffdf4,inset 0 1px 0 #fffdf4;pointer-events:none}
-.li-card-content{position:relative;height:100%;padding:34px 32px 30px;display:flex;flex-direction:column;text-align:center;justify-content:space-between}
-.li-card-wordmark{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#8f8168;text-shadow:0 1px #fffdf7}
-.li-card-message{margin-top:4px;display:flex;flex-direction:column;align-items:center}
+.li-card-content{position:relative;height:100%;padding:34px 32px 30px;display:flex;flex-direction:column;text-align:center;justify-content:center;align-items:center}
+.li-card-wordmark{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#8f8168;text-shadow:0 1px #fffdf7;margin-bottom:12px}
+.li-card-message{display:flex;flex-direction:column;align-items:center;width:100%}
 .li-card h2{font-family:var(--li-font-family,Arial,sans-serif);font-size:29px;font-weight:900;letter-spacing:-.03em;line-height:1.1;margin:0;color:#171412}
 .li-card-accent{color:#ff4829}
 .li-card-divider{height:1px;width:36px;background:#ff482988;margin:16px auto}
-.li-card-paragraphs{display:flex;flex-direction:column;gap:10px;max-width:316px;margin:0 auto}
-.li-card-paragraphs p{font-size:13px;line-height:1.52;margin:0;color:#4a453f;font-weight:400;text-wrap:pretty}
+.li-card-paragraphs{display:flex;flex-direction:column;gap:12px;max-width:322px;margin:0 auto}
+.li-card-paragraphs p{font-size:13.5px;line-height:1.56;margin:0;color:#4a453f;font-weight:400;text-wrap:pretty}
 .li-card-paragraphs strong{color:#171412;font-weight:700}
 .li-card-paragraphs code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:11px;background:#efe9df;border:1px solid #d6cebf;padding:1px 4px;border-radius:3px;color:#171412;font-weight:600}
-.li-card-footer-sign{margin-top:8px;padding-top:10px;border-top:1px solid #e2dad0;width:100%}
+.li-card-footer-sign{margin-top:22px;padding-top:14px;border-top:1px solid #e2dad0;width:100%;max-width:322px}
 .li-card-signature{font-size:12px;letter-spacing:.03em;color:#171412;margin:0;font-weight:700}
 .li-card-subsign{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:10px;letter-spacing:.06em;color:#8f8168;margin:3px 0 0;text-transform:uppercase}
 .li-stage-footer{position:absolute;left:6%;right:6%;bottom:34px;z-index:12;display:flex;justify-content:space-between;align-items:center;gap:16px;color:#756e5e;font-size:14px}
@@ -1969,14 +1969,8 @@ export function LeInviteOpening({
   className = "",
   theme = "light",
   fontFamily = '"Figtree", "Inter", sans-serif',
-  wordmark = "DEVESH KUMAR UPADHYAY",
-  headline = (
-    <>
-      Built for moments
-      <br />
-      <span className="li-card-accent">that cannot fail.</span>
-    </>
-  ),
+  wordmark = "",
+  headline = null,
   body,
   signature = "— Devesh Kumar Upadhyay",
   subSignature = "Backend-Focused Full-Stack · Telemetry · AI",
@@ -2055,7 +2049,7 @@ export function LeInviteOpening({
       <style>{STATIONERY_CSS}</style>
       <div className="li-stage">
         <div className="li-stage-heading">
-          <span>{wordmark}</span>
+          {wordmark ? <span>{wordmark}</span> : <span>DEVESH KUMAR UPADHYAY</span>}
           <p>A personal note.</p>
         </div>
         <div className="li-table-shadow" aria-hidden="true" />
@@ -2081,10 +2075,14 @@ export function LeInviteOpening({
           <div className="li-card-stock li-paper" />
           <div className="li-card-rule" aria-hidden="true" />
           <div className="li-card-content">
-            <div className="li-card-wordmark">{wordmark}</div>
+            {wordmark ? <div className="li-card-wordmark">{wordmark}</div> : null}
             <div className="li-card-message">
-              <h2>{headline}</h2>
-              <div className="li-card-divider" aria-hidden="true" />
+              {headline ? (
+                <>
+                  <h2>{headline}</h2>
+                  <div className="li-card-divider" aria-hidden="true" />
+                </>
+              ) : null}
               <div className="li-card-paragraphs">{body}</div>
             </div>
             <div className="li-card-footer-sign">
