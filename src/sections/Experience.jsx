@@ -185,11 +185,11 @@ function Experience() {
 
         {/* Master Technical Stack Competency Matrix */}
         <div className="pt-8 space-y-6 border-t border-[#e2dad0]">
-          <div className="space-y-1">
-            <span className="text-xs font-mono uppercase tracking-wider text-[#ff4829] font-bold block">
-              Complete Technical Competency Matrix
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-bold font-display text-[#171412] tracking-tight">
+          <div className="space-y-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-xs">
+              <span>Complete Technical Competency Matrix</span>
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black font-display text-[#171412] tracking-tight leading-tight">
               Tools, frameworks &amp; protocols applied in production.
             </h3>
           </div>
@@ -198,15 +198,15 @@ function Experience() {
             {techStackGroups.map((group) => (
               <div
                 key={group.domain}
-                className="border border-[#e2dad0] bg-white rounded-2xl p-6 space-y-3 shadow-xs hover:border-[#ff4829]/60 hover:shadow-md transition-all"
+                className="border border-[#e2dad0] bg-white rounded-2xl p-6 space-y-2.5 shadow-xs hover:border-[#ff4829]/60 hover:shadow-md transition-all"
               >
-                <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ff4829]" />
-                  <span className="font-mono text-xs text-[#171412] font-bold uppercase tracking-wider">
+                <div className="flex items-center gap-2.5">
+                  <span className="w-2 h-2 rounded-full bg-[#ff4829] shrink-0" />
+                  <h4 className="font-display text-base sm:text-lg text-[#171412] font-bold tracking-tight">
                     {group.domain}
-                  </span>
+                  </h4>
                 </div>
-                <p className="text-xs sm:text-sm text-[#57534e] leading-relaxed font-mono">
+                <p className="text-sm text-[#57534e] leading-relaxed font-sans font-normal">
                   {group.items}
                 </p>
               </div>
