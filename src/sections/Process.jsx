@@ -152,9 +152,6 @@ function Process() {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 space-y-14 relative z-10">
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-[#efe9df] border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider">
-            <span>Engineering Principles</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
             How I think about{" "}
             <span className="text-[#ff4829]">systems &amp; data.</span>

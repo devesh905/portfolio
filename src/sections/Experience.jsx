@@ -109,9 +109,6 @@ function Experience() {
         
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-xs">
-            <span>Career History &amp; Stack</span>
-          </div>
           <h2 className="text-3xl sm:text-5xl font-black font-display text-[#171412] tracking-tight leading-tight">
             Work experience{" "}
             <span className="text-[#ff4829]">&amp; stack.</span>
@@ -187,9 +184,6 @@ function Experience() {
         {/* Master Technical Stack Competency Matrix */}
         <div className="pt-8 space-y-6 border-t border-[#e2dad0]">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-xs">
-              <span>Complete Technical Competency Matrix</span>
-            </div>
             <h3 className="text-2xl sm:text-3xl font-black font-display text-[#171412] tracking-tight leading-tight">
               Tools, frameworks &amp; protocols{" "}
               <span className="text-[#ff4829]">applied in production.</span>

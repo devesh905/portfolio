@@ -283,10 +283,6 @@ function Services() {
         {/* Section Header */}
         <div className="mb-10 sm:mb-12 flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b border-[#e2dad0] pb-7">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829]" />
-              <span>Core Engineering Disciplines</span>
-            </div>
             <h2 className="text-3xl font-display font-black text-[#171412] sm:text-4xl lg:text-5xl tracking-tight leading-tight">
               What I deliver to{" "}
               <span className="text-[#ff4829]">engineering teams.</span>

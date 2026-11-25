@@ -56,11 +56,10 @@ function Navbar() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[84px] ${
-          isScrolled
-            ? "bg-[#f6f4f0]/95 backdrop-blur-md border-b border-[#e2dad0] shadow-[0_4px_24px_rgba(23,20,18,0.06)]"
-            : "bg-[#f6f4f0]/85 backdrop-blur-sm border-b border-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 h-[84px] ${isScrolled
+          ? "bg-[#f6f4f0]/95 backdrop-blur-md border-b border-[#e2dad0] shadow-[0_4px_24px_rgba(23,20,18,0.06)]"
+          : "bg-[#f6f4f0]/85 backdrop-blur-sm border-b border-transparent"
+          }`}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 h-full relative">
           {/* Desktop 3-Column Grid Layout (Guarantees DEVESH in true horizontal center with zero overlap) */}
@@ -74,11 +73,10 @@ function Navbar() {
                   <a
                     key={link.href}
                     href={link.href}
-                    className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${
-                      isActive
-                        ? "text-[#ff4829]"
-                        : "text-[#171412] hover:text-[#ff4829]"
-                    }`}
+                    className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${isActive
+                      ? "text-[#ff4829]"
+                      : "text-[#171412] hover:text-[#ff4829]"
+                      }`}
                   >
                     {isActive && (
                       <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829] shrink-0" />
@@ -110,11 +108,10 @@ function Navbar() {
                     <a
                       key={link.href}
                       href={link.href}
-                      className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${
-                        isActive
-                          ? "text-[#ff4829]"
-                          : "text-[#171412] hover:text-[#ff4829]"
-                      }`}
+                      className={`inline-flex items-center gap-1.5 font-mono text-[11px] xl:text-[12px] tracking-[0.06em] uppercase font-semibold transition-colors duration-200 py-1 whitespace-nowrap ${isActive
+                        ? "text-[#ff4829]"
+                        : "text-[#171412] hover:text-[#ff4829]"
+                        }`}
                     >
                       {isActive && (
                         <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829] shrink-0" />
@@ -133,7 +130,7 @@ function Navbar() {
                   className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-[#171412]/30 hover:border-[#ff4829] hover:text-[#ff4829] text-[#171412] bg-[#f6f4f0]/90 font-mono text-[11px] font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer shadow-xs whitespace-nowrap"
                 >
                   <FileText size={12} className="text-[#ff4829]" />
-                  <span>Résumé</span>
+                  <span> Resume </span>
                 </button>
               </div>
             </div>
@@ -164,7 +161,7 @@ function Navbar() {
                 className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#171412]/30 text-[#171412] font-mono text-[11px] font-bold uppercase tracking-wider"
               >
                 <FileText size={11} className="text-[#ff4829]" />
-                <span>Résumé</span>
+                <span>Resume </span>
               </button>
             </div>
           </div>
@@ -183,11 +180,10 @@ function Navbar() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileOpen(false)}
-                      className={`flex items-center justify-between font-mono text-sm tracking-wider uppercase font-semibold py-1.5 transition-colors ${
-                        isActive
-                          ? "text-[#ff4829]"
-                          : "text-[#171412] hover:text-[#ff4829]"
-                      }`}
+                      className={`flex items-center justify-between font-mono text-sm tracking-wider uppercase font-semibold py-1.5 transition-colors ${isActive
+                        ? "text-[#ff4829]"
+                        : "text-[#171412] hover:text-[#ff4829]"
+                        }`}
                     >
                       <span>{link.label}</span>
                       {isActive ? (
@@ -210,7 +206,7 @@ function Navbar() {
                   className="w-full inline-flex items-center justify-center gap-2 py-2.5 rounded-full border border-[#171412]/30 hover:border-[#171412] font-mono text-xs font-bold uppercase tracking-wider text-[#171412]"
                 >
                   <FileText size={13} className="text-[#ff4829]" />
-                  <span>View Full Résumé</span>
+                  <span>View Full Resume </span>
                 </button>
               </div>
             </div>

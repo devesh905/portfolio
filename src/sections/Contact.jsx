@@ -23,11 +23,6 @@ function Contact() {
         
         {/* Massive Statement */}
         <div className="space-y-6 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#ff4829]" />
-            <span>Direct Channels &bull; Opportunities</span>
-          </div>
-
           <h2 className="text-4xl sm:text-6xl lg:text-[72px] font-black font-display text-[#171412] tracking-tight leading-[1.05]">
             Have an engineering challenge?
             <br />

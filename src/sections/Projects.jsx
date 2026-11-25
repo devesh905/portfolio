@@ -165,9 +165,6 @@ function Projects() {
         {/* Header Section */}
         <div className="mb-14 sm:mb-18 flex flex-col items-start justify-between gap-6 xl:flex-row xl:items-end border-b border-[#e2dad0] pb-8">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#d6cebf] text-[#ff4829] text-xs font-mono font-semibold uppercase tracking-wider mb-3">
-              <span>Production Systems &bull; High Reliability</span>
-            </div>
             <h2 className="text-3xl font-display font-black text-[#171412] sm:text-4xl lg:text-5xl tracking-tight leading-tight">
               Software proven in{" "}
               <span className="text-[#ff4829]">intensive care &amp; AI labs.</span>
