@@ -2428,51 +2428,55 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 .ea-pad-inner {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 380px;
+  height: auto;
+  min-height: 220px;
 }
 
 .ea-letter-sheet,
 .ea-letter-envelope-view {
   position: relative;
   display: flex;
-  flex: 1;
+  flex: 0 1 auto;
   flex-direction: column;
 }
 
 .ea-letter-sheet {
-  padding: 24px 22px 18px;
+  width: 100%;
+  max-width: 380px;
+  min-height: 210px;
+  margin-inline: auto;
+  padding: 18px 18px 14px;
   border-radius: 4px;
   background: #fbf9f5;
   box-shadow: 0 18px 40px -18px rgb(23 20 18 / 0.45);
 }
 
 .ea-letter-eyebrow {
-  padding-right: 64px;
+  padding-right: 58px;
   color: var(--color-ea-muted);
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: 600;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
 }
 
 .ea-letter-stamp {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 12px;
+  right: 12px;
   display: grid;
   place-items: center;
-  width: 76px;
-  height: 76px;
+  width: 56px;
+  height: 56px;
   padding: 0 0 0 0.16em;
-  border: 2px solid var(--color-ea-accent);
+  border: 1.5px solid var(--color-ea-accent);
   border-radius: 50%;
   color: var(--color-ea-accent);
-  font-size: 10.5px;
+  font-size: 8.5px;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.25;
   text-align: center;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   transform: rotate(12deg);
   transition:
@@ -2499,16 +2503,17 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 
 .ea-letter-greeting {
   display: block;
-  margin-top: 20px;
+  margin-top: 12px;
+  padding-right: 58px;
   color: var(--color-ea-ink);
   font-family: var(--font-ea-mono);
-  font-size: 17px;
+  font-size: 13.5px;
 }
 
 .ea-letter-field {
   flex: 1;
   width: 100%;
-  min-height: 84px;
+  min-height: 64px;
   margin-top: 4px;
   padding: 0;
   border: 0;
@@ -2516,8 +2521,8 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
   color: var(--color-ea-ink);
   caret-color: var(--color-ea-accent);
   font-family: var(--font-ea-mono);
-  font-size: 17px;
-  line-height: 1.65;
+  font-size: 13px;
+  line-height: 1.52;
   resize: none;
   outline: none;
 }
@@ -2544,9 +2549,9 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 }
 
 .ea-letter-meta {
-  margin-top: auto;
+  margin-top: 12px;
   color: var(--color-ea-muted);
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -2567,9 +2572,10 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 
 /* The sealing view: its label above the envelope, both centred in the letter's space at every width */
 .ea-letter-envelope-view {
+  min-height: 210px;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   text-align: center;
 }
 
@@ -2585,7 +2591,7 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
 .ea-envelope {
   position: relative;
   display: block;
-  width: min(100%, 320px);
+  width: min(100%, 240px);
   aspect-ratio: 1.62;
   border-radius: 6px;
   background: #e6dccb;
@@ -2860,8 +2866,10 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
    * 1336px height) and drifts up to 14px with the cursor; the inset is measured from the portrait's real size
    */
   .ea-pad-inner {
+    height: 100%;
     min-height: 0;
-    padding: calc(14 * var(--ea-u)) calc(18 * var(--ea-u)) 0
+    justify-content: center;
+    padding: calc(14 * var(--ea-u)) calc(18 * var(--ea-u)) calc(22 * var(--ea-u))
       max(
         120 * var(--ea-u),
         var(--ea-portrait-left) + var(--ea-portrait-h) * 1072 / 1336 - 620 * var(--ea-u) + 14px + 24 * var(--ea-u)
@@ -2869,35 +2877,44 @@ const BLOCK_CSS = `/* Theme tokens of the block (its @theme), scoped to the comp
   }
 
   .ea-letter-sheet {
-    padding: calc(24 * var(--ea-u)) calc(26 * var(--ea-u)) calc(18 * var(--ea-u));
-    border-radius: 4px 4px 0 0;
+    max-width: calc(360 * var(--ea-u));
+    min-height: calc(195 * var(--ea-u));
+    margin-inline: auto 0;
+    padding: calc(16 * var(--ea-u)) calc(18 * var(--ea-u)) calc(14 * var(--ea-u));
+    border-radius: 4px;
   }
 
   .ea-letter-eyebrow,
   .ea-letter-meta {
-    font-size: max(10px, 11 * var(--ea-u));
+    font-size: max(9px, 9.5 * var(--ea-u));
+  }
+
+  .ea-letter-eyebrow {
+    padding-right: max(54px, 60 * var(--ea-u));
   }
 
   .ea-letter-stamp {
-    top: calc(16 * var(--ea-u));
-    right: calc(18 * var(--ea-u));
-    width: max(64px, 78 * var(--ea-u));
-    height: max(64px, 78 * var(--ea-u));
-    font-size: max(9px, 10.5 * var(--ea-u));
+    top: calc(12 * var(--ea-u));
+    right: calc(14 * var(--ea-u));
+    width: max(50px, 56 * var(--ea-u));
+    height: max(50px, 56 * var(--ea-u));
+    font-size: max(8px, 8.5 * var(--ea-u));
   }
 
   .ea-letter-greeting {
-    margin-top: calc(22 * var(--ea-u));
-    font-size: max(14px, 18 * var(--ea-u));
+    margin-top: calc(12 * var(--ea-u));
+    padding-right: max(54px, 60 * var(--ea-u));
+    font-size: max(12px, 13.5 * var(--ea-u));
   }
 
   .ea-letter-field {
-    min-height: 0;
-    font-size: max(14px, 18 * var(--ea-u));
+    min-height: calc(64 * var(--ea-u));
+    font-size: max(11.5px, 13 * var(--ea-u));
+    line-height: 1.5;
   }
 
   .ea-envelope {
-    width: min(100%, 330 * var(--ea-u));
+    width: min(100%, 245 * var(--ea-u));
   }
 
   /**
