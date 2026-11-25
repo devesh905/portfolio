@@ -56,8 +56,7 @@ function Hero() {
         socialLinks={[
           { label: "GitHub", href: "https://github.com/devesh905" },
           { label: "LinkedIn", href: "https://www.linkedin.com/in/devesh-kumar-upadhyay/" },
-          { label: "Resume (PDF)", href: "/DeveshKumarUpadhyay.pdf" },
-          { label: "Subharti Hospital", href: "#experience" }
+          { label: "Resume (PDF)", href: "/DeveshKumarUpadhyay.pdf" }
         ]}
       />
     </section>

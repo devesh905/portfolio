@@ -139,17 +139,6 @@ function Navbar() {
             </div>
           </div>
 
-          {/* Live Status Note (Only on 2XL wide screens, absolutely placed on far left edge so it never affects the center alignment) */}
-          <div className="hidden 2xl:flex items-center gap-2 absolute left-6 lg:left-8 top-1/2 -translate-y-1/2 text-[11px] font-mono font-semibold tracking-[0.16em] uppercase text-[#78716c] pointer-events-none whitespace-nowrap">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4829] opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4829]" />
-            </span>
-            <span>SUBHARTI ICU</span>
-            <span className="text-[#ff4829]">·</span>
-            <span className="text-[#171412]">ACTIVE DEV</span>
-          </div>
-
           {/* Mobile Bar (< lg) */}
           <div className="flex lg:hidden items-center justify-between h-full">
             <button
@@ -185,14 +174,6 @@ function Navbar() {
         {isMobileOpen && (
           <div className="lg:hidden bg-[#f6f4f0] border-b border-[#e2dad0] px-6 py-6 shadow-xl animate-in fade-in slide-in-from-top-2 duration-200">
             <div className="flex flex-col space-y-4">
-              <div className="flex items-center gap-2 pb-3 border-b border-[#e2dad0] text-[11px] font-mono font-semibold tracking-wider uppercase text-[#78716c]">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#ff4829] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ff4829]" />
-                </span>
-                <span>SUBHARTI ICU · ACTIVE DEV</span>
-              </div>
-
               <nav className="flex flex-col space-y-3">
                 {allNavLinks.map((link) => {
                   const id = link.href.slice(1);
